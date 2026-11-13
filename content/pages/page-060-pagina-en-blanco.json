@@ -1,0 +1,116 @@
+{
+  "id": "page-060-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "titleStyle": "existing",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "framed-columns-0a023c08-b9ca-48ab-8443-c02d08db4dd1",
+      "layout": "2-40-60",
+      "columns": [],
+      "type": "framedColumns",
+      "title": "Lugares turisticos",
+      "icon": "chart",
+      "showIcon": false,
+      "showBorder": false,
+      "headerStyle": "band",
+      "rows": [
+        {
+          "id": "row-54114542-27dc-49e8-b9c2-35b3bd37df97",
+          "layout": "2-40-60",
+          "cells": [
+            {
+              "id": "col-fc9830d9-a7a9-4838-9c0f-a112e87ca640",
+              "column": 0,
+              "verticalAlign": "center",
+              "blocks": [
+                {
+                  "id": "paragraph-bf0ec155-0e75-461f-bb59-4e0adf027fef",
+                  "type": "paragraph",
+                  "text": "Ahora en Arequipa!"
+                },
+                {
+                  "id": "item-3965b5b8-ac47-4042-b6fa-bac65220e900",
+                  "type": "paragraph",
+                  "text": "En Arequipa Sofia y su mama estan de vacaciones. Ya organizaron los gastos del viaje, pero todavia necesitan una guia con informacion de los lugares turisticos de la ciudad."
+                }
+              ]
+            },
+            {
+              "id": "col-ef1c3e0e-f839-42ed-b9ec-f8dd817fe924",
+              "column": 1,
+              "blocks": [
+                {
+                  "id": "image-16cdf8af-4ad9-45b8-abad-7ffa98a8afe5",
+                  "type": "image",
+                  "src": "assets/images/imagen-1bb3cd84-366b-482b-a38a-ac065a39c452.png",
+                  "alt": "93ef8c5b-fb11-43e1-b39b-824f82e576fa",
+                  "heightMm": 55,
+                  "fit": "contain",
+                  "widthPercent": 100
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gap": "small"
+    },
+    {
+      "id": "item-797c9c4f-b92b-4f95-9329-e5627660a4d0",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "item-ec3ccfcc-d36d-468f-bdc9-f948fba7c58e",
+          "blocks": [
+            {
+              "id": "item-4cf0dd26-2bda-4014-aa3c-ef0121856a6f",
+              "type": "paragraph",
+              "text": "Para ayudar a Sofia y a su Mama crearas una guia turistica de Arequipa, utilizando las descripciones delos lugares que se presentan a continuacion. Deberas aplicar lo aprendido en las anteriores clases."
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Tu misión",
+      "icon": "target",
+      "background": "white",
+      "headerStyle": "tab"
+    },
+    {
+      "id": "framed-columns-b9212216-2e10-4d5b-9fa2-e760f063c01f",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "col-81a4dc12-04f7-4394-a4a2-8e287066e28a",
+          "blocks": [
+            {
+              "id": "steps-bb48d44a-39c3-4bdc-9436-fbe3c0ed4bbf",
+              "type": "steps",
+              "title": "Pasos:",
+              "items": [
+                {
+                  "id": "step-1265f8ac-4718-4fe0-8e36-eeb3d6cee2b2",
+                  "content": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "col-7de9d5df-ee06-4c1b-8dc7-97902aa06e3c",
+          "blocks": []
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Que debes hacer en Word?",
+      "background": "white",
+      "showBorder": true
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

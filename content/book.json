@@ -39,20 +39,24 @@
       "file": "pages/page-054-pagina-en-blanco.json"
     },
     {
-      "id": "page-038-pagina-en-blanco",
-      "file": "pages/page-038-pagina-en-blanco.json"
-    },
-    {
       "id": "page-039-funciones-excel",
       "file": "pages/page-039-funciones-excel.json"
     },
     {
-      "id": "page-052-pagina-en-blanco",
-      "file": "pages/page-052-pagina-en-blanco.json"
+      "id": "page-057-pagina-en-blanco",
+      "file": "pages/page-057-pagina-en-blanco.json"
     },
     {
-      "id": "page-055-pagina-en-blanco",
-      "file": "pages/page-055-pagina-en-blanco.json"
+      "id": "page-058-nueva-pagina",
+      "file": "pages/page-058-nueva-pagina.json"
+    },
+    {
+      "id": "page-059-nueva-pagina",
+      "file": "pages/page-059-nueva-pagina.json"
+    },
+    {
+      "id": "page-060-pagina-en-blanco",
+      "file": "pages/page-060-pagina-en-blanco.json"
     }
   ]
 }
