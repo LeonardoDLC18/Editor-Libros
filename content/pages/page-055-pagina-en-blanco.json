@@ -1,0 +1,133 @@
+{
+  "id": "page-055-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "item-dc904c61-3ac1-4d44-b933-a73267f62bad",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "item-cea49a28-a905-42e3-ac8b-a7c997f7255a",
+          "blocks": [
+            {
+              "id": "item-765f5675-ca06-4d20-9303-94ee7f18608b",
+              "type": "paragraph",
+              "text": "Cambia un valor, repite la prueba y observa qué ocurre."
+            },
+            {
+              "id": "item-1a4cf63f-2923-47a4-bd07-349b31900155",
+              "layout": "2-equal",
+              "columns": [
+                {
+                  "id": "item-e8a89aa5-5c6e-4c3e-8045-1facb01efac8",
+                  "blocks": [
+                    {
+                      "id": "item-7ba3660a-c749-4f5a-8b12-48961b2ed272",
+                      "type": "table",
+                      "columns": [
+                        "Prueba",
+                        "Valor"
+                      ],
+                      "rows": [
+                        [
+                          "1",
+                          "10"
+                        ],
+                        [
+                          "2",
+                          "20"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "item-5852d058-4db5-4967-a0f8-69d36aaf2005",
+                  "blocks": [
+                    {
+                      "id": "item-82bb4565-c3d9-409f-9986-db2bd08c9454",
+                      "type": "infoCard",
+                      "title": "¿Qué cambió?",
+                      "content": "Anota el resultado y explica qué relación encuentras.",
+                      "layout": "compact"
+                    }
+                  ]
+                }
+              ],
+              "type": "columns"
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Experimenta y descubre",
+      "icon": "chart",
+      "background": "white",
+      "headerStyle": "tab"
+    },
+    {
+      "id": "columns-05468936-bdf9-4bee-a9a8-b55a7ea94327",
+      "layout": "3-equal",
+      "columns": [
+        {
+          "id": "col-e00d9485-0d1d-48e0-9a1e-3678d0933f6a",
+          "blocks": []
+        },
+        {
+          "id": "col-3fff228b-cbde-4d90-b92e-59c60bbbd3de",
+          "blocks": []
+        },
+        {
+          "id": "col-09b36c44-0235-4650-a646-b841e129e6ae",
+          "blocks": []
+        }
+      ],
+      "type": "columns"
+    },
+    {
+      "id": "grid-dbdf0c2a-8ae3-4f5e-8059-e9252a065014",
+      "type": "grid",
+      "gap": "small",
+      "rows": [
+        {
+          "id": "row-67c6179c-e7f2-4ea6-9b45-e0d900d78c97",
+          "layout": "2-equal",
+          "cells": [
+            {
+              "id": "cell-09abee56-fbc2-4a6b-9260-5dab476ec4de",
+              "column": 0,
+              "blocks": []
+            },
+            {
+              "id": "cell-7e63f610-b431-4580-9a71-e5a1ee7f161b",
+              "column": 1,
+              "blocks": []
+            }
+          ]
+        },
+        {
+          "id": "row-34cdd6b3-b6a5-4d8e-8aae-d4903ec37865",
+          "layout": "2-equal",
+          "cells": [
+            {
+              "id": "cell-cf5059b9-2ebc-4a8b-b8f0-417ae96dc4b3",
+              "column": 0,
+              "blocks": []
+            },
+            {
+              "id": "cell-6aaa608f-a4f7-4c63-b5bc-ba6fb22c5afb",
+              "column": 1,
+              "blocks": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}
