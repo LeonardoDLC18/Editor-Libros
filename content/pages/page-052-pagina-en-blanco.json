@@ -1,0 +1,363 @@
+{
+  "id": "page-052-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "item-6aeb8b00-32b7-4bc6-bcd3-b8ab649ad785",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "item-9e46642b-d706-4f0e-a05f-11a4fd1b78cc",
+          "blocks": [
+            {
+              "id": "item-b2f57672-6ed3-49e8-a40a-160ad5a3e3a0",
+              "type": "steps",
+              "title": "Pasos:",
+              "items": [
+                {
+                  "id": "item-ef046201-a186-4c67-91a9-69d91f6933ab",
+                  "content": [
+                    {
+                      "text": "Escribe el título: Mi lugar favorito."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-71be5ff6-a6cd-49b3-866a-f4e2e861c6b2",
+                  "content": [
+                    {
+                      "text": "Selecciona el título y aplícale la "
+                    },
+                    {
+                      "text": "alineación centrada",
+                      "highlight": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-242b40dc-8f56-48f2-be37-d095e3189db5",
+                  "content": [
+                    {
+                      "text": "Escribe un párrafo breve sobre ese lugar."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-fccf30ce-aed5-472d-8c69-70ae2a41229d",
+                  "content": [
+                    {
+                      "text": "Selecciona el párrafo y aplica la "
+                    },
+                    {
+                      "text": "alineación justificada",
+                      "highlight": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-42e87987-5e3a-4159-82d8-301edc4a6d5a",
+          "blocks": [
+            {
+              "id": "item-b26f0926-e429-45bf-a1f4-8be91f1deb56",
+              "type": "image",
+              "src": "assets/images/imagen-80df9113-84c6-4b02-a10f-2ea739d3e9b0.png",
+              "alt": "ejemplo",
+              "heightMm": 50,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada",
+      "icon": "target",
+      "background": "ice"
+    },
+    {
+      "id": "item-2511e588-1ebd-4de6-beb1-711dca11a0f0",
+      "type": "questions",
+      "mode": "write",
+      "title": "Responde las siguientes preguntas: ",
+      "options": [
+        {
+          "id": "item-1a281fd2-6915-461c-83d4-51042d28ee51",
+          "label": "Verdadero"
+        },
+        {
+          "id": "item-4b64738d-2b16-48ec-bf4e-df2f5a88fb55",
+          "label": "Falso"
+        }
+      ],
+      "columns": [],
+      "items": [
+        {
+          "id": "item-4344b53f-c249-4a90-824b-96f7da4af957",
+          "text": "¿Cuál es la diferencia entre un encabezado y un pie de página?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "item-f75a29c9-23e7-4521-bf72-49548cd225d6",
+          "text": "¿Para qué sirve insertar números de página?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "item-1933ff62-bf0b-40a7-9410-a5aee9ba00b6",
+          "text": "¿Qué pestaña de Word debemos seleccionar para insertar un encabezado o pie de página?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "item-6103ee63-dc18-4284-9e08-306c00be887b",
+          "text": "Si elaboraras un trabajo escolar, ¿qué información colocarías en el encabezado y en el pie de página?",
+          "cells": [],
+          "lines": 1
+        }
+      ],
+      "numbered": true
+    },
+    {
+      "id": "item-298e008f-4deb-4f97-a2ed-d689721427a8",
+      "layout": "2-40-60",
+      "columns": [],
+      "type": "framedColumns",
+      "title": "Tipos de alineación",
+      "icon": "book",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band",
+      "rows": [
+        {
+          "id": "item-e62f48e5-a312-4bc2-a5c7-3621a05917d4",
+          "layout": "2-equal",
+          "cells": [
+            {
+              "id": "item-af169b15-945a-434e-bea1-56780d9ca2db",
+              "column": 0,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "item-283ca741-a13d-4714-a446-cc14e142213c",
+                  "type": "grid",
+                  "gap": "small",
+                  "rows": [
+                    {
+                      "id": "item-bf8c3f4a-9b0e-452c-8ec8-febb16dcd00b",
+                      "layout": "2-30-70",
+                      "cells": [
+                        {
+                          "id": "item-a61bd1bf-4fc3-4fcf-8093-ea61847c4b31",
+                          "column": 0,
+                          "rowSpan": 1,
+                          "verticalAlign": "center",
+                          "blocks": [
+                            {
+                              "id": "item-512886ce-563a-4f9c-85f0-f431e0edeb73",
+                              "type": "image",
+                              "src": "assets/images/imagen-88e1c9a1-e164-4a22-be6b-5bc0771c51b8.png",
+                              "alt": "Imagen de ejemplo",
+                              "heightMm": 28,
+                              "fit": "contain",
+                              "widthPercent": 100
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-93077113-ace4-4686-ac11-f8aa043e103f",
+                          "column": 1,
+                          "rowSpan": 1,
+                          "blocks": [
+                            {
+                              "id": "item-96001956-3791-4a24-8972-530ddce29f3d",
+                              "type": "card",
+                              "title": "Alineación a la izquierda",
+                              "description": "El texto se alinea en el margen izquierdo. Es el más comun para escribir párrafos"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "item-1ba42202-b231-4461-ba4b-e00049d7dbb0",
+              "column": 1,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "item-5f836536-796a-4ac2-8a71-25cdba39394d",
+                  "type": "grid",
+                  "gap": "small",
+                  "rows": [
+                    {
+                      "id": "item-99b1dee9-ab77-4d1d-9fc4-48d8451692d6",
+                      "layout": "2-30-70",
+                      "cells": [
+                        {
+                          "id": "item-4710e180-dbc8-4f00-9c51-53077f42558b",
+                          "column": 0,
+                          "rowSpan": 1,
+                          "verticalAlign": "center",
+                          "blocks": [
+                            {
+                              "id": "item-079ae153-8250-491d-96fb-4a970b7d5fa6",
+                              "type": "image",
+                              "src": "assets/images/imagen-ea93f862-514f-4b4d-b14c-a0123f09be7c.png",
+                              "alt": "Imagen de ejemplo",
+                              "heightMm": 28,
+                              "fit": "contain",
+                              "widthPercent": 100
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-defe7947-d65b-4d29-89a5-451a57e74219",
+                          "column": 1,
+                          "rowSpan": 1,
+                          "blocks": [
+                            {
+                              "id": "item-6ef3e21e-48b6-4ae5-a200-55d92c28379d",
+                              "type": "card",
+                              "title": "Alineación centrada",
+                              "description": "El texto se ubica en el centro del espacio. Se usa, por ejemplo, para títulos"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-3a5c8c79-818c-4332-950a-defe8d019f5c",
+          "layout": "2-equal",
+          "cells": [
+            {
+              "id": "item-2ed3a6f4-0836-4566-a932-556645ac8689",
+              "column": 0,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "item-b939e706-1df7-4605-a69c-dd1410025c39",
+                  "type": "grid",
+                  "gap": "small",
+                  "rows": [
+                    {
+                      "id": "item-f290d467-2799-46d3-b249-1abb5202433a",
+                      "layout": "2-30-70",
+                      "cells": [
+                        {
+                          "id": "item-cfca7ec8-74fd-482d-8810-13cb44723ee1",
+                          "column": 0,
+                          "rowSpan": 1,
+                          "verticalAlign": "center",
+                          "blocks": [
+                            {
+                              "id": "item-8d34c8cd-7606-4fb1-a344-20000a292584",
+                              "type": "image",
+                              "src": "assets/images/imagen-86625022-6520-4684-85f7-03561ba5e2c4.png",
+                              "alt": "Imagen de ejemplo",
+                              "heightMm": 28,
+                              "fit": "contain",
+                              "widthPercent": 100
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-3e976755-b24d-4a7c-b7aa-04d925f2250b",
+                          "column": 1,
+                          "rowSpan": 1,
+                          "blocks": [
+                            {
+                              "id": "item-ff16de50-098a-4c1d-b122-a72b25341020",
+                              "type": "card",
+                              "title": "Alineación a la derecha",
+                              "description": "El texto se alinea en el margen derecho. Es útil para fechas, firmas o datos complementarios."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "item-572fb673-da09-4e6f-9943-8cbf591f21b6",
+              "column": 1,
+              "blocks": [
+                {
+                  "id": "item-ba442fb4-237d-402a-904d-9fc39b42d727",
+                  "type": "grid",
+                  "gap": "small",
+                  "rows": [
+                    {
+                      "id": "item-c8863152-e391-4863-a470-ab6dc515e551",
+                      "layout": "2-30-70",
+                      "cells": [
+                        {
+                          "id": "item-d3e13a8d-e23f-4f54-9a0b-64b14f9b159d",
+                          "column": 0,
+                          "rowSpan": 1,
+                          "verticalAlign": "center",
+                          "blocks": [
+                            {
+                              "id": "item-e7167b8f-87d6-444f-8b68-80c508e61f65",
+                              "type": "image",
+                              "src": "assets/images/imagen-88e1c9a1-e164-4a22-be6b-5bc0771c51b8.png",
+                              "alt": "Imagen de ejemplo",
+                              "heightMm": 28,
+                              "fit": "contain",
+                              "widthPercent": 100
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-632bd709-0e04-4afb-8af8-f9ce0572a88b",
+                          "column": 1,
+                          "rowSpan": 1,
+                          "blocks": [
+                            {
+                              "id": "item-e0410ba0-7811-4306-aced-97f1b3b5c220",
+                              "type": "card",
+                              "title": "Alineación justificada",
+                              "description": "El texto se alinea en ambos márgenes. Se utiliza en documentos formales."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gap": "small"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

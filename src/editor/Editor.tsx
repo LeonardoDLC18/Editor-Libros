@@ -1,0 +1,81 @@
+import { useState, type CSSProperties } from 'react';
+import type { Block, BookData, Page, PageOperationResult } from '../types/schema';
+import { Icon } from '../components/Icon';
+import { PageRenderer } from '../renderer/PageRenderer';
+import { usePageScale } from '../hooks/usePageScale';
+import { usePageEditing } from '../hooks/usePageEditing';
+import { designTokens } from '../utils/designTokens';
+import { PageList } from './PageList';
+import { Properties } from './Properties';
+import { allBlocks, childSlots, updateBlock } from '../utils/blocks';
+
+export function Editor({ data }: { data: BookData }) {
+  const [pageId, setPageId] = useState(data.pages[0].id);
+  const [clipboard, setClipboard] = useState<Block>();
+  const [blockId, setBlockId] = useState<string>();
+  const [preview, setPreview] = useState(false);
+  const [zoom, setZoom] = useState('fit');
+  const [uploading, setUploading] = useState(false);
+  const [overflow, setOverflow] = useState(false);
+  const editing = usePageEditing(data, pageId, uploading);
+  const liveData = { ...data, book: editing.book, pages: editing.pages };
+  const { ref, fit } = usePageScale(data.design.page.widthMm, data.design.page.heightMm);
+  const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
+  const page = editing.page;
+  const block = allBlocks(page.blocks).find((item) => item.id === blockId || childSlots(item).some(column => column.id === blockId) || (item.type === 'cardContainer' && item.items.some(card => card.id === blockId)));
+  const scale = zoom === 'fit' ? fit : Number(zoom);
+  const selectPage = (id: string) => { if (!uploading) { setPageId(id); setBlockId(undefined); } };
+  const selectResult = (result?: PageOperationResult) => { if (result?.selectedId) selectPage(result.selectedId); };
+  const createPage = async (template: Page['template']) => {
+    const result = await editing.create(template); selectResult(result); return !!result;
+  };
+  const removePage = async () => {
+    const pending = editing.dirtyIds.includes(pageId) ? ' Los cambios sin guardar de esta página se descartarán; el respaldo contiene su última versión guardada.' : '';
+    if (window.confirm(`¿Seguro que deseas eliminar «${page.title}»? Esta acción puede recuperarse desde el respaldo.${pending}`)) selectResult(await editing.remove());
+  };
+  const editCell = (id: string, row: number, column: number, value: string) => editing.change(current => ({
+    ...current, blocks: updateBlock(current.blocks, id, block => block.type === 'table' ? {
+      ...block,
+      columns: row < 0 ? block.columns.map((cell, index) => index === column ? value : cell) : block.columns,
+      rows: row < 0 ? block.rows : block.rows.map((cells, index) => index === row ? cells.map((cell, c) => c === column ? value : cell) : cells),
+    } : block),
+  }));
+  return <div className={`editor-shell${preview ? ' preview-mode' : ''}`} style={designTokens(data.design)}>
+    <header className="topbar">
+      <div className="app-brand"><span className="app-logo"><Icon name="book" size={23} /></span><div><h1>{data.book.book.title}</h1><span>Editor de libros <span className="brand-separator">/</span> {data.book.book.grade}</span></div></div>
+      <div className="topbar-actions">
+        <span className={`local-state${editing.error ? ' save-error' : ''}`} role="status" aria-live="polite"><span className="status-dot" />{editing.status}</span>
+        <button className="button history-button" aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!editing.canUndo} onClick={editing.undo}><Icon name="undo" /></button>
+        <button className="button history-button" aria-label="Rehacer" title="Rehacer (Ctrl+Y / Ctrl+Mayús+Z)" disabled={!editing.canRedo} onClick={editing.redo}><Icon name="redo" /></button>
+        <button className="button save-button" disabled={!editing.canSave} title="Guardar la página seleccionada" onClick={editing.save}><Icon name="save" />{editing.saving === pageId ? 'Guardando...' : 'Guardar'}</button>
+        <button className={`button${preview ? ' selected' : ''}`} aria-pressed={preview} onClick={() => setPreview(!preview)}><Icon name={preview ? 'close' : 'eye'} />{preview ? 'Volver al editor' : 'Vista previa'}</button>
+        <button className="button primary" onClick={() => window.print()} title="Imprimir el libro completo o guardar como PDF"><Icon name="print" />Imprimir</button>
+      </div>
+    </header>
+    <div className="workspace">
+      {!preview && <PageList data={liveData} selectedId={page.id} dirtyIds={editing.dirtyIds} onSelect={selectPage}
+        busy={editing.busy} onCreate={createPage} onDuplicate={async () => selectResult(await editing.duplicate())} onDelete={removePage}
+        onMove={editing.move} canUndoOrder={editing.canUndoOrder} canRedoOrder={editing.canRedoOrder} onUndoOrder={editing.undoOrder} onRedoOrder={editing.redoOrder} />}
+      <main className="work-area" aria-label={preview ? 'Vista previa del libro' : 'Lienzo del editor'}>
+        <div className="canvas-toolbar"><div className="canvas-context"><Icon name={preview ? 'eye' : 'page'} /><span>{preview ? 'Vista previa' : 'Lienzo'} <span className="toolbar-slash">/</span> <strong>{page.title}</strong></span></div>
+          <div className="zoom-control"><label htmlFor="zoom">Zoom</label><select id="zoom" value={zoom} onChange={(event) => setZoom(event.target.value)}><option value="fit">Ajustar · {Math.round(fit * 100)} %</option><option value="0.5">50 %</option><option value="0.75">75 %</option><option value="1">100 %</option></select></div>
+        </div>
+        {editing.error && <div className="notice save-error" role="alert"><Icon name="info" /><span>{editing.error}</span></div>}
+        {overflow && <div className="notice" role="status"><Icon name="info" /><span>El contenido excede una página A4. Abrevia o divide el contenido antes de imprimir; todo el texto permanece visible.</span></div>}
+        <div className="canvas" ref={ref} onClick={preview || uploading ? undefined : () => setBlockId(undefined)}>
+          <div className="page-stage" style={{ '--page-scale': scale } as CSSProperties}>
+            <div className="page-transform"><PageRenderer page={page} book={editing.book} selectedBlock={preview ? undefined : blockId} onSelectBlock={preview || uploading ? undefined : setBlockId} onEditCell={preview || editing.busy ? undefined : editCell} onOverflow={setOverflow} /></div>
+          </div>
+        </div>
+        <div className="canvas-bottom"><span>{preview ? 'Vista de lectura' : 'Selecciona un bloque para editarlo'}</span><div className="page-navigation">
+          <button aria-label="Página anterior" disabled={index === 0 || editing.structural} onClick={() => selectPage(editing.pages[index - 1].id)}><Icon name="left" /></button>
+          <span>Página <strong>{index + 1}</strong> de {editing.pages.length}</span>
+          <button aria-label="Página siguiente" disabled={index === editing.pages.length - 1 || editing.structural} onClick={() => selectPage(editing.pages[index + 1].id)}><Icon name="right" /></button>
+        </div></div>
+      </main>
+      {!preview && <Properties key={page.id} clipboard={clipboard} onCopy={setClipboard} selectedId={blockId} page={page} block={block} onChange={editing.change} disabled={editing.structural || uploading} onSelectBlock={setBlockId} onUploadBusy={setUploading} book={editing.book} onNumberingChange={editing.setNumbering} numberingDisabled={editing.busy} />}
+    </div>
+    <footer className="editor-status"><span><Icon name="check" size={14} />{editing.status}{editing.dirtyIds.length > 0 ? ` · ${editing.dirtyIds.length} página(s) pendiente(s)` : ''}</span><span>Columnas, mixtos y tarjetas<span className="status-divider">|</span>A4 vertical</span></footer>
+    <div className="print-book">{editing.pages.map(item => <PageRenderer key={item.id} page={item} book={editing.book} />)}</div>
+  </div>;
+}

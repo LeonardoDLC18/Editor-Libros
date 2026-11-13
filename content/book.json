@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "pageNumbering": "alternate",
+  "firstContentPageSide": "left",
+  "book": {
+    "id": "computacion-robotica-1-sec",
+    "title": "Computación y Robótica",
+    "subtitle": "Aprender, crear y descubrir",
+    "grade": "1.º de Secundaria",
+    "author": "Equipo editorial",
+    "language": "es"
+  },
+  "units": [
+    {
+      "id": "unidad-1",
+      "label": "Unidad 1",
+      "title": "Ofimática básica"
+    }
+  ],
+  "pageOrder": [
+    {
+      "id": "page-048-nueva-portada",
+      "file": "pages/page-048-nueva-portada.json"
+    },
+    {
+      "id": "page-049-nueva-pagina",
+      "file": "pages/page-049-nueva-pagina.json"
+    },
+    {
+      "id": "page-050-pagina-en-blanco",
+      "file": "pages/page-050-pagina-en-blanco.json"
+    },
+    {
+      "id": "page-051-pagina-en-blanco",
+      "file": "pages/page-051-pagina-en-blanco.json"
+    },
+    {
+      "id": "page-054-pagina-en-blanco",
+      "file": "pages/page-054-pagina-en-blanco.json"
+    },
+    {
+      "id": "page-038-pagina-en-blanco",
+      "file": "pages/page-038-pagina-en-blanco.json"
+    },
+    {
+      "id": "page-039-funciones-excel",
+      "file": "pages/page-039-funciones-excel.json"
+    },
+    {
+      "id": "page-052-pagina-en-blanco",
+      "file": "pages/page-052-pagina-en-blanco.json"
+    }
+  ]
+}

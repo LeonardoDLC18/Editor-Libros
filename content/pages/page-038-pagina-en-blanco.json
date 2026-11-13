@@ -1,0 +1,185 @@
+{
+  "id": "page-038-pagina-en-blanco",
+  "template": "blank",
+  "title": "Guía turistica en word",
+  "titleStyle": "simple",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "separator-d0271e52-5a0b-4d88-9412-bead35b9b02a",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "columns-305e63fa-dc50-4505-9e78-61febbaa154b",
+      "layout": "2-60-40",
+      "columns": [
+        {
+          "id": "col-a8807a23-d8bd-4aa2-b6c6-c45c49e97030",
+          "blocks": [
+            {
+              "id": "paragraph-4cb4fbfa-bd60-4046-bb02-e8bf537cc27d",
+              "type": "paragraph",
+              "text": "Tu familia ha decidido viajar a la ciudad de Arequipa durante sus próximas vacaciones. Ya organizaron los gastos del viaje en Excel, pero todavía necesitan una guía con información de los lugares turísticos que visitarán."
+            }
+          ]
+        },
+        {
+          "id": "col-7515de88-9677-43f2-84fd-70a65503f313",
+          "blocks": [
+            {
+              "id": "image-76377fd8-de4e-4d31-85ad-05dfcb25c1f7",
+              "type": "image",
+              "src": "assets/images/imagen-d3f4a46f-3eab-4013-a2ba-02f7e514b1b0.png",
+              "alt": "ssss",
+              "heightMm": 25,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "columns"
+    },
+    {
+      "id": "separator-92724ccc-0d68-44f7-801b-e37b808e3309",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "container-8ffe4a5c-9e0d-4c50-89f4-e7988276d505",
+      "type": "cardContainer",
+      "variant": "comparison",
+      "title": "Lugares que visitaremos",
+      "icon": "map-pin",
+      "columns": 3,
+      "items": [
+        {
+          "id": "card-44234db6-f57b-460f-a43e-59b1b75a0765",
+          "title": "Plaza de armas",
+          "description": "La Plaza de Armas es uno de los lugares más representativos de Arequipa.  Cuenta con arcos de sillar que tienen frases grabadas.",
+          "image": {
+            "src": "assets/images/imagen-d1947915-7df2-4b97-8277-7855b9f53715.jpg",
+            "alt": "plaza"
+          }
+        },
+        {
+          "id": "card-b44a568f-02e7-428e-a521-55fd199782ca",
+          "title": "Mirador de Yanahuara",
+          "description": "El Mirador de Yanahuara es uno de los atractivos turísticos más conocidos de Arequipa. Fue fundado en 1579 y destaca por sus calles estrechas",
+          "image": {
+            "src": "assets/images/imagen-9a549adf-15f8-47a1-91d9-ef8b685fb667.jpg",
+            "alt": "mirador"
+          }
+        },
+        {
+          "id": "card-ca8ac8fa-d960-4d0c-9410-403bbfd7eca1",
+          "title": "Monasterio de Santa Catalina",
+          "description": "El Monasterio es un conjunto de construcciones históricas ubicado en el centro de Arequipa.",
+          "image": {
+            "src": "assets/images/imagen-10576119-f2d1-4dbe-b344-31dd19c4d0ad.jpg",
+            "alt": "monasterio"
+          }
+        }
+      ]
+    },
+    {
+      "id": "separator-99cf057a-149b-48d5-a381-67e755a6eef4",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "framed-columns-2b577fd2-3c68-44c6-ae74-ebab08a5dfdf",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "col-d38ac378-4b79-410d-b767-a20e35617d5f",
+          "blocks": [
+            {
+              "id": "steps-b43ea3b2-3d84-49f0-9057-dee02bc019ba",
+              "type": "steps",
+              "title": "Pasos:",
+              "items": [
+                {
+                  "id": "step-30840e14-e128-48b0-8088-13e76a7afb40",
+                  "content": [
+                    {
+                      "text": "Crea un documento en Word y agrega el encabezado: Guía turística de Arequipa."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-dd37e91c-4298-4fc9-a158-7d42bbf1ade2",
+                  "content": [
+                    {
+                      "text": "Escribe el "
+                    },
+                    {
+                      "text": "título ",
+                      "highlight": true
+                    },
+                    {
+                      "text": "principal: GUÍA TURÍSTICA DE AREQUIPA."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-47e4fbf7-d56e-4e59-b98d-4065e9eff85b",
+                  "content": [
+                    {
+                      "text": "Agrega los tres lugares turísticos con una breve descripción de cada uno."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-26dd9a6c-af65-42ec-94fe-cb638a3bbe62",
+                  "content": [
+                    {
+                      "text": "Da formato: centra los títulos, aplica negrita e inserta las imágenes correspondientes."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-8b36da92-1f95-4b8a-9615-b7ec8ab1b703",
+                  "content": [
+                    {
+                      "text": "Finaliza: coloca tu nombre en el"
+                    },
+                    {
+                      "text": " pie de página",
+                      "highlight": true
+                    },
+                    {
+                      "text": " y personaliza el diseño."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "col-15bde970-bb7e-4cea-8a07-3df76c5fe51a",
+          "blocks": [
+            {
+              "id": "image-4a6ed6bb-1c12-4689-927b-a88b0b579b66",
+              "type": "image",
+              "src": "assets/images/imagen-069946d7-1eb4-4bba-8304-64ec35e6a4ab.png",
+              "alt": "ejemplo",
+              "heightMm": 80,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guíada",
+      "icon": "check"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

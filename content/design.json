@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "Azul editorial",
+  "colors": {
+    "navy": "#062b5f",
+    "blue": "#005ec7",
+    "cyan": "#00d8ee",
+    "paper": "#ffffff",
+    "ice": "#eaf7ff",
+    "ink": "#172d48",
+    "muted": "#566b82",
+    "line": "#ccdeeb",
+    "workspace": "#e9eef3",
+    "surface": "#f7f9fc",
+    "success": "#247553",
+    "danger": "#b43242"
+  },
+  "fonts": {
+    "body": "Aptos, Calibri, Arial, sans-serif",
+    "heading": "'Trebuchet MS', Arial, sans-serif",
+    "ui": "'Segoe UI', Arial, sans-serif",
+    "mono": "Consolas, monospace"
+  },
+  "typeScale": { "bodyPt": 12, "smallPt": 9, "headingPt": 19, "titlePt": 30, "coverPt": 43, "lineHeight": 1.5 },
+  "page": { "widthMm": 210, "heightMm": 297, "marginMm": 17, "headerMm": 23, "footerMm": 14 },
+  "spacing": { "blockMm": 5, "cardMm": 5 },
+  "borders": { "widthPx": 1, "radiusMm": 3 },
+  "shadow": { "yPx": 8, "blurPx": 30, "opacity": 0.12 }
+}

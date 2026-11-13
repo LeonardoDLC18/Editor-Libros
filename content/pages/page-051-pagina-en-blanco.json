@@ -1,0 +1,327 @@
+{
+  "id": "page-051-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "item-40927232-32d1-49bb-b6da-7970d93c6872",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-66fb0a0c-237f-49fc-a55c-d16137770d81",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "item-ae33c3a8-09ef-4789-b311-8edd993e784b",
+          "blocks": [
+            {
+              "id": "item-82329eae-9aa6-4c9d-9912-480c66fbf851",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-24f13a9c-200d-44cf-a51d-83d944dc09f2",
+                  "content": [
+                    {
+                      "text": "Abrir la pestaña Diseño: ",
+                      "bold": true
+                    },
+                    {
+                      "text": "En la cinta de opciones de Word, haz clic en la pestaña "
+                    },
+                    {
+                      "text": "Diseño",
+                      "highlight": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-131ace0a-23df-4d1b-ab53-2a5cddf48432",
+                  "content": [
+                    {
+                      "text": "Seleccionar la marca de agua: ",
+                      "bold": true
+                    },
+                    {
+                      "text": "Haz clic en "
+                    },
+                    {
+                      "text": "Marca de agua",
+                      "highlight": true
+                    },
+                    {
+                      "text": " y elige una de las opciones disponibles, por ejemplo, "
+                    },
+                    {
+                      "text": "CONFIDENCIAL",
+                      "highlight": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-5e6f828b-b1d4-454b-84cc-068969dfcf01",
+                  "content": [
+                    {
+                      "text": "Aplicar la marca de agua:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Al seleccionar la opción, la marca de agua aparecerá automáticamente detrás del contenido del documento."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-bf0e671c-1c89-4863-a172-b89675c96cdc",
+          "blocks": [
+            {
+              "id": "separator-ea0d4718-7798-48e7-ac8f-8894ab66edb2",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-6225665c-8f76-445e-b578-9f00bea567c0",
+              "type": "image",
+              "src": "assets/images/imagen-f110cc0f-1a4b-4294-a758-770e3a7c989a.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 45,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Cómo insertar una marca de agua?",
+      "icon": "page",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
+      "id": "item-81abde34-9a24-4d25-a64e-13d638ad6da8",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-2fd0ceda-06a5-456a-9ff2-28ceed2e3ed4",
+      "layout": "2-60-40",
+      "columns": [
+        {
+          "id": "item-720e1531-3054-4c3b-aed0-071458941877",
+          "blocks": [
+            {
+              "id": "separator-4b52ceef-2837-4f42-8713-27c6ce79c91a",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-4fb0fcf3-8d01-47bd-ad5f-ee9d92213315",
+              "type": "image",
+              "src": "assets/images/imagen-88f5d721-d14e-42c2-96ed-1b3378647fed.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 45,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        },
+        {
+          "id": "item-561bddd0-fc12-42da-a39f-6c77e0972f9a",
+          "blocks": [
+            {
+              "id": "item-4253fd90-889b-4753-b8f2-ff759e5ff7db",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-6c9d05df-6a60-4b06-af7b-18dec5265776",
+                  "content": [
+                    {
+                      "text": "Abrir la pestaña Diseño: ",
+                      "bold": true
+                    },
+                    {
+                      "text": "En la cinta de opciones de Word, haz clic en la pestaña "
+                    },
+                    {
+                      "text": "Diseño",
+                      "highlight": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-0b453a19-4fc1-4c5a-834d-e5ca23219021",
+                  "content": [
+                    {
+                      "text": "Seleccionar el color de página:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Haz clic en "
+                    },
+                    {
+                      "text": "Color de página",
+                      "highlight": true
+                    },
+                    {
+                      "text": " y elige el color que más te guste."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-ebab3431-8230-4263-9a0b-fc446fdcb1cc",
+                  "content": [
+                    {
+                      "text": "Aplicar el color:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Al seleccionar un color, este se aplicará automáticamente al fondo de las páginas del documento."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Cómo cambiar el color de página?",
+      "icon": "page",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
+      "id": "separator-963c6614-25db-4641-944e-bd97f630cb9b",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-d72e4ebf-42d4-4ab4-b34b-668083ef05fd",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "item-7cdecd65-7c73-4bf5-886c-62bca8532045",
+          "blocks": [
+            {
+              "id": "item-b8ef85d1-d60e-482b-86e6-23efbcbc2dcb",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-0e5cd900-0d73-44fb-b521-646ba8b7c99e",
+                  "content": [
+                    {
+                      "text": "Abrir la pestaña Diseño:"
+                    },
+                    {
+                      "text": " ",
+                      "bold": true
+                    },
+                    {
+                      "text": "En la cinta de opciones de Word, haz clic en "
+                    },
+                    {
+                      "text": "Diseño",
+                      "highlight": true
+                    },
+                    {
+                      "text": " y selecciona Bordes de página."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-a2b2a446-bd2b-4729-8504-21a848a94a90",
+                  "content": [
+                    {
+                      "text": "Configurar el borde:",
+                      "bold": true
+                    },
+                    {
+                      "text": " En la ventana "
+                    },
+                    {
+                      "text": "Bordes y sombreado",
+                      "highlight": true
+                    },
+                    {
+                      "text": ", selecciona Cuadro y elige el "
+                    },
+                    {
+                      "text": "estilo",
+                      "highlight": true
+                    },
+                    {
+                      "text": " de línea que prefieras. Luego, haz clic en "
+                    },
+                    {
+                      "text": "Aceptar",
+                      "highlight": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-a6ab804d-0add-4cba-bbcd-54d07b88f2e7",
+                  "content": [
+                    {
+                      "text": "Aplicar el borde:",
+                      "bold": true
+                    },
+                    {
+                      "text": " El borde aparecerá automáticamente alrededor de las páginas del documento."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-d999d504-8d13-4522-82a4-943c2e98ff51",
+          "blocks": [
+            {
+              "id": "item-84c7e292-7ce8-4b7e-8e3a-0cbfbced3746",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-da34eaa3-586c-45bb-b537-118ec7a52e2b",
+              "type": "image",
+              "src": "assets/images/imagen-e98f674f-c120-472d-b78b-8c8aaa2dd7d7.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 45,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Cómo cambiar el color de página?",
+      "icon": "page",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

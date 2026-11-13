@@ -1,0 +1,219 @@
+{
+  "id": "page-054-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "separator-b3aeff90-6225-49e7-9340-0d2c747d3283",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-5d0de186-5e1b-4ac7-9a3b-72ef92d91354",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "item-a7bedcde-c615-4b57-a78a-72f1808887da",
+          "blocks": [
+            {
+              "id": "info-7af12d77-7184-44e8-89aa-3c1a826f6c35",
+              "type": "infoCard",
+              "title": "Objetivo",
+              "content": "Aplicar herramientas de Word para dar formato a un documento: alineación, encabezado, pie de página, inserción de imagen, color de página, marca de agua y bordes de página.",
+              "layout": "compact",
+              "icon": "target",
+              "contentSpans": [
+                {
+                  "text": "Aplicar herramientas de Word para dar formato a un documento: alineación, encabezado, pie de página, inserción de imagen, color de página, marca de agua y bordes de página."
+                }
+              ]
+            },
+            {
+              "id": "item-b8abee6e-cbc4-4915-b8a3-6c41c5f3eaf9",
+              "type": "separator",
+              "size": "small"
+            },
+            {
+              "id": "columns-374832ec-f48d-4b7d-a275-eb788d36100e",
+              "layout": "2-equal",
+              "columns": [
+                {
+                  "id": "col-9803e703-4421-4293-bb98-36c23f40577e",
+                  "blocks": [
+                    {
+                      "id": "item-92f1b58e-68b3-4a82-98f9-46a1ea67ae6b",
+                      "type": "steps",
+                      "title": "Pasos:",
+                      "items": [
+                        {
+                          "id": "item-27bc66e4-70d1-4ce6-8f8b-817686e72572",
+                          "content": [
+                            {
+                              "text": "Escribe el contenido:",
+                              "bold": true
+                            },
+                            {
+                              "text": " Redacta un texto breve sobre un tema de tu interés (por ejemplo, la tecnología)."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-2e0b037d-1aa6-47ee-acdc-9633fb5a4c7b",
+                          "content": [
+                            {
+                              "text": "Aplica la alineación:",
+                              "bold": true
+                            },
+                            {
+                              "text": " Usa las opciones de alineación para el título (centrado) y el párrafo (justificado)."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-8650ccd5-ed48-473e-992f-7fe9ccc627df",
+                          "content": [
+                            {
+                              "text": "Inserta una imagen:",
+                              "bold": true
+                            },
+                            {
+                              "text": " Agrega una imagen relacionada con el tema (por ejemplo, una computadora)."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-040b2fe2-566f-411b-9196-93ce035ea062",
+                          "content": [
+                            {
+                              "text": "Agrega un encabezado y un pie de página:",
+                              "bold": true
+                            },
+                            {
+                              "text": " En el encabezado escribe “Computación y Robótica” y en el pie de página tu nombre y el número de página."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-838f7fe6-811f-451a-9c18-6e7d1248680e",
+                          "content": [
+                            {
+                              "text": "Cambia el color de página:",
+                              "bold": true
+                            },
+                            {
+                              "text": " Aplica un color suave de fondo al documento (por ejemplo, celeste claro)."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-55a584f5-cae0-4bd9-a94e-1e2b7c8bae29",
+                          "content": [
+                            {
+                              "text": "Inserta una marca de agua:",
+                              "bold": true
+                            },
+                            {
+                              "text": " Agrega un texto de marca de agua, como “Computación y Robótica”, en diagonal y con un tono claro."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-46d9ef2e-0036-47d9-858e-f228b63a1652",
+                          "content": [
+                            {
+                              "text": "Agrega bordes de página: ",
+                              "bold": true
+                            },
+                            {
+                              "text": "Aplica un borde decorativo alrededor de toda la página."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "item-5468932f-70f0-4acc-96f2-d35e5116df31",
+                          "content": [
+                            {
+                              "text": "Guarda el archivo:",
+                              "bold": true
+                            },
+                            {
+                              "text": " Guarda tu documento como Practica_Tema1_TuNombre.docx."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "col-69dade32-9c3d-432b-8c7d-9cc725f5d558",
+                  "blocks": [
+                    {
+                      "id": "separator-734290ef-adce-4e60-b358-20342e4025e6",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "item-94cf275a-3330-416b-a50a-bd0738122e71",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "item-34295e40-c864-46df-abf5-9774bff7a0bc",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "item-dab49c20-fa73-46c9-bf72-c6f0fdeb7664",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "item-943c3557-6aa8-43ff-a778-a875e28e97b9",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "framed-columns-7f68b555-77c5-4387-9b4c-7eaff73b6eb6",
+                      "layout": "1-full",
+                      "columns": [
+                        {
+                          "id": "col-7313409c-663e-431b-878e-f6b3ae875130",
+                          "blocks": [
+                            {
+                              "id": "image-7bc7ec83-76ee-46f3-8913-f063fc55252b",
+                              "type": "image",
+                              "src": "assets/images/imagen-55f1a7f9-d92f-48c2-accd-7c518c2345ea.png",
+                              "alt": "ejemplo",
+                              "heightMm": 103,
+                              "fit": "cover",
+                              "widthPercent": 100
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "framedColumns",
+                      "title": "Resultado esperado",
+                      "icon": "check"
+                    }
+                  ]
+                }
+              ],
+              "type": "columns"
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada",
+      "icon": "page",
+      "background": "white",
+      "headerStyle": "tab"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

@@ -1,0 +1,490 @@
+{
+  "id": "page-039-funciones-excel",
+  "template": "blank",
+  "unitId": "unidad-1",
+  "title": "Tema 2",
+  "titleStyle": "split",
+  "titleSecondary": "Funciones básicas y condicionales en Excel",
+  "blocks": [
+    {
+      "id": "separator-7dbff068-a0f8-45d7-b40b-64d97f2ecd3f",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "grid-f004d0e0-e0b6-4d4b-8008-75150c01ffeb",
+      "type": "grid",
+      "gap": "small",
+      "rows": [
+        {
+          "id": "row-5d532acf-8062-4dff-9b9d-38b4262f3db3",
+          "layout": "2-60-40",
+          "cells": [
+            {
+              "id": "cell-8656184a-49e7-4382-8e4e-11bfa626fa10",
+              "column": 0,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "paragraph-1fe895d6-19cd-4bdd-aae3-d97d256d5900",
+                  "type": "paragraph",
+                  "text": "Son fórmulas predefinidas que realizan operaciones automáticamente con los datos de las celdas, como sumar, calcular promedios o encontrar los valores máximo y mínimo."
+                }
+              ]
+            },
+            {
+              "id": "cell-1c747dba-0c33-4020-aa8a-e7add1714bd8",
+              "column": 1,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "image-0af93d58-4a68-4fd7-ba16-ca5bab919fca",
+                  "type": "image",
+                  "src": "assets/images/imagen-a7782197-b8f8-45bd-b2fa-333aef0a68b7.png",
+                  "alt": "Imagen de ejemplo",
+                  "heightMm": 18,
+                  "fit": "cover",
+                  "widthPercent": 100
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "separator-b8a5c124-798d-4831-8b00-4e2495d9391f",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "frame-42c3c01e-ba40-43da-a6ec-85ba4b6c8c99",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "col-4c5eb004-5709-4421-a85b-75000a37d98c",
+          "blocks": [
+            {
+              "id": "grid-0d2f95b0-4498-4df4-9821-3edbce29b2f7",
+              "type": "grid",
+              "gap": "small",
+              "rows": [
+                {
+                  "id": "row-14398194-62b6-48eb-a519-cbfa01f717da",
+                  "layout": "2-equal",
+                  "cells": [
+                    {
+                      "id": "cell-8dafe41d-2703-4dd6-a10a-aa70c2203539",
+                      "column": 0,
+                      "blocks": [
+                        {
+                          "id": "grid-7b592cc9-310f-41f4-8027-8b0eb59f7004",
+                          "type": "grid",
+                          "gap": "small",
+                          "rows": [
+                            {
+                              "id": "row-686318d8-6b66-498c-aec4-986c82777725",
+                              "layout": "2-40-60",
+                              "cells": [
+                                {
+                                  "id": "cell-0e788459-5e24-4c42-af95-85fb258470cf",
+                                  "column": 0,
+                                  "blocks": [
+                                    {
+                                      "id": "image-aadb455e-23a4-416f-bdea-03a29228fb3a",
+                                      "type": "image",
+                                      "src": "assets/images/imagen-e81cec91-6eee-47ae-8714-21f9147f9b00.png",
+                                      "alt": "Captura de Excel: SUMA",
+                                      "heightMm": 20,
+                                      "fit": "contain",
+                                      "widthPercent": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "cell-9c2fe44b-4541-4c3f-8850-a070398c3f46",
+                                  "column": 1,
+                                  "blocks": [
+                                    {
+                                      "id": "card-cd050cd7-b089-4419-9e26-a9884cbf3b62",
+                                      "type": "infoCard",
+                                      "title": "SUMA",
+                                      "content": "Suma los valores de un rango de datos",
+                                      "layout": "compact",
+                                      "contentSpans": [
+                                        {
+                                          "text": "Suma los valores de un rango de datos"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "cell-ea3991bc-9220-4167-84b7-49b29ce5db33",
+                      "column": 1,
+                      "blocks": [
+                        {
+                          "id": "grid-e038a7c4-578f-436f-bc8b-a6d13d0fdaee",
+                          "type": "grid",
+                          "gap": "small",
+                          "rows": [
+                            {
+                              "id": "row-fcbd70f4-1b2f-4903-bbb0-274ac2cb20fd",
+                              "layout": "2-40-60",
+                              "cells": [
+                                {
+                                  "id": "cell-6d8baaa6-3ef7-4eca-9fca-332723182ed4",
+                                  "column": 0,
+                                  "blocks": [
+                                    {
+                                      "id": "image-75c2842c-c683-4e99-9385-ea648cc4a3c6",
+                                      "type": "image",
+                                      "src": "assets/images/imagen-361a2daf-d2bb-4b60-a0c6-296144c1710f.png",
+                                      "alt": "Captura de Excel: PROMEDIO",
+                                      "heightMm": 20,
+                                      "fit": "contain",
+                                      "widthPercent": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "cell-b30467ad-00ae-422f-a659-2c9840af7243",
+                                  "column": 1,
+                                  "blocks": [
+                                    {
+                                      "id": "card-cc971d49-f19c-4a8b-ad00-f2df6b14a83b",
+                                      "type": "infoCard",
+                                      "title": "PROMEDIO",
+                                      "content": "Calcula el promedio de un rango de datos",
+                                      "layout": "compact",
+                                      "contentSpans": [
+                                        {
+                                          "text": "Calcula el promedio de un rango de datos"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "row-24af5fa4-8a56-4b63-a7b5-9c038a1f259e",
+                  "layout": "2-equal",
+                  "cells": [
+                    {
+                      "id": "cell-127b808c-178a-4475-9f88-f4aa2f5b94d8",
+                      "column": 0,
+                      "blocks": [
+                        {
+                          "id": "grid-5fe6b1f1-8653-4204-bb60-1c1d421b9cd2",
+                          "type": "grid",
+                          "gap": "small",
+                          "rows": [
+                            {
+                              "id": "row-9c4677a0-36d6-410f-887a-4707d179249f",
+                              "layout": "2-40-60",
+                              "cells": [
+                                {
+                                  "id": "cell-d0fe7463-67d3-4780-859f-d45e2e0bbc42",
+                                  "column": 0,
+                                  "blocks": [
+                                    {
+                                      "id": "image-02b8ed5d-8bf4-4063-a0e7-2efde17dd3a8",
+                                      "type": "image",
+                                      "src": "assets/images/imagen-83f8f6f0-6e64-4d08-8899-add5830e7d23.png",
+                                      "alt": "Captura de Excel: MAX",
+                                      "heightMm": 20,
+                                      "fit": "contain",
+                                      "widthPercent": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "cell-ab313ed4-ad3b-44ec-8a18-2003ed820798",
+                                  "column": 1,
+                                  "blocks": [
+                                    {
+                                      "id": "card-81c2654a-f9ff-47ee-a245-37e959164c4d",
+                                      "type": "infoCard",
+                                      "title": "MAX",
+                                      "content": "Indica el valor máximo de un rango de datos",
+                                      "layout": "compact",
+                                      "contentSpans": [
+                                        {
+                                          "text": "Indica el valor máximo de un rango de datos"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "cell-1bd0d982-8271-4870-ae92-730edffb12cb",
+                      "column": 1,
+                      "blocks": [
+                        {
+                          "id": "grid-10300c4e-d3f9-4283-bd0c-e656264064d9",
+                          "type": "grid",
+                          "gap": "small",
+                          "rows": [
+                            {
+                              "id": "row-4f99d680-449f-4eca-b201-441296feacab",
+                              "layout": "2-40-60",
+                              "cells": [
+                                {
+                                  "id": "cell-b925fe4b-cfc9-454c-ad07-4778b60d7e50",
+                                  "column": 0,
+                                  "blocks": [
+                                    {
+                                      "id": "image-037e8a4a-111d-4e31-af92-9bfaee39c123",
+                                      "type": "image",
+                                      "src": "assets/images/imagen-c77d7b39-ac11-4953-8896-03e0fe443c3a.png",
+                                      "alt": "Captura de Excel: MIN",
+                                      "heightMm": 19,
+                                      "fit": "contain",
+                                      "widthPercent": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "cell-3f450fbe-3dd4-4c02-8a37-63e5d8aea98f",
+                                  "column": 1,
+                                  "blocks": [
+                                    {
+                                      "id": "card-00709ec6-642a-421b-920b-476f00171a9b",
+                                      "type": "infoCard",
+                                      "title": "MIN",
+                                      "content": "Indica el valor mínimo de un rango de datos",
+                                      "layout": "compact",
+                                      "contentSpans": [
+                                        {
+                                          "text": "Indica el valor mínimo de un rango de datos"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Funciones más utilizadas",
+      "icon": "info",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
+      "id": "frame-99021de1-c0d8-4148-a2da-22b71ade0742",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "col-d21caf91-122c-4f1f-9c77-24be47056b60",
+          "blocks": [
+            {
+              "id": "grid-e4753234-cdf2-4c62-acd1-954a930e9754",
+              "type": "grid",
+              "gap": "small",
+              "rows": [
+                {
+                  "id": "row-50674d5b-ff5f-43c8-beab-ecda449a096d",
+                  "layout": "2-40-60",
+                  "cells": [
+                    {
+                      "id": "cell-5cdc7982-c3ce-4684-99f4-0746b27b6f9a",
+                      "column": 0,
+                      "blocks": [
+                        {
+                          "id": "paragraph-c6e51eb3-3e96-4e09-a11d-9974a661545d",
+                          "type": "paragraph",
+                          "text": "Las funciones se escriben en la barra de fórmulas, ingresando el nombre de la función y el rango de celdas."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "cell-e462d202-f9ed-4ab9-ae21-96ecf47b815d",
+                      "column": 1,
+                      "blocks": [
+                        {
+                          "id": "image-ad0f3e78-2547-4e66-b41a-ec914b6ac353",
+                          "type": "image",
+                          "src": "assets/images/imagen-e642c1cd-b16f-43a5-a9e3-bae28cc10e92.png",
+                          "alt": "Captura de f?rmula aplicada en Excel",
+                          "heightMm": 20,
+                          "fit": "cover",
+                          "widthPercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Cómo se aplica en Excel?",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
+      "id": "frame-fd42fd6d-7fad-40ea-9835-2316e952391c",
+      "layout": "2-60-40",
+      "columns": [
+        {
+          "id": "col-984a859f-6aa5-465d-86c6-73d6782ee043",
+          "blocks": [
+            {
+              "id": "grid-8e93441e-6259-4105-a1e3-d3e1594c2b89",
+              "type": "grid",
+              "gap": "small",
+              "rows": [
+                {
+                  "id": "row-117d7010-cab6-4932-81a8-bbc2e8cbf5e5",
+                  "layout": "2-equal",
+                  "cells": [
+                    {
+                      "id": "cell-752b219f-30b8-4d2a-b83a-ef20345d9870",
+                      "column": 0,
+                      "rowSpan": 1,
+                      "blocks": [
+                        {
+                          "id": "steps-15b529f9-5261-480c-9b31-20e6c8812e29",
+                          "type": "steps",
+                          "items": [
+                            {
+                              "id": "step-48df74ad-1c15-4f6b-98ae-bdc277b607d6",
+                              "content": [
+                                {
+                                  "text": "Escribe la tabla en Excel con los datos mostrados."
+                                }
+                              ]
+                            },
+                            {
+                              "id": "step-0a353939-7674-4223-9801-c8ccb0bf2455",
+                              "content": [
+                                {
+                                  "text": "Escribe las siguientes funciones en las celdas indicadas"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "step-3a7f3556-7a39-4675-850c-d9f64fc9c34f",
+                              "content": [
+                                {
+                                  "text": "Presiona "
+                                },
+                                {
+                                  "text": "Enter",
+                                  "highlight": true
+                                },
+                                {
+                                  "text": "  en cada función para ver el resultado."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "cell-fd88745c-6c75-43c9-a8c8-91eb4a19a6ca",
+                      "column": 1,
+                      "rowSpan": 1,
+                      "blocks": [
+                        {
+                          "id": "image-9a424ee2-6ab6-43eb-a4d2-884255a35a48",
+                          "type": "image",
+                          "src": "assets/images/imagen-fa5d2799-7374-4802-bf55-03660750e574.png",
+                          "alt": "Captura de practica guiada en Excel",
+                          "heightMm": 47,
+                          "fit": "cover",
+                          "widthPercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "col-6e325386-40e6-41be-bd13-8651dfab3432",
+          "blocks": [
+            {
+              "id": "framed-columns-798672a8-9b1a-446e-b0e6-c32fd7044783",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "col-3a31872f-2e1d-4bd7-bc96-5d1928694c0e",
+                  "blocks": [
+                    {
+                      "id": "table-208bef5d-1d6a-4f2f-9571-56efd83a8419",
+                      "type": "table",
+                      "columns": [
+                        "Columna 1",
+                        "Columna 2"
+                      ],
+                      "rows": [
+                        [
+                          "",
+                          ""
+                        ],
+                        [
+                          "",
+                          ""
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Funciones a utilizar",
+              "icon": "chart"
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "P?gina de funciones b?sicas y condicionales en Excel."
+  }
+}

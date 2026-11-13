@@ -1,0 +1,246 @@
+{
+  "id": "page-050-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "separator-83f53e66-3c31-4934-8456-fca6a37eb511",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-34817817-b2d5-4745-b9bf-545b1a611145",
+      "layout": "2-equal",
+      "columns": [
+        {
+          "id": "item-66fb827c-c7c3-4015-9e84-1189369da953",
+          "blocks": [
+            {
+              "id": "item-4a2ec5d4-a7cb-4627-a645-3ca83a036580",
+              "type": "paragraph",
+              "text": "Los encabezados y pies de página son espacios que se repiten en la parte superior e inferior de un documento. Sirven para colocar información útil, como el título, el autor o el número de página."
+            },
+            {
+              "id": "item-8b6d20be-aee2-4b15-87f6-647a2e73258f",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "framed-columns-cc6210f4-eb2d-4861-a4e1-c307e8f6a2c1",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "col-d0ffdb00-6dcf-4034-856d-1577d338c60d",
+                  "blocks": [
+                    {
+                      "id": "image-5968745a-6b40-45cb-ba17-f19034070f19",
+                      "type": "image",
+                      "src": "assets/images/imagen-3971748a-00c8-4ecb-9257-02d30c3c2f1c.png",
+                      "alt": "ejemplo",
+                      "heightMm": 26,
+                      "fit": "contain",
+                      "widthPercent": 100
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "¿Qué puedes agregar?",
+              "icon": "page",
+              "background": "white",
+              "showBorder": false
+            }
+          ]
+        },
+        {
+          "id": "item-4902c17f-a9f1-4e09-9489-3f590f9b2997",
+          "blocks": [
+            {
+              "id": "item-a201c3f5-f747-45b7-9fab-02e2a20b5fae",
+              "type": "image",
+              "src": "assets/images/imagen-f8008df2-a30f-4823-9c1b-ecd23e15de0a.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 66,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Encabezado y pie de página",
+      "showIcon": false,
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "tab"
+    },
+    {
+      "id": "framed-columns-b3f0f5bb-7f82-43bf-8faf-ecbab078ff0d",
+      "layout": "2-equal",
+      "columns": [
+        {
+          "id": "col-666799a6-eb8e-4277-ac81-53e5cd0008a5",
+          "blocks": [
+            {
+              "id": "steps-26b02370-e013-4ac2-a3df-30d9292b2e67",
+              "type": "steps",
+              "title": "Pasos:",
+              "items": [
+                {
+                  "id": "step-eea04d66-282f-437c-9de9-44d52bf7ae00",
+                  "content": [
+                    {
+                      "text": "Abrir la pestaña Insertar:",
+                      "highlight": true
+                    },
+                    {
+                      "text": " En la cinta de opciones de Word, haz clic en la pestaña Insertar."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-dd0b3aea-bbd5-44a4-9211-a036c5414b85",
+                  "content": [
+                    {
+                      "text": "Agregar el encabezado o pie de página:",
+                      "highlight": true
+                    },
+                    {
+                      "text": " En el grupo Encabezado y pie de página, selecciona Encabezado para escribir en la parte superior del documento o Pie de página para escribir en la parte inferior."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-e3d9b9f8-717e-4527-bedd-b8cbd765400c",
+                  "content": [
+                    {
+                      "text": "Insertar el número de página:",
+                      "highlight": true
+                    },
+                    {
+                      "text": " Haz clic en Número de página y elige dónde deseas colocarlo, por ejemplo, Final de página."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "col-276d8e28-0a19-42c5-aee2-3dae493af8f7",
+          "blocks": [
+            {
+              "id": "image-c147ee9a-8456-49dc-9ca4-c33efc488a38",
+              "type": "image",
+              "src": "assets/images/imagen-60505387-7a47-4a75-9a01-1926e95c7f7d.png",
+              "alt": "ejemplo",
+              "heightMm": 70,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada",
+      "icon": "target",
+      "background": "ice",
+      "showBorder": true
+    },
+    {
+      "id": "separator-88afb778-8785-430a-b691-34d9d5024a00",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-b2b466cc-a8e6-4c6c-bf3f-f51175d9aa78",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "item-52d272e1-cbbf-45db-a478-bb7f74fd6967",
+          "blocks": [
+            {
+              "id": "item-3e045c44-ced5-4f3e-aa85-1b9170a5118c",
+              "type": "separator",
+              "size": "small"
+            },
+            {
+              "id": "item-bf743f1d-3777-4885-9137-d4459777ce58",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-b3b8602b-2fcb-45fc-9f39-d7644752462a",
+                  "content": [
+                    {
+                      "text": "Haz "
+                    },
+                    {
+                      "text": "doble clic",
+                      "highlight": true
+                    },
+                    {
+                      "text": " en la parte superior o inferior del documento para activar el encabezado o el pie de página."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-0aed7b76-1335-40cf-bd2c-2a7438ec0d02",
+                  "content": [
+                    {
+                      "text": "Escribe o modifica el texto del encabezado o del pie de página."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-a2d84523-6348-4050-afca-a982305292ae",
+                  "content": [
+                    {
+                      "text": "Cuando termines, haz clic en “Cerrar encabezado y pie de página” o haz "
+                    },
+                    {
+                      "text": "doble clic",
+                      "highlight": true
+                    },
+                    {
+                      "text": " fuera del área de edición."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-af1892d7-b863-4842-a413-680ba95acc81",
+          "blocks": [
+            {
+              "id": "item-b14c845d-70ec-41c8-94ee-2594dfa0022a",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-3d6cd0a7-9277-4657-8c8a-e6e4d7b9a87f",
+              "type": "image",
+              "src": "assets/images/imagen-d2f3fd68-6dd6-4b6e-829c-6852485377c1.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 44,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Cómo se edita el encabezado y pie de página?",
+      "icon": "page",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

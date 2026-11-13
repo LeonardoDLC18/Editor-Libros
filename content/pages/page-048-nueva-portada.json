@@ -1,0 +1,125 @@
+{
+  "id": "page-048-nueva-portada",
+  "template": "cover",
+  "title": "",
+  "titleStyle": "existing",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "separator-1cc555db-dae9-4976-b358-6f37e4bb2a42",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-07e21193-d2cd-4c6f-a3fa-5f74f92af08f",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "page-048-nueva-portada-imagen-principal",
+      "type": "image",
+      "src": "assets/images/imagen-949a77de-81e4-4f70-878f-dfd5cb2a01fc.png",
+      "alt": "Imagen principal de la portada",
+      "heightMm": 135,
+      "fit": "cover",
+      "widthPercent": 100
+    },
+    {
+      "id": "separator-ed99b640-19a4-485d-b9e3-c72447afba40",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "separator-f27001e4-a51f-418c-8b66-b9cbcdd34067",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "page-048-nueva-portada-contenido-destacado",
+      "layout": "2-60-40",
+      "columns": [
+        {
+          "id": "page-048-nueva-portada-columna-objetivo",
+          "blocks": [
+            {
+              "id": "page-048-nueva-portada-objetivo",
+              "type": "infoCard",
+              "label": "OBJETIVO",
+              "title": "Lo que aprenderás",
+              "content": "Aprenderemos a crear y dar formato a documentos en Word, realizar cálculos con fórmulas y funciones en Excel, y representar información mediante gráficos.",
+              "icon": "target",
+              "contentSpans": [
+                {
+                  "text": "Aprenderemos a crear y dar formato a documentos en Word, realizar cálculos con fórmulas y funciones en Excel, y representar información mediante gráficos."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "page-048-nueva-portada-columna-recurso",
+          "blocks": [
+            {
+              "id": "page-048-nueva-portada-imagen-complementaria",
+              "type": "image",
+              "src": "assets/images/imagen-c26d92a6-a0df-4f73-b6fe-4d0f64fff46f.png",
+              "alt": "Recurso gráfico complementario",
+              "heightMm": 32,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Contenido destacado",
+      "icon": "target",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
+      "id": "separator-e6f5320d-f770-4e23-8af4-c862e2dcbe42",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "separator-07648057-53cb-48bb-acb1-5c650dd264db",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "framed-columns-730870af-e348-4d0e-be84-9d57df852fc8",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "col-255a904a-da61-42f5-a5fe-39102edd2bab",
+          "blocks": [
+            {
+              "id": "info-534cbbb6-70e7-49ba-82fb-0fafbb7dbdce",
+              "type": "infoCard",
+              "title": "¡Planificamos nuestras vacaciones!",
+              "content": "Calculamos nuestro presupuesto en Excel y diseñamos una ficha turística en Word.",
+              "layout": "stacked",
+              "contentSpans": [
+                {
+                  "text": "Calculamos nuestro presupuesto en Excel y diseñamos una ficha turística en Word."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "PROYECTO DE LA UNIDAD",
+      "icon": "lightbulb",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "tab"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}
