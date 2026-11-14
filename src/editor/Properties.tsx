@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Block, Book, BookNumbering, ColumnsBlock, Page } from '../types/schema';
 import { maxContainerDepth, nestingMessage } from '../utils/blocks';
 import { BlockPicker } from './BlockPicker';
@@ -35,6 +35,38 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
   const location = blockLocation(page.blocks, block?.id);
   const selectedCard = block?.type === 'cardContainer' ? block.items.find(item => item.id === selectedId) : undefined;
   const selectedColumn = childSlots(block).find(column => column.id === selectedId);
+  const copyBlock = () => {
+    if (!block) return false;
+    onCopy(structuredClone(block)); setUploadError('');
+    return true;
+  };
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (disabled || event.defaultPrevented || event.altKey || event.shiftKey || !(event.ctrlKey || event.metaKey)) return;
+      const target = event.target;
+      if (target instanceof Element && (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]') || (target instanceof HTMLElement && target.isContentEditable))) return;
+      if (window.getSelection()?.toString()) return;
+      const key = event.key.toLowerCase();
+      if (key === 'x' && block && selectedId === block.id) {
+        const button = document.getElementById('delete-block');
+        if (button instanceof HTMLButtonElement && !button.matches(':disabled')) {
+          event.preventDefault();
+          if (copyBlock()) button.click();
+        }
+        return;
+      }
+      const button = key === 'c' && block && selectedId === block.id
+        ? document.getElementById('copy-block')
+        : key === 'v' && clipboard && (!selectedId || selectedColumn)
+          ? document.getElementById('paste-block') : null;
+      if (button instanceof HTMLButtonElement && !button.matches(':disabled')) {
+        event.preventDefault();
+        button.click();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [block, clipboard, disabled, selectedColumn, selectedId]);
   const insertColumn = selectedColumn ?? location?.column;
   const insertParent = selectedColumn ? block : location?.parent;
   const updateBlock = (update: (item: Block) => Block) => {
@@ -118,7 +150,7 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
           : null}
       </dl>}
       {!selectedCard && !(selectedColumn && isGrid(block)) && <div className="block-actions">
-        {selectedId === block.id && <button id="copy-block" className="button" onClick={() => { onCopy(structuredClone(block)); setUploadError(''); }}>Copiar</button>}
+        {selectedId === block.id && <button id="copy-block" className="button" onClick={copyBlock}>Copiar</button>}
         <button id="duplicate-block" className="button" onClick={() => {
           const copy = cloneBlock(block);
           onChange(current => ({ ...current, blocks: updateSiblings(current.blocks, location?.column?.id, items => {

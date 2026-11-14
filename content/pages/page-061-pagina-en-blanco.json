@@ -98,6 +98,15 @@
       "icon": "page",
       "background": "white",
       "headerStyle": "tab"
+    },
+    {
+      "id": "item-3fc22b12-5310-421d-baf7-314342cbdfe6",
+      "type": "image",
+      "src": "assets/images/imagen-949a77de-81e4-4f70-878f-dfd5cb2a01fc.png",
+      "alt": "Imagen principal de la portada",
+      "heightMm": 135,
+      "fit": "cover",
+      "widthPercent": 100
     }
   ],
   "metadata": {

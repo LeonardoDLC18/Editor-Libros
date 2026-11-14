@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import type { Block, BookData, Page, PageOperationResult } from '../types/schema';
 import { Icon } from '../components/Icon';
 import { PageRenderer } from '../renderer/PageRenderer';
@@ -18,6 +18,16 @@ export function Editor({ data }: { data: BookData }) {
   const [uploading, setUploading] = useState(false);
   const [overflow, setOverflow] = useState(false);
   const editing = usePageEditing(data, pageId, uploading);
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && !event.altKey && !event.shiftKey && !event.isComposing && event.key.toLowerCase() === 's') {
+        event.preventDefault();
+        if (editing.canSave) void editing.save();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [editing.canSave, editing.save]);
   const liveData = { ...data, book: editing.book, pages: editing.pages };
   const { ref, fit } = usePageScale(data.design.page.widthMm, data.design.page.heightMm);
   const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
