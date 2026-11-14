@@ -5,6 +5,15 @@
   "subtitle": "Escribe aquí una breve descripción del contenido.",
   "blocks": [
     {
+      "id": "item-a30b0449-6ccb-40ff-aaba-2d47e365c7fc",
+      "type": "image",
+      "src": "assets/images/imagen-15ea8e5d-d6a5-434d-8580-1d7845f1458f.jpg",
+      "alt": "Imagen principal de la portada",
+      "heightMm": 92,
+      "fit": "contain",
+      "widthPercent": 100
+    },
+    {
       "id": "page-062-nueva-portada-contenido-destacado",
       "layout": "2-60-40",
       "columns": [
@@ -43,13 +52,52 @@
       "headerStyle": "band"
     },
     {
-      "id": "item-7128f2de-6e45-4c7d-afd4-73e69df28f02",
-      "type": "image",
-      "src": "assets/images/imagen-15ea8e5d-d6a5-434d-8580-1d7845f1458f.jpg",
-      "alt": "Imagen principal de la portada",
-      "heightMm": 92,
-      "fit": "contain",
-      "widthPercent": 100
+      "id": "framed-columns-15ebb1e0-a89e-4a80-9c7e-a513e76b04c8",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "col-2ce2ff49-6ef0-47ea-8c59-46c4862052fb",
+          "blocks": [
+            {
+              "id": "item-c566bec2-d796-4400-9426-a675c965f39a",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "item-c00e27fc-e11f-42bd-9908-bd812fd13705",
+                  "blocks": [
+                    {
+                      "id": "item-eb6adeab-11f2-4402-999c-26f942bac91a",
+                      "type": "heading",
+                      "text": "Ejemplo",
+                      "level": 3
+                    },
+                    {
+                      "id": "item-08ca5258-b099-4ea8-9623-fb10d4825154",
+                      "type": "paragraph",
+                      "text": "Un programa suma los valores 3 y 2."
+                    },
+                    {
+                      "id": "item-520183b8-b2c7-4dab-9ff8-c777523f2651",
+                      "type": "infoCard",
+                      "title": "Resultado:",
+                      "content": "3 + 2 = 5",
+                      "layout": "inline"
+                    }
+                  ]
+                }
+              ],
+              "type": "columns"
+            }
+          ]
+        },
+        {
+          "id": "col-3381dea5-54f9-4d19-b5f3-52fa91817ac1",
+          "blocks": []
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Nuevo título",
+      "icon": "chart"
     }
   ],
   "metadata": {

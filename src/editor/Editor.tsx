@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Block, BookData, Page, PageOperationResult } from '../types/schema';
 import { Icon } from '../components/Icon';
 import { PageRenderer } from '../renderer/PageRenderer';
@@ -14,7 +14,7 @@ export function Editor({ data }: { data: BookData }) {
   const [clipboard, setClipboard] = useState<Block>();
   const [blockId, setBlockId] = useState<string>();
   const [preview, setPreview] = useState(false);
-  const [zoom, setZoom] = useState('fit');
+  const [zoom, setZoom] = useState('1');
   const [uploading, setUploading] = useState(false);
   const [overflow, setOverflow] = useState(false);
   const editing = usePageEditing(data, pageId, uploading);
@@ -30,6 +30,37 @@ export function Editor({ data }: { data: BookData }) {
   }, [editing.canSave, editing.save]);
   const liveData = { ...data, book: editing.book, pages: editing.pages };
   const { ref, fit } = usePageScale(data.design.page.widthMm, data.design.page.heightMm);
+  const scale = zoom === 'fit' ? fit : Number(zoom);
+  const zoomAnchor = useRef<{ x: number; y: number; clientX: number; clientY: number } | null>(null);
+  useLayoutEffect(() => {
+    const canvas = ref.current;
+    const anchor = zoomAnchor.current;
+    const stage = canvas?.querySelector('.page-stage');
+    if (!canvas || !anchor || !stage) return;
+    const rect = stage.getBoundingClientRect();
+    canvas.scrollLeft += rect.left + anchor.x * scale - anchor.clientX;
+    canvas.scrollTop += rect.top + anchor.y * scale - anchor.clientY;
+    zoomAnchor.current = null;
+  }, [ref, scale]);
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const onWheel = (event: WheelEvent) => {
+      if ((!event.ctrlKey && !event.metaKey) || event.deltaY === 0) return;
+      event.preventDefault();
+      const percent = Math.round(scale * 100 / 5) * 5;
+      const next = Math.max(50, Math.min(150, percent + (event.deltaY < 0 ? 5 : -5))) / 100;
+      if (next === scale) return;
+      const stage = canvas.querySelector('.page-stage');
+      if (stage) {
+        const rect = stage.getBoundingClientRect();
+        zoomAnchor.current = { x: (event.clientX - rect.left) / scale, y: (event.clientY - rect.top) / scale, clientX: event.clientX, clientY: event.clientY };
+      }
+      setZoom(String(next));
+    };
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+    return () => canvas.removeEventListener('wheel', onWheel);
+  }, [ref, scale]);
   const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
   const page = editing.page;
 
@@ -42,7 +73,6 @@ export function Editor({ data }: { data: BookData }) {
 );
 
   const block = allBlocks(page.blocks).find((item) => item.id === blockId || childSlots(item).some(column => column.id === blockId) || (item.type === 'cardContainer' && item.items.some(card => card.id === blockId)));
-  const scale = zoom === 'fit' ? fit : Number(zoom);
   const selectPage = (id: string) => { if (!uploading) { setPageId(id); setBlockId(undefined); } };
   const selectResult = (result?: PageOperationResult) => { if (result?.selectedId) selectPage(result.selectedId); };
   const createPage = async (template: Page['template']) => {
@@ -77,7 +107,7 @@ export function Editor({ data }: { data: BookData }) {
         onMove={editing.move} canUndoOrder={editing.canUndoOrder} canRedoOrder={editing.canRedoOrder} onUndoOrder={editing.undoOrder} onRedoOrder={editing.redoOrder} />}
       <main className="work-area" aria-label={preview ? 'Vista previa del libro' : 'Lienzo del editor'}>
         <div className="canvas-toolbar"><div className="canvas-context"><Icon name={preview ? 'eye' : 'page'} /><span>{preview ? 'Vista previa' : 'Lienzo'} <span className="toolbar-slash">/</span> <strong>{page.title}</strong></span></div>
-          <div className="zoom-control"><label htmlFor="zoom">Zoom</label><select id="zoom" value={zoom} onChange={(event) => setZoom(event.target.value)}><option value="fit">Ajustar · {Math.round(fit * 100)} %</option><option value="0.5">50 %</option><option value="0.75">75 %</option><option value="1">100 %</option></select></div>
+          <div className="zoom-control"><label htmlFor="zoom">Zoom</label><select id="zoom" value={zoom} onChange={(event) => setZoom(event.target.value)}><option value="fit">Ajustar · {Math.round(fit * 100)} %</option>{Array.from({ length: 21 }, (_, i) => 50 + i * 5).map(percent => <option key={percent} value={String(percent / 100)}>{percent} %</option>)}</select></div>
         </div>
         {editing.error && <div className="notice save-error" role="alert"><Icon name="info" /><span>{editing.error}</span></div>}
         {overflow && <div className="notice" role="status"><Icon name="info" /><span>El contenido excede una página A4. Abrevia o divide el contenido antes de imprimir; todo el texto permanece visible.</span></div>}
