@@ -1,0 +1,59 @@
+{
+  "id": "page-062-nueva-portada",
+  "template": "cover",
+  "title": "Título de la unidad",
+  "subtitle": "Escribe aquí una breve descripción del contenido.",
+  "blocks": [
+    {
+      "id": "page-062-nueva-portada-imagen-principal",
+      "type": "image",
+      "src": "assets/images/imagen-15ea8e5d-d6a5-434d-8580-1d7845f1458f.jpg",
+      "alt": "Imagen principal de la portada",
+      "heightMm": 92,
+      "fit": "contain",
+      "widthPercent": 100
+    },
+    {
+      "id": "page-062-nueva-portada-contenido-destacado",
+      "layout": "2-60-40",
+      "columns": [
+        {
+          "id": "page-062-nueva-portada-columna-objetivo",
+          "blocks": [
+            {
+              "id": "page-062-nueva-portada-objetivo",
+              "type": "infoCard",
+              "label": "OBJETIVO",
+              "title": "Lo que aprenderás",
+              "content": "Describe aquí el aprendizaje principal de la unidad.",
+              "icon": "target"
+            }
+          ]
+        },
+        {
+          "id": "page-062-nueva-portada-columna-recurso",
+          "blocks": [
+            {
+              "id": "page-062-nueva-portada-imagen-complementaria",
+              "type": "image",
+              "src": "assets/images/preset-image.svg",
+              "alt": "Recurso gráfico complementario",
+              "heightMm": 42,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Contenido destacado",
+      "icon": "target",
+      "background": "white",
+      "headerStyle": "band"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

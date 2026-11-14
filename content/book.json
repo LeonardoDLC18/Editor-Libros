@@ -57,6 +57,14 @@
     {
       "id": "page-060-pagina-en-blanco",
       "file": "pages/page-060-pagina-en-blanco.json"
+    },
+    {
+      "id": "page-061-pagina-en-blanco",
+      "file": "pages/page-061-pagina-en-blanco.json"
+    },
+    {
+      "id": "page-062-nueva-portada",
+      "file": "pages/page-062-nueva-portada.json"
     }
   ]
 }
