@@ -2,8 +2,104 @@
   "id": "page-061-pagina-en-blanco",
   "template": "blank",
   "title": "",
+  "titleStyle": "none",
   "subtitle": "",
-  "blocks": [],
+  "blocks": [
+    {
+      "id": "container-9cf8ede4-09b1-48e5-aa90-968f22395752",
+      "type": "cardContainer",
+      "variant": "info",
+      "title": "Tarjetas informativas",
+      "icon": "info",
+      "columns": 3,
+      "items": [
+        {
+          "id": "card-3db271f2-ff3a-493e-a5bd-000d0382b139",
+          "title": "Tarjeta 1",
+          "description": "Escribe aquí el texto."
+        },
+        {
+          "id": "card-838a3d62-db00-4104-ab76-62ce00fd0bd9",
+          "title": "Tarjeta 2",
+          "description": "Escribe aquí el texto."
+        },
+        {
+          "id": "card-3050d68c-de1e-46e8-96aa-2e2ba31a8111",
+          "title": "Tarjeta 3",
+          "description": "Escribe aquí el texto."
+        }
+      ]
+    },
+    {
+      "id": "item-ae907186-1894-48ad-bf06-b303aa083e73",
+      "layout": "2-60-40",
+      "columns": [
+        {
+          "id": "item-3888891e-8833-49db-8722-c720dd4afc57",
+          "blocks": [
+            {
+              "id": "item-2ac8714d-8e97-4a5b-9da7-80d6b61f1d65",
+              "type": "paragraph",
+              "text": "Construye una solución siguiendo estos pasos."
+            },
+            {
+              "id": "item-1ed564c2-f0fc-429c-a6e9-2aa7ed4805bb",
+              "type": "separator",
+              "size": "small"
+            },
+            {
+              "id": "item-02290fdd-57aa-4439-9dbd-c64f4d2b5f24",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-b3f469d8-4ae6-4bbf-ba1d-eb4f00e86ca7",
+                  "content": [
+                    {
+                      "text": "Identifica los datos que necesitas."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-2161e680-6f49-48bf-8376-ac5a0607f447",
+                  "content": [
+                    {
+                      "text": "Ordena las instrucciones."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-8aa87d2f-c22d-4cc3-9f71-8eb89875d23d",
+                  "content": [
+                    {
+                      "text": "Prueba y revisa el resultado."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-68f229f8-d561-4b04-874d-22ed63781988",
+          "blocks": [
+            {
+              "id": "item-6ed34439-0eb1-4846-94c7-a63f8b18ee69",
+              "type": "image",
+              "src": "assets/images/preset-image.svg",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 28,
+              "fit": "contain"
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Aplicación guiada",
+      "icon": "page",
+      "background": "white",
+      "headerStyle": "tab"
+    }
+  ],
   "metadata": {
     "status": "draft",
     "description": "Página creada desde el editor."

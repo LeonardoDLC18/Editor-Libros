@@ -22,6 +22,15 @@ export function Editor({ data }: { data: BookData }) {
   const { ref, fit } = usePageScale(data.design.page.widthMm, data.design.page.heightMm);
   const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
   const page = editing.page;
+
+  console.table(
+  data.pages.map((page, index) => ({
+    numero: index + 1,
+    id: page.id,
+    titulo: page.title
+  }))
+);
+
   const block = allBlocks(page.blocks).find((item) => item.id === blockId || childSlots(item).some(column => column.id === blockId) || (item.type === 'cardContainer' && item.items.some(card => card.id === blockId)));
   const scale = zoom === 'fit' ? fit : Number(zoom);
   const selectPage = (id: string) => { if (!uploading) { setPageId(id); setBlockId(undefined); } };
@@ -47,7 +56,7 @@ export function Editor({ data }: { data: BookData }) {
         <span className={`local-state${editing.error ? ' save-error' : ''}`} role="status" aria-live="polite"><span className="status-dot" />{editing.status}</span>
         <button className="button history-button" aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!editing.canUndo} onClick={editing.undo}><Icon name="undo" /></button>
         <button className="button history-button" aria-label="Rehacer" title="Rehacer (Ctrl+Y / Ctrl+Mayús+Z)" disabled={!editing.canRedo} onClick={editing.redo}><Icon name="redo" /></button>
-        <button className="button save-button" disabled={!editing.canSave} title="Guardar la página seleccionada" onClick={editing.save}><Icon name="save" />{editing.saving === pageId ? 'Guardando...' : 'Guardar'}</button>
+        <button className="button save-button" disabled={!editing.canSave} title="Guardar todos los cambios" onClick={editing.save}><Icon name="save" />{editing.saving ? 'Guardando...' : 'Guardar'}</button>
         <button className={`button${preview ? ' selected' : ''}`} aria-pressed={preview} onClick={() => setPreview(!preview)}><Icon name={preview ? 'close' : 'eye'} />{preview ? 'Volver al editor' : 'Vista previa'}</button>
         <button className="button primary" onClick={() => window.print()} title="Imprimir el libro completo o guardar como PDF"><Icon name="print" />Imprimir</button>
       </div>

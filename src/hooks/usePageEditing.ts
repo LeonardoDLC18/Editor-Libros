@@ -65,9 +65,9 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
     return () => window.removeEventListener('keydown', shortcut);
   }, [pageId, uploading]);
 
-  const persist = async (id: string) => {
+  const persist = async (id: string, globalSave = false) => {
     const snapshot = drafts[id].page;
-    setSaving(id);
+    if (!globalSave) setSaving(id);
     setDrafts(all => ({ ...all, [id]: { ...all[id], error: '' } }));
     try {
       const saved = await api.savePage(snapshot);
@@ -79,13 +79,17 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
     } catch (error) {
       setDrafts(all => ({ ...all, [id]: { ...all[id], error: error instanceof Error ? error.message : 'No se pudo guardar la página.' } }));
       throw error;
-    } finally { setSaving(undefined); }
+    } finally { if (!globalSave) setSaving(undefined); }
   };
   const save = async () => {
-    if (inFlight.current || uploading || same(current.page, current.saved)) return;
+    if (inFlight.current || uploading || dirtyIds.length === 0) return;
     inFlight.current = true;
-    try { await persist(pageId); } catch { /* persist keeps the error beside the draft */ }
-    finally { inFlight.current = false; }
+    setSaving('all');
+    try {
+      for (const id of dirtyIds) {
+        try { await persist(id, true); } catch { /* Keep failed drafts for retry. */ }
+      }
+    } finally { inFlight.current = false; setSaving(undefined); }
   };
 
   const structure = async (run: () => Promise<PageOperationResult>, resetsOrder = true) => {
@@ -131,7 +135,7 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
   const status = uploading ? 'Subiendo imagen...' : busy ? 'Guardando...' : hasError ? 'Error al guardar' : dirty ? 'Cambios sin guardar' : 'Guardado';
   return {
     book, pages, page: current.page, dirtyIds, status, saving, busy, structural,
-    error: structureError || current.error, canSave: !busy && dirtyIds.includes(pageId),
+    error: structureError || Object.entries(drafts).filter(([, draft]) => draft.error).map(([id, draft]) => `${draft.page.title || id} (${id}): ${draft.error}`).join('\n'), canSave: !busy && dirty,
     canUndo: !structural && !uploading && current.past.length > 0, canRedo: !structural && !uploading && current.future.length > 0,
     change, save, undo: () => travel('past'), redo: () => travel('future'),
     create: (template: Page['template']) => structure(() => api.createPage(template)),
