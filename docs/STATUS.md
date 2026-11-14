@@ -1,5 +1,12 @@
 # Estado del proyecto
 
+## Drag & Drop, fase 2 ? 14 de noviembre de 2026
+
+- Movimiento entre listas de bloques de la misma p?gina, con destinos vac?os, conservaci?n de ids y contenido, y rechazo de ciclos y profundidad excesiva. Usa el historial y guardado existentes; sin cambios de esquema ni dependencias.
+- Verificaci?n: `npm.cmd run build` y `npm.cmd run validate` correctos (12 p?ginas, 129 bloques); `npm.cmd test` 34/34 fuera del sandbox tras el fallo conocido de `uv_os_get_passwd`. No se verificaron a?n los arrastres, el desplazamiento ni guardar/F5 en navegador.
+- Siguiente acci?n exacta: probar los movimientos entre ra?z, columnas y celdas, destinos vac?os y rechazos de ciclos; comprobar scroll y guardar/F5 en el editor.
+
+
 ## Drag & Drop, fase 1 — 14 de noviembre de 2026
 
 - Reordenamiento vertical mediante un tirador discreto y un indicador, limitado a bloques hermanos de la página, columnas y celdas. Conserva los bloques e identificadores y usa el historial y guardado existentes; no modifica el esquema ni incorpora dependencias.

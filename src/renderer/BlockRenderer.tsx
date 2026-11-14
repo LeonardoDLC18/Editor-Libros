@@ -52,10 +52,12 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
     case 'grid':
     case 'framedColumns':
     case 'columns': content = isGrid(block) ? <Grid block={block} selectedId={selectedId} onSelect={onSelect} onEditCell={onEditCell} /> : <div className={`columns-block layout-${block.layout}`}>
-      {block.columns.map((column, index) => <div className={`column-blocks${selectedId === column.id ? ' is-selected' : ''}`}
+      {block.columns.map((column, index) => <div className={`column-blocks${selectedId === column.id ? ' is-selected' : ''}${drag?.active && column.blocks.length === 0 && drag.canSlot(column.id) ? ' drag-empty' : ''}`}
         onClick={onSelect ? event => { event.stopPropagation(); onSelect(column.id); } : undefined}
         tabIndex={onSelect ? 0 : undefined} role={onSelect ? 'group' : undefined} aria-label={onSelect ? `Seleccionar columna ${index + 1}` : undefined}
         onKeyDown={onSelect ? event => { if (event.target === event.currentTarget && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); event.stopPropagation(); onSelect(column.id); } } : undefined}
+        onDragOver={drag ? event => { event.stopPropagation(); if (drag.overSlot(column.id)) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; } } : undefined}
+        onDrop={drag ? event => { event.stopPropagation(); event.preventDefault(); drag.dropSlot(column.id); } : undefined}
         key={column.id} data-column-id={column.id}>
         {column.blocks.map(child => <BlockRenderer key={child.id} block={child} inColumn selectedId={selectedId} onSelect={onSelect} onEditCell={onEditCell} />)}
       </div>)}

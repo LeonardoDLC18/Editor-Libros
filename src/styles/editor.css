@@ -171,3 +171,5 @@ svg { flex-shrink: 0; }
 .block-drop-marker { position: absolute; left: 0; right: 0; z-index: 4; height: 3px; background: var(--color-cyan); pointer-events: none; }
 .block-drop-marker.before { top: -4px; }
 .block-drop-marker.after { bottom: -4px; }
+
+.column-blocks.drag-empty { min-height: 20px; outline: 1px dashed var(--color-cyan); outline-offset: -1px; }

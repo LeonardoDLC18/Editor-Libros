@@ -7,7 +7,7 @@ import { usePageEditing } from '../hooks/usePageEditing';
 import { designTokens } from '../utils/designTokens';
 import { PageList } from './PageList';
 import { Properties } from './Properties';
-import { allBlocks, blockLocation, childSlots, reorderBlock, updateBlock } from '../utils/blocks';
+import { allBlocks, blockLocation, childSlots, moveBlock, updateBlock } from '../utils/blocks';
 import { BlockDragContext } from '../renderer/BlockDrag';
 
 export function Editor({ data }: { data: BookData }) {
@@ -71,24 +71,40 @@ export function Editor({ data }: { data: BookData }) {
   const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
   const page = editing.page;
   const [dragMarker, setDragMarker] = useState<{ id: string; after: boolean }>();
+  const [dragging, setDragging] = useState(false);
   const drag = {
+    active: dragging,
     marker: dragMarker,
-    start: (id: string) => { dragSource.current = id; setBlockId(id); },
+    start: (id: string) => { dragSource.current = id; setDragging(true); setBlockId(id); },
     over: (id: string, after: boolean) => {
       const source = blockLocation(page.blocks, dragSource.current), target = blockLocation(page.blocks, id);
-      const valid = !!dragSource.current && !!source && !!target && source.siblings === target.siblings && source.index !== target.index;
+      const valid = !!dragSource.current && !!source && !!target && moveBlock(page.blocks, dragSource.current, id, after) !== page.blocks;
       setDragMarker(previous => valid ? previous?.id === id && previous.after === after ? previous : { id, after } : undefined);
       return valid;
     },
     drop: (id: string, after: boolean) => {
       const source = dragSource.current;
       if (source) editing.change(current => {
-        const blocks = reorderBlock(current.blocks, source, id, after);
+        const blocks = moveBlock(current.blocks, source, id, after);
         return blocks === current.blocks ? current : { ...current, blocks };
       });
-      dragSource.current = undefined; setDragMarker(undefined);
+      dragSource.current = undefined; setDragging(false); setDragMarker(undefined);
     },
-    end: () => { dragSource.current = undefined; setDragMarker(undefined); },
+    canSlot: (id: string) => !!dragSource.current && moveBlock(page.blocks, dragSource.current, id, false, true) !== page.blocks,
+    overSlot: (id: string) => {
+      const valid = !!dragSource.current && moveBlock(page.blocks, dragSource.current, id, false, true) !== page.blocks;
+      setDragMarker(undefined);
+      return valid;
+    },
+    dropSlot: (id: string) => {
+      const source = dragSource.current;
+      if (source) editing.change(current => {
+        const blocks = moveBlock(current.blocks, source, id, false, true);
+        return blocks === current.blocks ? current : { ...current, blocks };
+      });
+      dragSource.current = undefined; setDragging(false); setDragMarker(undefined);
+    },
+    end: () => { dragSource.current = undefined; setDragging(false); setDragMarker(undefined); },
   };
   const dragOver = useRef(drag.over);
   dragOver.current = drag.over;

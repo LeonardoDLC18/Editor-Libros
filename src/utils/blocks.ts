@@ -68,6 +68,26 @@ export function reorderBlock(blocks: Block[], id: string, targetId: string, afte
     return next;
   });
 }
+/** Move to a sibling position or an empty child slot, preserving the original block. */
+export function moveBlock(blocks: Block[], id: string, targetId: string, after: boolean, slot = false): Block[] {
+  const source = blockLocation(blocks, id);
+  if (!source || id === targetId) return blocks;
+  const moved = source.siblings[source.index];
+  const target = slot ? undefined : blockLocation(blocks, targetId);
+  const owner = slot ? allBlocks(blocks).find(block => childSlots(block).some(child => child.id === targetId)) : target?.parent;
+  const column = slot ? childSlots(owner).find(child => child.id === targetId) : target?.column;
+  if (slot && (!owner || !column)) return blocks;
+  if (!slot && !target) return blocks;
+  if (owner && allBlocks([moved]).some(block => block.id === owner.id)) return blocks;
+  const depth = slot ? (blockLocation(blocks, owner!.id)?.depth ?? 0) + 1 : target!.depth;
+  if (depth + containerDepth(moved) > maxContainerDepth) return blocks;
+  if (!slot && source.siblings === target!.siblings) return reorderBlock(blocks, id, targetId, after);
+  const index = slot ? column!.blocks.length : target!.index + (after ? 1 : 0);
+  const removed = updateSiblings(blocks, source.column?.id, items => items.filter(item => item.id !== id));
+  return updateSiblings(removed, column?.id, items => {
+    const next = [...items]; next.splice(index, 0, moved); return next;
+  });
+}
 export function changeColumns(block: ColumnsBlock, layout: ColumnsBlock['layout']): ColumnsBlock {
   const count = Number(layout[0]);
   const columns = block.columns.slice(0, count).map(column => ({ ...column, blocks: [...column.blocks] }));
