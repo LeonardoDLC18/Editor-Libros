@@ -52,52 +52,34 @@
       "headerStyle": "band"
     },
     {
-      "id": "framed-columns-15ebb1e0-a89e-4a80-9c7e-a513e76b04c8",
+      "id": "item-171aa7ae-66c0-4ed0-8528-7175f2133ffd",
       "layout": "2-40-60",
       "columns": [
         {
-          "id": "col-2ce2ff49-6ef0-47ea-8c59-46c4862052fb",
+          "id": "item-95dcda75-50da-466a-8bf7-9b98d390adc0",
           "blocks": [
             {
-              "id": "item-c566bec2-d796-4400-9426-a675c965f39a",
-              "layout": "1-full",
-              "columns": [
+              "id": "item-e9a24495-285d-4a7e-bb39-5760ba9f7920",
+              "type": "steps",
+              "title": "Pasos:",
+              "items": [
                 {
-                  "id": "item-c00e27fc-e11f-42bd-9908-bd812fd13705",
-                  "blocks": [
-                    {
-                      "id": "item-eb6adeab-11f2-4402-999c-26f942bac91a",
-                      "type": "heading",
-                      "text": "Ejemplo",
-                      "level": 3
-                    },
-                    {
-                      "id": "item-08ca5258-b099-4ea8-9623-fb10d4825154",
-                      "type": "paragraph",
-                      "text": "Un programa suma los valores 3 y 2."
-                    },
-                    {
-                      "id": "item-520183b8-b2c7-4dab-9ff8-c777523f2651",
-                      "type": "infoCard",
-                      "title": "Resultado:",
-                      "content": "3 + 2 = 5",
-                      "layout": "inline"
-                    }
-                  ]
+                  "id": "item-272c72cf-0017-4ea7-9b78-72c0be81f63d",
+                  "content": []
                 }
-              ],
-              "type": "columns"
+              ]
             }
           ]
         },
         {
-          "id": "col-3381dea5-54f9-4d19-b5f3-52fa91817ac1",
+          "id": "item-d295f86a-69df-4f14-8c6d-ec510439a9c0",
           "blocks": []
         }
       ],
       "type": "framedColumns",
-      "title": "Nuevo título",
-      "icon": "chart"
+      "title": "¿Que debes hacer en Word?",
+      "background": "white",
+      "showBorder": true
     }
   ],
   "metadata": {

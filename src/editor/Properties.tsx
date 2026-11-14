@@ -42,6 +42,21 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
   };
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (disabled || event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey || !block || selectedId !== block.id || (event.key !== 'Delete' && event.key !== 'Backspace')) return;
+      const target = event.target;
+      if (target instanceof Element && (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]') || (target instanceof HTMLElement && target.isContentEditable))) return;
+      if (window.getSelection()?.toString()) return;
+      const button = document.getElementById('delete-block');
+      if (button instanceof HTMLButtonElement && !button.matches(':disabled')) {
+        event.preventDefault();
+        button.click();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [block, disabled, selectedId]);
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
       if (disabled || event.defaultPrevented || event.altKey || event.shiftKey || !(event.ctrlKey || event.metaKey)) return;
       const target = event.target;
       if (target instanceof Element && (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]') || (target instanceof HTMLElement && target.isContentEditable))) return;
