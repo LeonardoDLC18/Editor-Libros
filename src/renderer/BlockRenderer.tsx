@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { useContext, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Block } from '../types/schema';
 import { TableBlock, type EditCell } from './TableBlock';
 import { codeLanguageLabels } from '../utils/codeLanguages';
@@ -11,6 +11,7 @@ import { Steps } from './Steps';
 import { FormattedText } from './FormattedText';
 import { Grid } from './Grid';
 import { isGrid } from '../utils/grid';
+import { BlockDragContext } from './BlockDrag';
 
 export const blockLabels: Record<Block['type'], string> = {
   card: 'Tarjeta',
@@ -24,6 +25,7 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
   inColumn?: boolean; block: Block; selectedId?: string; onSelect?: (id: string) => void; onEditCell?: EditCell;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const drag = useContext(BlockDragContext);
   const [narrow, setNarrow] = useState(false);
   useLayoutEffect(() => {
     const element = ref.current;
@@ -79,6 +81,18 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
   return <div ref={ref}
     className={`content-block block-${block.type}${onSelect ? ' selectable' : ''}${selected ? ' is-selected' : ''}`}
     data-block-id={block.id}
+    onDragOver={drag ? event => {
+      event.stopPropagation();
+      const rect = event.currentTarget.getBoundingClientRect();
+      if (drag.over(block.id, event.clientY >= rect.top + rect.height / 2)) {
+        event.preventDefault(); event.dataTransfer.dropEffect = 'move';
+      }
+    } : undefined}
+    onDrop={drag ? event => {
+      event.stopPropagation(); event.preventDefault();
+      const rect = event.currentTarget.getBoundingClientRect();
+      drag.drop(block.id, event.clientY >= rect.top + rect.height / 2);
+    } : undefined}
     style={block.type === 'separator' ? { height: { small: 6, normal: 10, large: 16 }[block.size] } : undefined}
     role={onSelect ? block.type === 'table' || isColumns(block) || isGrid(block) ? 'group' : 'button' : undefined}
     tabIndex={onSelect ? 0 : undefined}
@@ -89,5 +103,10 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
       if (event.target !== event.currentTarget) return;
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onSelect(block.id); }
     } : undefined}
-  >{content}{onSelect && narrow && <div className="column-width-warning" role="status">Este bloque puede resultar demasiado ancho para esta columna.</div>}</div>;
+  >{drag && onSelect && <><button type="button" className="block-drag-handle" draggable aria-label={`Arrastrar ${blockLabels[block.type].toLowerCase()}`} title="Arrastrar para reordenar"
+    onClick={event => event.stopPropagation()}
+    onDragStart={event => { event.stopPropagation(); event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', block.id); drag.start(block.id); }}
+    onDragEnd={event => { event.stopPropagation(); drag.end(); }}>⋮⋮</button>
+    {drag.marker?.id === block.id && <span className={`block-drop-marker ${drag.marker.after ? 'after' : 'before'}`} aria-hidden="true" />}</>}
+    {content}{onSelect && narrow && <div className="column-width-warning" role="status">Este bloque puede resultar demasiado ancho para esta columna.</div>}</div>;
 }

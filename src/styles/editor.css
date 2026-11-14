@@ -165,3 +165,9 @@ svg { flex-shrink: 0; }
   .canvas-bottom { justify-content: center; }
   .canvas-toolbar { padding: 0 12px; }
 }
+.block-drag-handle { position: absolute; left: -19px; top: 0; z-index: 3; width: 17px; height: 20px; padding: 0; border: 0; border-radius: 3px; background: var(--color-paper); color: var(--color-blue); font-size: 13px; line-height: 20px; cursor: grab; opacity: 0; }
+.content-block:is(:hover, .is-selected) > .block-drag-handle, .block-drag-handle:focus-visible { opacity: 1; }
+.block-drag-handle:active { cursor: grabbing; }
+.block-drop-marker { position: absolute; left: 0; right: 0; z-index: 4; height: 3px; background: var(--color-cyan); pointer-events: none; }
+.block-drop-marker.before { top: -4px; }
+.block-drop-marker.after { bottom: -4px; }

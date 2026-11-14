@@ -1,5 +1,11 @@
 # Estado del proyecto
 
+## Drag & Drop, fase 1 — 14 de noviembre de 2026
+
+- Reordenamiento vertical mediante un tirador discreto y un indicador, limitado a bloques hermanos de la página, columnas y celdas. Conserva los bloques e identificadores y usa el historial y guardado existentes; no modifica el esquema ni incorpora dependencias.
+- Verificación: `npm.cmd run build` y `npm.cmd run validate` correctos (12 páginas, 126 bloques); `npm.cmd test` 34/34 fuera del sandbox, tras un fallo de `uv_os_get_passwd` dentro de él. No se comprobó el arrastre ni la persistencia en navegador en esta sesión.
+- Siguiente acción exacta: probar arrastre y cancelación en página, columna y celda, mover un contenedor completo, comprobar ids, edición de texto y guardar/recargar.
+
 - Fecha: 12 de noviembre de 2026 (America/Lima).
 - Etapa actual: **4 ampliada — distribución guiada con filas y celdas**.
 

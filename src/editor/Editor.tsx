@@ -7,7 +7,8 @@ import { usePageEditing } from '../hooks/usePageEditing';
 import { designTokens } from '../utils/designTokens';
 import { PageList } from './PageList';
 import { Properties } from './Properties';
-import { allBlocks, childSlots, updateBlock } from '../utils/blocks';
+import { allBlocks, blockLocation, childSlots, reorderBlock, updateBlock } from '../utils/blocks';
+import { BlockDragContext } from '../renderer/BlockDrag';
 
 export function Editor({ data }: { data: BookData }) {
   const [pageId, setPageId] = useState(data.pages[0].id);
@@ -32,6 +33,7 @@ export function Editor({ data }: { data: BookData }) {
   const { ref, fit } = usePageScale(data.design.page.widthMm, data.design.page.heightMm);
   const scale = zoom === 'fit' ? fit : Number(zoom);
   const zoomAnchor = useRef<{ x: number; y: number; clientX: number; clientY: number } | null>(null);
+  const dragSource = useRef<string | undefined>(undefined);
   useLayoutEffect(() => {
     const canvas = ref.current;
     const anchor = zoomAnchor.current;
@@ -46,6 +48,11 @@ export function Editor({ data }: { data: BookData }) {
     const canvas = ref.current;
     if (!canvas) return;
     const onWheel = (event: WheelEvent) => {
+      if (dragSource.current && !event.ctrlKey && !event.metaKey) {
+        event.preventDefault();
+        canvas.scrollTop += event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? canvas.clientHeight : 1);
+        return;
+      }
       if ((!event.ctrlKey && !event.metaKey) || event.deltaY === 0) return;
       event.preventDefault();
       const percent = Math.round(scale * 100 / 5) * 5;
@@ -63,6 +70,71 @@ export function Editor({ data }: { data: BookData }) {
   }, [ref, scale]);
   const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
   const page = editing.page;
+  const [dragMarker, setDragMarker] = useState<{ id: string; after: boolean }>();
+  const drag = {
+    marker: dragMarker,
+    start: (id: string) => { dragSource.current = id; setBlockId(id); },
+    over: (id: string, after: boolean) => {
+      const source = blockLocation(page.blocks, dragSource.current), target = blockLocation(page.blocks, id);
+      const valid = !!dragSource.current && !!source && !!target && source.siblings === target.siblings && source.index !== target.index;
+      setDragMarker(previous => valid ? previous?.id === id && previous.after === after ? previous : { id, after } : undefined);
+      return valid;
+    },
+    drop: (id: string, after: boolean) => {
+      const source = dragSource.current;
+      if (source) editing.change(current => {
+        const blocks = reorderBlock(current.blocks, source, id, after);
+        return blocks === current.blocks ? current : { ...current, blocks };
+      });
+      dragSource.current = undefined; setDragMarker(undefined);
+    },
+    end: () => { dragSource.current = undefined; setDragMarker(undefined); },
+  };
+  const dragOver = useRef(drag.over);
+  dragOver.current = drag.over;
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    let frame = 0;
+    let x = 0, y = 0, speed = 0;
+    const stop = () => { speed = 0; cancelAnimationFrame(frame); frame = 0; };
+    const updateMarker = () => {
+      const element = document.elementFromPoint(x, y)?.closest<HTMLElement>('.content-block[data-block-id]');
+      if (!element || !canvas.contains(element)) { setDragMarker(undefined); return; }
+      const rect = element.getBoundingClientRect();
+      dragOver.current(element.dataset.blockId!, y >= rect.top + rect.height / 2);
+    };
+    const tick = () => {
+      if (!dragSource.current || !speed) { stop(); return; }
+      canvas.scrollTop += speed;
+      updateMarker();
+      frame = requestAnimationFrame(tick);
+    };
+    const onDragOver = (event: DragEvent) => {
+      if (!dragSource.current) return;
+      x = event.clientX; y = event.clientY;
+      const rect = canvas.getBoundingClientRect();
+      speed = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+        ? y < rect.top + 50 ? -8 : y > rect.bottom - 50 ? 8 : 0 : 0;
+      if (speed && !frame) frame = requestAnimationFrame(tick);
+      else if (!speed) stop();
+    };
+    const onScroll = () => { if (dragSource.current) updateMarker(); };
+    const onDragLeave = (event: DragEvent) => { if (!event.relatedTarget) stop(); };
+    document.addEventListener('dragover', onDragOver, true);
+    document.addEventListener('dragleave', onDragLeave);
+    document.addEventListener('dragend', stop, true);
+    document.addEventListener('drop', stop, true);
+    canvas.addEventListener('scroll', onScroll);
+    return () => {
+      stop();
+      document.removeEventListener('dragover', onDragOver, true);
+      document.removeEventListener('dragleave', onDragLeave);
+      document.removeEventListener('dragend', stop, true);
+      document.removeEventListener('drop', stop, true);
+      canvas.removeEventListener('scroll', onScroll);
+    };
+  }, [ref]);
 
   console.table(
   data.pages.map((page, index) => ({
@@ -113,7 +185,7 @@ export function Editor({ data }: { data: BookData }) {
         {overflow && <div className="notice" role="status"><Icon name="info" /><span>El contenido excede una página A4. Abrevia o divide el contenido antes de imprimir; todo el texto permanece visible.</span></div>}
         <div className="canvas" ref={ref} onClick={preview || uploading ? undefined : () => setBlockId(undefined)}>
           <div className="page-stage" style={{ '--page-scale': scale } as CSSProperties}>
-            <div className="page-transform"><PageRenderer page={page} book={editing.book} selectedBlock={preview ? undefined : blockId} onSelectBlock={preview || uploading ? undefined : setBlockId} onEditCell={preview || editing.busy ? undefined : editCell} onOverflow={setOverflow} /></div>
+            <div className="page-transform"><BlockDragContext.Provider value={preview || uploading || editing.structural ? undefined : drag}><PageRenderer page={page} book={editing.book} selectedBlock={preview ? undefined : blockId} onSelectBlock={preview || uploading ? undefined : setBlockId} onEditCell={preview || editing.busy ? undefined : editCell} onOverflow={setOverflow} /></BlockDragContext.Provider></div>
           </div>
         </div>
         <div className="canvas-bottom"><span>{preview ? 'Vista de lectura' : 'Selecciona un bloque para editarlo'}</span><div className="page-navigation">

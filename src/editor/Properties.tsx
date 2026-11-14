@@ -18,7 +18,7 @@ import { isGrid, newGridRow } from '../utils/grid';
 import { GridProperties } from './GridProperties';
 import { TextImageProperties } from './TextImageProperties';
 import { CardContainerProperties, IconField } from './CardContainerProperties';
-import { allBlocks, blockLocation, changeColumns, columnLayoutLabels, containerDepth, isColumns, isContainer, updateBlock as updateTreeBlock, updateSiblings } from '../utils/blocks';
+import { allBlocks, blockLocation, changeColumns, columnLayoutLabels, containerDepth, isColumns, isContainer, reorderBlock, updateBlock as updateTreeBlock, updateSiblings } from '../utils/blocks';
 
 const columnLayouts = Object.keys(columnLayoutLabels) as ColumnsBlock['layout'][];
 
@@ -115,12 +115,9 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
   };
   const move = (delta: number) => {
     onChange(current => {
-      return { ...current, blocks: updateSiblings(current.blocks, location?.column?.id, items => {
-        const blocks = [...items], index = blocks.findIndex(item => item.id === block?.id), next = index + delta;
-        if (index < 0 || next < 0 || next >= blocks.length) return items;
-        [blocks[index], blocks[next]] = [blocks[next], blocks[index]];
-        return blocks;
-      }) };
+      const found = blockLocation(current.blocks, block?.id);
+      const target = found?.siblings[found.index + delta];
+      return target && block ? { ...current, blocks: reorderBlock(current.blocks, block.id, target.id, delta > 0) } : current;
     });
   };
   const moveColumn = (delta: number) => {

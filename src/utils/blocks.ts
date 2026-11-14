@@ -56,6 +56,18 @@ export function updateSiblings(blocks: Block[], columnId: string | undefined, up
   if (!columnId) return update(blocks);
   return blocks.map(block => mapSlots(block, column => ({ ...column, blocks: column.id === columnId ? update(column.blocks) : updateSiblings(column.blocks, columnId, update) })));
 }
+export function reorderBlock(blocks: Block[], id: string, targetId: string, after: boolean): Block[] {
+  const source = blockLocation(blocks, id), target = blockLocation(blocks, targetId);
+  if (!source || !target || source.siblings !== target.siblings || id === targetId) return blocks;
+  const destination = target.index + (after ? 1 : 0) - (source.index < target.index + (after ? 1 : 0) ? 1 : 0);
+  if (destination === source.index) return blocks;
+  return updateSiblings(blocks, source.column?.id, items => {
+    const next = [...items];
+    const [moved] = next.splice(source.index, 1);
+    next.splice(destination, 0, moved);
+    return next;
+  });
+}
 export function changeColumns(block: ColumnsBlock, layout: ColumnsBlock['layout']): ColumnsBlock {
   const count = Number(layout[0]);
   const columns = block.columns.slice(0, count).map(column => ({ ...column, blocks: [...column.blocks] }));
