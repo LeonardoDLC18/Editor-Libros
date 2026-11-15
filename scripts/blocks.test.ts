@@ -8,6 +8,52 @@ import { uploadImage, maxImageBytes } from '../server/uploadImage';
 import { duplicatePage } from '../server/managePages';
 import { blockSchema, type Block } from '../src/types/schema';
 import { writeTestBook } from './testBook';
+import { formatStep, editStepText, stepText } from '../src/utils/steps';
+import { fieldSpans, withFieldSpans } from '../src/utils/richText';
+import { cloneBlock } from '../src/utils/blocks';
+
+test('Formato inline divide, combina, quita y fusiona marcas sin perder texto', () => {
+  const plain = [{ text: 'Microsoft Excel permite calcular' }];
+  const bold = formatStep(plain, 10, 15, 'bold');
+  assert.deepEqual(bold, [{ text: 'Microsoft ' }, { text: 'Excel', bold: true }, { text: ' permite calcular' }]);
+  const combined = formatStep(formatStep(bold, 10, 15, 'italic'), 10, 15, 'highlight');
+  assert.deepEqual(combined[1], { text: 'Excel', bold: true, italic: true, highlight: true });
+  const noBold = formatStep(combined, 10, 15, 'bold');
+  assert.equal(noBold[1].bold, undefined);
+  assert.equal(noBold[1].italic, true);
+  assert.equal(noBold[1].highlight, true);
+  assert.equal(stepText(combined), stepText(plain));
+  assert.deepEqual(formatStep(bold, 10, 15, 'bold'), plain);
+  assert.equal(stepText(editStepText(combined, 'Microsoft ExXcel permite calcular')), 'Microsoft ExXcel permite calcular');
+  assert.deepEqual(withFieldSpans({ text: stepText(plain) }, 'text', plain), { text: stepText(plain) });
+});
+
+test('Formato inline persiste por campo y celda, conserva Pasos y admite quitar marcas', () => fixture(async root => {
+  const data = await loadBook(root), source = data.pages[1];
+  const spans = formatStep([{ text: 'Microsoft Excel' }], 10, 15, 'bold');
+  const paragraph: Block = withFieldSpans({ id: 'rich-paragraph', type: 'paragraph', text: 'Microsoft Excel' }, 'text', spans);
+  const table: Block = withFieldSpans({ id: 'rich-table', type: 'table', columns: ['Nombre'], rows: [['Microsoft Excel']] }, 'rows/0/0', spans);
+  const steps: Block = { id: 'rich-steps', type: 'steps', items: [{ id: 'rich-step', content: [{ text: 'Insertar', highlight: true }] }] };
+  const card: Block = withFieldSpans({ id: 'rich-cards', type: 'cardContainer', title: 'Tarjetas', variant: 'info', columns: 2,
+    items: [{ id: 'rich-a', title: 'Uno', description: 'Microsoft Excel' }, { id: 'rich-b', title: 'Dos', description: 'Texto' }] }, 'items/rich-a/description', spans);
+  const saved = await savePage(source.id, { ...source, blocks: [paragraph, table, steps, card] }, root);
+  const reloaded = (await loadBook(root)).pages.find(page => page.id === source.id)!;
+  assert.deepEqual(reloaded.blocks, saved.blocks);
+  assert.deepEqual(fieldSpans(reloaded.blocks[0], 'text', 'Microsoft Excel'), spans);
+  assert.deepEqual(reloaded.blocks[2], steps);
+  const cloned = cloneBlock(card);
+  assert.equal(cloned.type, 'cardContainer');
+  if (cloned.type !== 'cardContainer') throw new Error('Tipo de tarjeta');
+  assert.deepEqual(fieldSpans(cloned, `items/${cloned.items[0].id}/description`, 'Microsoft Excel'), spans);
+  const duplicate = await duplicatePage(source.id, root);
+  const copiedCard = duplicate.pages.find(page => page.id === duplicate.selectedId)!.blocks[3];
+  if (copiedCard.type !== 'cardContainer') throw new Error('Tipo duplicado');
+  assert.deepEqual(fieldSpans(copiedCard, `items/${copiedCard.items[0].id}/description`, 'Microsoft Excel'), spans);
+  const cleared = withFieldSpans(reloaded.blocks[0], 'text', [{ text: 'Microsoft Excel' }]);
+  await savePage(source.id, { ...reloaded, blocks: [cleared, ...reloaded.blocks.slice(1)] }, root);
+  assert.equal((await loadBook(root)).pages.find(page => page.id === source.id)!.blocks[0].richText, undefined);
+  assert.equal(blockSchema.safeParse({ ...paragraph, richText: { text: [{ text: 'Excel', html: '<b>Excel</b>' }] } }).success, false);
+}));
 
 const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aN1sAAAAASUVORK5CYII=', 'base64');
 const program = 'Algoritmo MiPrograma\n    Definir edad Como Entero\n    Escribir "Ingresa tu edad:"\n    Leer edad\n\n    Si edad >= 18 Entonces\n        Escribir "Mayor de edad"\n    SiNo\n        Escribir "Menor de edad"\n    FinSi\nFinAlgoritmo\n';

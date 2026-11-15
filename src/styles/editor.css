@@ -183,6 +183,10 @@ svg { flex-shrink: 0; }
 .block-drop-marker.right { left: auto; }
 @media print { .selection-path, .column-drag-handle, .block-drop-marker { display: none !important; } }
 .inline-text { cursor: text; white-space: pre-wrap; overflow-wrap: anywhere; outline: none; }
+.text-formatting-toolbar { position: fixed; z-index: 1000; display: flex; gap: 3px; padding: 4px; background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 6px; box-shadow: 0 3px 12px #0002; }
+.text-formatting-toolbar button { min-width: 30px; padding: 4px 7px; font-size: 13px; }
+.text-formatting-toolbar button[aria-pressed="true"] { background: var(--color-ice); color: var(--color-navy); }
+@media print { .text-formatting-toolbar { display: none !important; } }
 .inline-text:empty { display: inline-block; min-width: 1ch; min-height: 1em; }
 @media print {
   .inline-text { outline: none !important; border: 0 !important; background: transparent !important; caret-color: transparent; }

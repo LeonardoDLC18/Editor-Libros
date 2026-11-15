@@ -41,6 +41,14 @@ El grado procede de `book.book.grade`; la unidad de `unitId`. `blank` nace con `
 
 ## Bloques
 
+### Formato inline compartido
+
+Los campos de texto siguen siendo strings. Solo al aplicar formato parcial, la página o el bloque puede incorporar `richText`, un mapa de campo a segmentos `{ text, bold?, italic?, highlight? }`, exactamente el modelo de Pasos. No se guarda HTML ni se migran páginas al leer. Ejemplo: `richText: { text: [{ text: "Microsoft " }, { text: "Excel", bold: true }] }` acompaña al `text` original. El esquema valida segmentos y marcas; al quitar todas las marcas se elimina esa entrada.
+
+Las claves son `title`, `subtitle`, `titleSecondary`, `text`, `description`, `label`, `content` o `caption`, según el campo. Los campos internos usan rutas: `items/<id>/title`, `items/<id>/description`, `items/<id>/text`, `items/<id>/cells/<índice>`, `options/<id>/label`, `columns/<id>/label`, `image/caption` o `items/<id>/image/caption`. Tablas: `columns/<índice>` y `rows/<fila>/<columna>`; cada celda se formatea de forma independiente. Duplicar bloque/página renueva también los ids de las rutas de formato. Los cambios estructurales de filas/columnas de tabla no reasignan estas rutas de coordenadas.
+
+Pasos conserva `items[].content`; las tarjetas informativas conservan `contentSpans`. Ambos comparten las mismas utilidades de división/fusión, marcas combinables y resaltado editorial. Los cambios desde Propiedades se concilian con los segmentos mediante `editStepText`; el string del campo sigue siendo el texto autoritativo. La barra ofrece únicamente B/I/Resaltar, aparece ante selección dentro de un campo inline y se oculta en impresión. No permite cambiar fuentes, tamaños, alineación ni colores.
+
 Todos tienen `id` único en todo el libro y `type`. Los identificadores usan letras minúsculas, números y guiones. El tipo define sus campos adicionales:
 
 | Tipo | Campos |

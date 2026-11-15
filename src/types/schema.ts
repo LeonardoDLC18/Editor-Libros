@@ -45,6 +45,7 @@ const questionsSchema = z.looseObject({
 });
 export type QuestionsBlock = z.infer<typeof questionsSchema>;
 export type StepSpan = z.infer<typeof stepSpanSchema>;
+const textFormatsSchema = z.record(z.string().min(1), z.array(stepSpanSchema));
 export type StepsBlock = z.infer<typeof stepsSchema>;
 
 const leafBlockSchema = z.discriminatedUnion('type', [
@@ -125,6 +126,13 @@ function migrateSteps(value: unknown): unknown {
 
 // Bounded construction also rejects excessive depth before recursively parsing it.
 function blocksAtDepth(depth: number): z.ZodType<Block> {
+  return blocksAtDepthBase(depth).superRefine((block, context) => {
+    if (block.richText === undefined) return;
+    const result = textFormatsSchema.safeParse(block.richText);
+    if (!result.success) context.addIssue({ code: 'custom', path: ['richText'], message: 'Segmentos de formato no válidos.' });
+  });
+}
+function blocksAtDepthBase(depth: number): z.ZodType<Block> {
   if (depth === maxContainerDepth) return z.preprocess((value, context) => {
     value = migrateSteps(value);
     if (value && typeof value === 'object' && 'type' in value && ['grid', 'columns', 'framedColumns', 'cardContainer', 'textImage'].includes(String(value.type))) {
@@ -177,6 +185,7 @@ export const pageSchema = z.looseObject({
   titleSecondary: z.string().optional(),
   eyebrow: text.optional(),
   subtitle: z.string().optional(),
+  richText: textFormatsSchema.optional(),
   theme: z.looseObject({ label: text, title: text }).optional(),
   blocks: z.array(blockSchema),
   metadata: z.looseObject({ status: z.enum(['demo', 'draft', 'ready']), description: text }),

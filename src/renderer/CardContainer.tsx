@@ -17,7 +17,7 @@ export function CardContainer({ block, selectedId, onSelect }: { block: CardCont
 }
 
 export function Card({ item, selectedId, onSelect, gallery = false, hasGalleryImages = false, imageFit, imageHeight = 28, optionalTitle = false }: { item: CardContainerBlock['items'][number]; selectedId?: string; onSelect?: (id: string) => void; gallery?: boolean; hasGalleryImages?: boolean; imageFit?: CardContainerBlock['imageFit']; imageHeight?: number; optionalTitle?: boolean }) {
-  const text = (field: 'title' | 'description', value: string) => <BlockText value={value} multiline={field === 'description'} selectionId={item.id} update={(block, value) => block.type === 'cardContainer'
+  const text = (field: 'title' | 'description', value: string) => <BlockText formatKey={optionalTitle ? field : `items/${item.id}/${field}`} value={value} multiline={field === 'description'} selectionId={item.id} update={(block, value) => block.type === 'cardContainer'
     ? { ...block, items: block.items.map(card => card.id === item.id ? { ...card, [field]: value } : card) }
     : block.type === 'card' ? { ...block, [field]: value } : block} />;
   return <section className={`container-card${selectedId === item.id ? ' is-selected' : ''}`} data-card-id={item.id}

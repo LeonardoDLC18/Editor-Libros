@@ -8,7 +8,7 @@ import { LocalImage } from './LocalImage';
 import { Card, CardContainer } from './CardContainer';
 import { Questions } from './Questions';
 import { Steps } from './Steps';
-import { BlockText, InlineBlockContext } from './InlineText';
+import { BlockText, InlineBlockContext, InlineContentContext } from './InlineText';
 import { editStepText, stepText } from '../utils/steps';
 import { Grid } from './Grid';
 import { isGrid } from '../utils/grid';
@@ -76,7 +76,7 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
     case 'paragraph': content = <p><BlockText field="text" value={block.text} multiline /></p>; break;
     case 'infoCard': content = <section className={`info-card info-card-${block.layout ?? 'stacked'}`}>
       {block.label && <div className="card-label"><BlockText field="label" value={block.label} /></div>}
-      <h3>{block.icon && <Icon name={block.icon} size={20} />}<BlockText field="title" value={block.title} /></h3><p><BlockText value={block.content} spans={block.contentSpans} multiline update={(current, value) => {
+      <h3>{block.icon && <Icon name={block.icon} size={20} />}<BlockText field="title" value={block.title} /></h3><p><BlockText format={(current, spans) => current.type === 'infoCard' ? { ...current, contentSpans: spans } : current} value={block.content} spans={block.contentSpans} multiline update={(current, value) => {
         if (current.type !== 'infoCard') return current;
         const contentSpans = editStepText(current.contentSpans ?? [{ text: current.content }], value);
         return { ...current, content: stepText(contentSpans), contentSpans };
@@ -121,5 +121,5 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
     onDragStart={event => { event.stopPropagation(); event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', block.id); drag.start(block.id); }}
     onDragEnd={event => { event.stopPropagation(); drag.end(); }}>⋮⋮</button>
     {drag.marker?.id === block.id && <span className={`block-drop-marker ${drag.marker.side ? drag.marker.after ? 'right' : 'left' : drag.marker.after ? 'after' : 'before'}`} aria-hidden="true" />}</>}
-    <InlineBlockContext.Provider value={block.id}>{content}</InlineBlockContext.Provider>{onSelect && narrow && <div className="column-width-warning" role="status">Este bloque puede resultar demasiado ancho para esta columna.</div>}</div>;
+    <InlineBlockContext.Provider value={block.id}><InlineContentContext.Provider value={block}>{content}</InlineContentContext.Provider></InlineBlockContext.Provider>{onSelect && narrow && <div className="column-width-warning" role="status">Este bloque puede resultar demasiado ancho para esta columna.</div>}</div>;
 }

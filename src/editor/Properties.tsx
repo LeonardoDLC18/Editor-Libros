@@ -72,8 +72,7 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
       }
       const button = key === 'c' && block && selectedId === block.id
         ? document.getElementById('copy-block')
-        : key === 'v' && clipboard && (!selectedId || selectedColumn)
-          ? document.getElementById('paste-block') : null;
+        : null;
       if (button instanceof HTMLButtonElement && !button.matches(':disabled')) {
         event.preventDefault();
         button.click();
@@ -90,11 +89,11 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
   const editBlock = (field: string, value: string | number | boolean | undefined) => {
     updateBlock(item => { const next = { ...item, [field]: value }; if (value === undefined) delete next[field]; return next; });
   };
-  const insert = (next: Block) => {
-    const depth = insertColumn ? (location?.depth ?? 0) + (selectedColumn ? 1 : 0) : 0;
+  const insert = (next: Block, destination = insertColumn) => {
+    const depth = destination ? (location?.depth ?? 0) + (destination !== location?.column ? 1 : 0) : 0;
     if (depth + containerDepth(next) > maxContainerDepth) { setUploadError(nestingMessage); return; }
     setUploadError('');
-    onChange(current => ({ ...current, blocks: updateSiblings(current.blocks, insertColumn?.id, items => {
+    onChange(current => ({ ...current, blocks: updateSiblings(current.blocks, destination?.id, items => {
       const blocks = [...items];
       const index = blocks.findIndex(item => item.id === block?.id);
       blocks.splice(index < 0 ? blocks.length : index + 1, 0, next);
@@ -102,17 +101,40 @@ export function Properties({ page, block, onChange, disabled, onSelectBlock, onU
     }) }));
     onSelectBlock(next.id); setAdding(false);
   };
-  const imageFile = async (file: File | undefined, replace: boolean | ((src: string, alt: string) => void)) => {
+  const imageFile = async (file: File | undefined, replace: boolean | ((src: string, alt: string) => void), pasted = false) => {
     if (!file || uploading) return;
     setUploading(true); onUploadBusy(true); setUploadError('');
     try {
       const src = await uploadImage(file);
       if (typeof replace === 'function') replace(src, file.name.replace(/\.[^.]+$/, '') || 'Imagen');
       else if (replace) editBlock('src', src);
-      else insert({ id: `image-${crypto.randomUUID()}`, type: 'image', src, alt: file.name.replace(/\.[^.]+$/, '') || 'Imagen', heightMm: 55, widthPercent: 100, fit: 'contain' });
-    } catch (error) { setUploadError(error instanceof Error ? error.message : 'No se pudo subir la imagen.'); }
+      else insert({ id: `image-${crypto.randomUUID()}`, type: 'image', src, alt: file.name.replace(/\.[^.]+$/, '') || 'Imagen', heightMm: 55, widthPercent: 100, fit: 'contain' }, pasted && selectedId === block?.id ? childSlots(block)[0] ?? insertColumn : insertColumn);
+    } catch (error) { setUploadError(pasted ? 'No se pudo pegar la imagen' : error instanceof Error ? error.message : 'No se pudo subir la imagen.'); }
     finally { setUploading(false); onUploadBusy(false); }
   };
+  useEffect(() => {
+    const paste = (event: ClipboardEvent) => {
+      if (disabled || event.defaultPrevented) return;
+      const target = event.target;
+      if (target instanceof Element && (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]') || (target instanceof HTMLElement && target.isContentEditable))) return;
+      const item = Array.from(event.clipboardData?.items ?? []).find(item => item.kind === 'file' && item.type.startsWith('image/'));
+      if (item) {
+        event.preventDefault();
+        const blob = item.getAsFile();
+        if (!blob) { setUploadError('No se pudo pegar la imagen'); return; }
+        const extension = ({ 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp' } as Record<string, string>)[blob.type] ?? 'invalid';
+        const file = new File([blob], `imagen.${extension}`, { type: blob.type });
+        void imageFile(file, block?.type === 'image' && selectedId === block.id, true);
+        return;
+      }
+      if (!window.getSelection()?.toString() && clipboard && (!selectedId || selectedColumn)) {
+        const button = document.getElementById('paste-block');
+        if (button instanceof HTMLButtonElement && !button.disabled) { event.preventDefault(); button.click(); }
+      }
+    };
+    window.addEventListener('paste', paste);
+    return () => window.removeEventListener('paste', paste);
+  });
   const move = (delta: number) => {
     onChange(current => {
       const found = blockLocation(current.blocks, block?.id);

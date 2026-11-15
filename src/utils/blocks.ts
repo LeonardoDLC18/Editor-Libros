@@ -31,8 +31,18 @@ export function identifiedItems(blocks: Block[]): { id: string }[] {
 /** Independent editable copy, including column, card and step identifiers. */
 export function cloneBlock(block: Block): Block {
   const copy = structuredClone(block);
-  for (const item of identifiedItems([copy])) item.id = `item-${crypto.randomUUID()}`;
+  const ids = new Map<string, string>();
+  for (const item of identifiedItems([copy])) {
+    const next = `item-${crypto.randomUUID()}`; ids.set(item.id, next); item.id = next;
+  }
+  remapTextFormatIds([copy], ids);
   return copy;
+}
+export function remapTextFormatIds(blocks: Block[], ids: Map<string, string>) {
+  for (const block of allBlocks(blocks)) if (block.richText) {
+    block.richText = Object.fromEntries(Object.entries(block.richText).map(([key, spans]) =>
+      [key.split('/').map(part => ids.get(part) ?? part).join('/'), spans]));
+  }
 }
 export function imageSources(blocks: Block[]): string[] {
   return allBlocks(blocks).flatMap(block => block.type === 'image' ? [block.src]

@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 import { InlineText, InlineEditingContext } from './InlineText';
+import { fieldSpans, withFieldSpans } from '../utils/richText';
 import type { Page } from '../types/schema';
 
 export function PageHeading({ page }: { page: Page }) {
   const editing = useContext(InlineEditingContext);
-  const text = (field: 'title' | 'subtitle' | 'titleSecondary', value: string) => <InlineText value={value}
+  const text = (field: 'title' | 'subtitle' | 'titleSecondary', value: string) => <InlineText value={value} spans={fieldSpans(page, field, value)}
+    onFormat={editing ? spans => editing.change(page => withFieldSpans(page, field, spans)) : undefined}
     onSelect={editing ? () => editing.select(undefined) : undefined}
-    onChange={editing ? value => editing.change(page => ({ ...page, [field]: value })) : undefined} />;
+    onChange={editing ? (value, spans) => editing.change(page => withFieldSpans({ ...page, [field]: value }, field, spans)) : undefined} />;
   const style = page.titleStyle ?? 'existing';
   const showTitle = style !== 'none' && !!page.title?.trim();
   const showSubtitle = !!page.subtitle?.trim();

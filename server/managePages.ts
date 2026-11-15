@@ -4,7 +4,7 @@ import path from 'node:path';
 import { z } from 'zod';
 import { bookSchema, idSchema, pageSchema, type Book, type Page, type PageOperationResult } from '../src/types/schema';
 import { changeTemplate } from '../src/utils/pageTemplate';
-import { identifiedItems } from '../src/utils/blocks';
+import { identifiedItems, remapTextFormatIds } from '../src/utils/blocks';
 import { loadBook, projectRoot } from './content';
 import { atomicWrite, backupFile, contentOperation, exactFile, SaveError, writeLocations } from './storage';
 
@@ -115,11 +115,13 @@ export function duplicatePage(id: string, root = projectRoot) {
       ...source, id: nextId, title,
       blocks: structuredClone(source.blocks),
     };
+    const ids = new Map<string, string>();
     identifiedItems(page.blocks).forEach((item, i) => {
       let value = `${nextId}-bloque-${i + 1}`;
       while (used.has(value)) value += '-nuevo';
-      used.add(value); item.id = value;
+      used.add(value); ids.set(item.id, value); item.id = value;
     });
+    remapTextFormatIds(page.blocks, ids);
     return insertPage(data.book, data.pages, page, index + 1, locations);
   });
 }

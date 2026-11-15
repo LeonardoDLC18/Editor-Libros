@@ -132,10 +132,17 @@ async function writePage(id: string, input: unknown, root: string): Promise<Page
   const updated: Page = {
     ...current, title: incoming.title, template: incoming.template,
     subtitle: incoming.subtitle, titleStyle: incoming.titleStyle, titleSecondary: incoming.titleSecondary,
+    richText: incoming.richText,
     blocks: incoming.blocks.map(reconcile),
   };
-  for (const key of ['title', 'subtitle', 'titleStyle', 'titleSecondary'] as const) {
+  for (const key of ['title', 'subtitle', 'titleStyle', 'titleSecondary', 'richText'] as const) {
     if (updated[key] === undefined) delete updated[key];
+  }
+  // Only structured inline marks are editable in addition to the existing fields.
+  for (const block of allBlocks(updated.blocks)) {
+    const next = allBlocks(incoming.blocks).find(item => item.id === block.id)!;
+    if (next.richText === undefined) delete block.richText;
+    else block.richText = next.richText;
   }
   // Only the minimal template defaults may be added/removed. Removing a default
   // supports undo after saving a template change; authored fields stay intact.
