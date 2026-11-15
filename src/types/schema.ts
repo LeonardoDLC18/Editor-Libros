@@ -16,8 +16,11 @@ const localAsset = text.regex(
 const tableSchema = z.looseObject({
   id, type: z.literal('table'), title: z.string().max(500).optional(),
   columns: z.array(z.string().max(10000)).min(1, 'La tabla necesita al menos una columna.').max(20),
+  columnWidths: z.array(z.number().positive().max(100)).optional(),
   rows: z.array(z.array(z.string().max(10000))).max(200),
 }).superRefine((table, context) => {
+  if (table.columnWidths && (table.columnWidths.length !== table.columns.length || Math.abs(table.columnWidths.reduce((a, b) => a + b, 0) - 100) > 0.001))
+    context.addIssue({ code: 'custom', path: ['columnWidths'], message: 'Los anchos deben corresponder a las columnas y sumar 100 %.' });
   table.rows.forEach((row, index) => {
     if (row.length !== table.columns.length) context.addIssue({ code: 'custom', path: ['rows', index], message: 'Cada fila debe tener una celda por columna.' });
   });

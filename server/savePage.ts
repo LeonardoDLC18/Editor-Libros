@@ -103,7 +103,7 @@ async function writePage(id: string, input: unknown, root: string): Promise<Page
           caption: next.caption, widthPercent: next.widthPercent };
       }
       if (block.type === 'table' && next.type === 'table') {
-        return { ...block, title: next.title, columns: next.columns, rows: next.rows };
+        return { ...block, title: next.title, columns: next.columns, rows: next.rows, columnWidths: next.columnWidths };
       }
       if (block.type === 'code' && next.type === 'code') {
         return { ...block, title: next.title, language: next.language, content: next.content };

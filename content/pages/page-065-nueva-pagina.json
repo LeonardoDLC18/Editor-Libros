@@ -1,0 +1,59 @@
+{
+  "id": "page-065-nueva-pagina",
+  "template": "lesson",
+  "title": "Tema 3",
+  "titleStyle": "split",
+  "titleSecondary": "Gráficos en Excel",
+  "subtitle": "",
+  "theme": {
+    "label": "TEMA",
+    "title": "Nuevo tema"
+  },
+  "blocks": [
+    {
+      "id": "item-f5aad69e-85a5-4276-9403-5252365a5cc1",
+      "type": "grid",
+      "gap": "small",
+      "rows": [
+        {
+          "id": "item-063c067a-afae-4ab3-acfb-9608660e5d7c",
+          "layout": "2-60-40",
+          "cells": [
+            {
+              "id": "item-96455f49-0434-4553-8f93-8cefe41e440e",
+              "column": 0,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "item-063c062a-80ef-4f42-8ddd-fe6b559a04f0",
+                  "type": "paragraph",
+                  "text": "Son representaciones visuales de los datos de una tabla. Permiten comparar cantidades, identificar tendencias y comprender la información de manera rápida.."
+                }
+              ]
+            },
+            {
+              "id": "item-fb76a061-fdf2-4f86-948f-66b438098bd2",
+              "column": 1,
+              "rowSpan": 1,
+              "blocks": [
+                {
+                  "id": "item-ef2a9639-3854-4937-ae7d-f94a6cf5e2d9",
+                  "type": "image",
+                  "src": "assets/images/imagen-0402ee40-d649-4398-8e50-57b359f8913d.png",
+                  "alt": "Imagen de ejemplo",
+                  "heightMm": 18,
+                  "fit": "cover",
+                  "widthPercent": 93
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

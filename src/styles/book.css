@@ -58,6 +58,9 @@
 .code-block code { font-family: var(--font-mono); color: var(--color-ink); }
 .content-block { min-width: 0; max-width: 100%; }
 .table-block table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: inherit; }
+.table-block { position: relative; }
+.table-resize-handle { position: absolute; top: 0; bottom: 0; width: 8px; transform: translateX(-50%); cursor: col-resize; touch-action: none; z-index: 2; }
+.table-resize-handle:hover, .table-resize-handle:active { background: color-mix(in srgb, var(--color-cyan) 35%, transparent); }
 .table-block caption { color: var(--color-navy); text-align: left; font-weight: 700; padding-bottom: var(--editorial-space-xs); white-space: pre-wrap; }
 .table-block th, .table-block td { border: var(--border-width) solid var(--color-line); padding: var(--editorial-space-s); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
 .table-block th { background: var(--color-blue); color: var(--color-paper); font-weight: 700; }

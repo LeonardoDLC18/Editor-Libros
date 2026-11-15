@@ -1,5 +1,7 @@
 # Modelo de datos — versión 1
 
+En `table`, `columnWidths` es opcional: contiene un porcentaje positivo por columna y suma 100 (tolerancia 0,001). Su ausencia distribuye las columnas uniformemente; arrastrar un separador en edición ajusta las dos columnas vecinas. Se conserva al guardar y en impresión. Agregar o eliminar columnas redistribuye proporcionalmente los anchos existentes.
+
 Los archivos se guardan en UTF-8. No se incluye contenido del libro dentro de componentes React. La definición ejecutable está en `src/types/schema.ts` (Zod); el lector, el guardado y `npm run validate` comparten esa definición. Los campos conocidos siguen siendo validados. Desde la etapa 2, se conservan campos adicionales en páginas, bloques, theme y metadata para no perder información al editar textos; no son controles editables. book.json y design.json mantienen el esquema estricto y rechazan campos desconocidos.
 
 ## content/book.json

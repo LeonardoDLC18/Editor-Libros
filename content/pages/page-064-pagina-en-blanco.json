@@ -21,27 +21,7 @@
                     {
                       "id": "item-b56419c1-05e2-4ffa-a9af-0fcf247e42d3",
                       "type": "paragraph",
-                      "text": "Los encabezados y pies de página son espacios que se repiten en la parte superior e inferior de un documento. Sirven para colocar información útil, como el título, el autor o el número de página."
-                    },
-                    {
-                      "id": "item-ccf4d705-ec35-4879-a35b-059ff1456b33",
-                      "type": "separator",
-                      "size": "normal"
-                    },
-                    {
-                      "id": "item-a542e667-547a-49d0-a75b-59719869e70e",
-                      "layout": "1-full",
-                      "columns": [
-                        {
-                          "id": "item-9a76f96c-a605-43de-b685-a3a9d87ff1d2",
-                          "blocks": []
-                        }
-                      ],
-                      "type": "framedColumns",
-                      "title": "¿Qué puedes agregar?",
-                      "icon": "page",
-                      "background": "white",
-                      "showBorder": false
+                      "text": "La función SI permite tomar una decisión según una condición. Devuelve un resultado si la condición es verdadera y otro si es falsa."
                     },
                     {
                       "id": "item-bcdab6ce-cffe-4ce4-adea-ae057cbc5a2c",
@@ -58,11 +38,20 @@
                 }
               ],
               "type": "framedColumns",
-              "title": "Encabezado y pie de página",
+              "title": "Función condicional SI",
               "showIcon": false,
               "background": "white",
               "showBorder": false,
               "headerStyle": "tab"
+            },
+            {
+              "id": "image-51c757d6-2498-40b5-b135-a8091a9a78bc",
+              "type": "image",
+              "src": "assets/images/imagen-5f56b2b6-2540-4399-98f5-8c00b1587455.png",
+              "alt": "imagen",
+              "heightMm": 50,
+              "fit": "contain",
+              "widthPercent": 100
             }
           ]
         },
@@ -105,6 +94,10 @@
                         "Condición",
                         "Es la comparación que se evalúa (por ejemplo, B2<40)."
                       ],
+                      "columnWidths": [
+                        35.72848570155491,
+                        64.27151429844508
+                      ],
                       "rows": [
                         [
                           "Valor_si_verdadero",
@@ -120,13 +113,188 @@
                 }
               ],
               "type": "framedColumns",
-              "title": "Nuevo título",
-              "icon": "chart"
+              "title": "¿Qué significa cada parte?",
+              "showBorder": false
             }
           ]
         }
       ],
       "type": "columns"
+    },
+    {
+      "id": "item-a922de28-0f48-43de-b39b-194c831946ce",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "item-bf9eebf5-7b97-479b-a47e-e543fedcb939",
+          "blocks": [
+            {
+              "id": "item-8b6fc358-dc4d-4026-8c1a-4ea04c273211",
+              "type": "separator",
+              "size": "small"
+            },
+            {
+              "id": "framed-columns-b2b0e30d-cf57-4949-8e0d-7bb97b986432",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "col-89baae71-90c6-4be5-802c-095189e21a28",
+                  "blocks": [
+                    {
+                      "id": "paragraph-9b356aec-b4b4-448e-87f0-f51b8376e5a5",
+                      "type": "paragraph",
+                      "text": "• Si la humedad es menor que 40, aparecerá Regar.\n• Si la humedad es igual o mayor que 40, aparecerá No regar.",
+                      "richText": {
+                        "text": [
+                          {
+                            "text": "• Si la humedad es "
+                          },
+                          {
+                            "text": "menor que 40",
+                            "bold": true
+                          },
+                          {
+                            "text": ", aparecerá "
+                          },
+                          {
+                            "text": "Regar",
+                            "highlight": true
+                          },
+                          {
+                            "text": ".\n• Si la humedad es "
+                          },
+                          {
+                            "text": "igual o mayor que 40",
+                            "bold": true
+                          },
+                          {
+                            "text": ", aparecerá "
+                          },
+                          {
+                            "text": "No regar.",
+                            "highlight": true
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Debemos decidir qué plantas necesitan riego",
+              "icon": "chart",
+              "showIcon": false,
+              "background": "white",
+              "showBorder": false
+            },
+            {
+              "id": "item-58f5c199-6908-48bb-8177-7716fdbfd29a",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-3b823e01-11da-43b4-80fa-eb68d797f246",
+                  "content": [
+                    {
+                      "text": "Selecciona la celda "
+                    },
+                    {
+                      "text": "D2",
+                      "bold": true
+                    },
+                    {
+                      "text": " y escribe:\n"
+                    },
+                    {
+                      "text": "=SI(B2<40;\"Regar\";\"No regar\")",
+                      "highlight": true
+                    }
+                  ]
+                },
+                {
+                  "id": "item-0a87d6ff-30e6-4bf6-914b-3fb299ca5e67",
+                  "content": [
+                    {
+                      "text": "Presiona "
+                    },
+                    {
+                      "text": "Enter",
+                      "bold": true
+                    },
+                    {
+                      "text": " Excel mostrará la palabra "
+                    },
+                    {
+                      "text": "Regar",
+                      "highlight": true
+                    },
+                    {
+                      "text": ", porque la humedad del tomate es 35."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-77f535ca-66fb-4ef5-a599-aaaa8bac776e",
+                  "content": [
+                    {
+                      "text": "Selecciona nuevamente "
+                    },
+                    {
+                      "text": "D2",
+                      "bold": true
+                    },
+                    {
+                      "text": " y arrastra el pequeño cuadrado de su esquina inferior derecha hasta "
+                    },
+                    {
+                      "text": "D6",
+                      "bold": true
+                    },
+                    {
+                      "text": ". Excel adaptará la fórmula para las demás plantas."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-d7017d63-bbd4-4579-ae33-07fb14a4b9f2",
+          "blocks": [
+            {
+              "id": "item-5023f454-bf7b-459a-a4b9-586687e43431",
+              "type": "image",
+              "src": "assets/images/imagen-1cf8f47e-0477-4001-8826-b9458edc2948.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 47,
+              "fit": "cover"
+            },
+            {
+              "id": "image-77be3cd3-90f8-4446-908b-d880c8072f00",
+              "type": "image",
+              "src": "assets/images/imagen-b8d74d11-c64d-43b5-acca-39f6dc1b0c0d.png",
+              "alt": "imagen",
+              "heightMm": 30,
+              "fit": "contain",
+              "widthPercent": 100
+            },
+            {
+              "id": "image-f4eed0a9-1633-4837-b3bb-eec01f559f1f",
+              "type": "image",
+              "src": "assets/images/imagen-c117506a-405c-4e45-a22e-2eeb6f457430.png",
+              "alt": "imagen",
+              "heightMm": 50,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada",
+      "icon": "chart",
+      "background": "white",
+      "headerStyle": "tab"
     }
   ],
   "metadata": {

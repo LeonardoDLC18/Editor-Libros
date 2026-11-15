@@ -302,6 +302,16 @@
       "headerStyle": "band"
     },
     {
+      "id": "separator-46b52289-e244-4d4a-af1f-ccd77dfa080a",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
+      "id": "item-992bd545-aa60-44db-9e96-139815be314a",
+      "type": "separator",
+      "size": "normal"
+    },
+    {
       "id": "frame-99021de1-c0d8-4148-a2da-22b71ade0742",
       "layout": "1-full",
       "columns": [
@@ -492,7 +502,8 @@
               ],
               "type": "framedColumns",
               "title": "Funciones a utilizar",
-              "icon": "chart"
+              "icon": "chart",
+              "showBorder": false
             }
           ]
         }

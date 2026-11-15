@@ -43,28 +43,16 @@
       "file": "pages/page-039-funciones-excel.json"
     },
     {
-      "id": "page-058-nueva-pagina",
-      "file": "pages/page-058-nueva-pagina.json"
+      "id": "page-064-pagina-en-blanco",
+      "file": "pages/page-064-pagina-en-blanco.json"
     },
     {
-      "id": "page-059-nueva-pagina",
-      "file": "pages/page-059-nueva-pagina.json"
+      "id": "page-065-nueva-pagina",
+      "file": "pages/page-065-nueva-pagina.json"
     },
     {
       "id": "page-060-pagina-en-blanco",
       "file": "pages/page-060-pagina-en-blanco.json"
-    },
-    {
-      "id": "page-061-pagina-en-blanco",
-      "file": "pages/page-061-pagina-en-blanco.json"
-    },
-    {
-      "id": "page-062-nueva-portada",
-      "file": "pages/page-062-nueva-portada.json"
-    },
-    {
-      "id": "page-064-pagina-en-blanco",
-      "file": "pages/page-064-pagina-en-blanco.json"
     }
   ]
 }

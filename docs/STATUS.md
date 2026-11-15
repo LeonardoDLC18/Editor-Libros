@@ -1,5 +1,11 @@
 # Estado del proyecto
 
+## Ancho manual de columnas de tabla — 14 de noviembre de 2026
+
+- Separadores de edición ajustan columnas adyacentes en porcentajes mediante `colgroup`; las tablas antiguas conservan distribución uniforme. El guardado y la validación comparten `columnWidths` opcional; agregar o eliminar columnas ajusta las proporciones.
+- Verificación: build y validate correctos; suite ejecutada fuera del sandbox por el fallo `uv_os_get_passwd`. Pendiente comprobar en navegador arrastre, zoom, edición, contenedores, guardado con recarga e impresión/PDF.
+- Siguiente acción exacta: recargar el editor y comprobar esos gestos y la persistencia en una tabla de prueba.
+
 ## Gestión segura de imágenes — 14 de noviembre de 2026
 
 - Deduplicación por tamaño/SHA-256 en el endpoint común de subida, pegado y reemplazo: reutiliza la ruta existente, incluidas imágenes anteriores en subcarpetas. Copiar/duplicar sigue compartiendo rutas; reemplazar nunca borra el archivo previo.

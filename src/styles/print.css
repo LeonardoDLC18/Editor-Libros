@@ -8,7 +8,7 @@
   .book-page { margin: 0; box-shadow: none; break-after: page; break-inside: avoid; }
   .book-page:last-child { break-after: auto; }
   .content-block { break-inside: avoid; outline: none !important; }
-  .table-warning, .column-width-warning, .separator-guide { display: none !important; }
+  .table-warning, .column-width-warning, .separator-guide, .table-resize-handle { display: none !important; }
   .column-blocks[tabindex]:empty::before { display: none !important; }
   .column-blocks, .container-card { outline: none !important; }
 }

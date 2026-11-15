@@ -61,6 +61,19 @@ const program = 'Algoritmo MiPrograma\n    Definir edad Como Entero\n    Escribi
 const table: Block = { id: 'table-prueba', type: 'table', title: 'Datos', columns: ['Nombre', 'Valor'], rows: [['Sensor', '10'], ['', '  espacios  ']] };
 const code: Block = { id: 'code-prueba', type: 'code', language: 'pseint', content: program };
 
+test('Anchos de tabla validan y persisten sin migrar tablas anteriores', () => fixture(async root => {
+  const source = (await loadBook(root)).pages[1];
+  await savePage(source.id, { ...source, blocks: [table] }, root);
+  const old = (await loadBook(root)).pages.find(page => page.id === source.id)!;
+  assert.equal(old.blocks[0].columnWidths, undefined);
+  const resized = { ...table, columnWidths: [65, 35] };
+  await savePage(source.id, { ...old, blocks: [resized] }, root);
+  assert.deepEqual((await loadBook(root)).pages.find(page => page.id === source.id)!.blocks[0].columnWidths, [65, 35]);
+  assert.equal(blockSchema.safeParse({ ...table, columnWidths: [100, 0] }).success, false);
+  assert.equal(blockSchema.safeParse({ ...table, columnWidths: [60, 30] }).success, false);
+  assert.equal(blockSchema.safeParse({ ...table, columnWidths: [100] }).success, false);
+}));
+
 async function fixture(run: (root: string) => Promise<void>) {
   const base = path.join(projectRoot, '.tmp');
   await mkdir(base, { recursive: true });
