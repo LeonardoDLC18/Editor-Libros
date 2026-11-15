@@ -43,10 +43,6 @@
       "file": "pages/page-039-funciones-excel.json"
     },
     {
-      "id": "page-057-pagina-en-blanco",
-      "file": "pages/page-057-pagina-en-blanco.json"
-    },
-    {
       "id": "page-058-nueva-pagina",
       "file": "pages/page-058-nueva-pagina.json"
     },
@@ -67,8 +63,8 @@
       "file": "pages/page-062-nueva-portada.json"
     },
     {
-      "id": "page-063-pagina-en-blanco",
-      "file": "pages/page-063-pagina-en-blanco.json"
+      "id": "page-064-pagina-en-blanco",
+      "file": "pages/page-064-pagina-en-blanco.json"
     }
   ]
 }

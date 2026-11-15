@@ -1,0 +1,136 @@
+{
+  "id": "page-064-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "columns-3b0b6282-bc66-4340-8e3b-4c6da2bda66a",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "col-17840a2e-11d8-447a-a1af-b81177443dbc",
+          "blocks": [
+            {
+              "id": "item-965b63db-0f4f-498a-9a60-b621368a2302",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "item-d9470df6-f253-4e62-9bf0-21c89565a30f",
+                  "blocks": [
+                    {
+                      "id": "item-b56419c1-05e2-4ffa-a9af-0fcf247e42d3",
+                      "type": "paragraph",
+                      "text": "Los encabezados y pies de página son espacios que se repiten en la parte superior e inferior de un documento. Sirven para colocar información útil, como el título, el autor o el número de página."
+                    },
+                    {
+                      "id": "item-ccf4d705-ec35-4879-a35b-059ff1456b33",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "item-a542e667-547a-49d0-a75b-59719869e70e",
+                      "layout": "1-full",
+                      "columns": [
+                        {
+                          "id": "item-9a76f96c-a605-43de-b685-a3a9d87ff1d2",
+                          "blocks": []
+                        }
+                      ],
+                      "type": "framedColumns",
+                      "title": "¿Qué puedes agregar?",
+                      "icon": "page",
+                      "background": "white",
+                      "showBorder": false
+                    },
+                    {
+                      "id": "item-bcdab6ce-cffe-4ce4-adea-ae057cbc5a2c",
+                      "layout": "1-full",
+                      "columns": [
+                        {
+                          "id": "item-276a0a50-d114-4e35-a855-8465b4e926a6",
+                          "blocks": []
+                        }
+                      ],
+                      "type": "columns"
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Encabezado y pie de página",
+              "showIcon": false,
+              "background": "white",
+              "showBorder": false,
+              "headerStyle": "tab"
+            }
+          ]
+        },
+        {
+          "id": "col-59694b0c-7f71-4466-b12d-b5f3435aafa2",
+          "blocks": [
+            {
+              "id": "card-4462dc72-2639-410b-9c95-b2095bff3600",
+              "type": "card",
+              "title": "Sintaxis",
+              "description": "=SI(condición; valor_si_verdadero; valor_si_falso)",
+              "richText": {
+                "description": [
+                  {
+                    "text": "=SI(",
+                    "bold": true
+                  },
+                  {
+                    "text": "condición; valor_si_verdadero; valor_si_falso",
+                    "italic": true
+                  },
+                  {
+                    "text": ")",
+                    "bold": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": "framed-columns-f4c94d14-702a-4924-9492-f644d85ad553",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "col-ab92c570-cf24-4818-84d0-dc0e309de295",
+                  "blocks": [
+                    {
+                      "id": "table-cd4d1164-db23-42ca-a5c4-78e1da608828",
+                      "type": "table",
+                      "columns": [
+                        "Condición",
+                        "Es la comparación que se evalúa (por ejemplo, B2<40)."
+                      ],
+                      "rows": [
+                        [
+                          "Valor_si_verdadero",
+                          "Es el resultado que aparecerá si la condición se cumple (por ejemplo, “Regar”)."
+                        ],
+                        [
+                          "Valor_si_falso",
+                          "Es el resultado que aparecerá si la condición no se cumple (por ejemplo, “No regar”)."
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Nuevo título",
+              "icon": "chart"
+            }
+          ]
+        }
+      ],
+      "type": "columns"
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}
