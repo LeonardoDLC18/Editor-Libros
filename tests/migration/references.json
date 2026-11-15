@@ -1,0 +1,1958 @@
+{
+  "formatVersion": 1,
+  "records": [
+    {
+      "id": "page-valid",
+      "rule": "Página válida con heading y paragraph",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "heading-one",
+            "type": "heading",
+            "text": "Título",
+            "level": 2
+          },
+          {
+            "id": "text-one",
+            "type": "paragraph",
+            "text": "Texto inventado."
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "heading-one",
+              "type": "heading",
+              "text": "Título",
+              "level": 2
+            },
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado."
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "empty-title",
+      "rule": "El título opcional admite cadena vacía",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "",
+        "blocks": [
+          {
+            "id": "text-one",
+            "type": "paragraph",
+            "text": "Texto inventado."
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado."
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "questions-mark",
+      "rule": "Preguntas modo mark",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "questions-one",
+            "type": "questions",
+            "mode": "mark",
+            "options": [
+              {
+                "id": "option-one",
+                "label": "Sí"
+              },
+              {
+                "id": "option-two",
+                "label": "No"
+              }
+            ],
+            "columns": [
+              {
+                "id": "question-column",
+                "label": "Respuesta"
+              }
+            ],
+            "items": [
+              {
+                "id": "question-item",
+                "text": "¿Ejemplo?",
+                "cells": [
+                  ""
+                ],
+                "lines": 1
+              }
+            ],
+            "numbered": true
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "questions-one",
+              "type": "questions",
+              "mode": "mark",
+              "options": [
+                {
+                  "id": "option-one",
+                  "label": "Sí"
+                },
+                {
+                  "id": "option-two",
+                  "label": "No"
+                }
+              ],
+              "columns": [
+                {
+                  "id": "question-column",
+                  "label": "Respuesta"
+                }
+              ],
+              "items": [
+                {
+                  "id": "question-item",
+                  "text": "¿Ejemplo?",
+                  "cells": [
+                    ""
+                  ],
+                  "lines": 1
+                }
+              ],
+              "numbered": true
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "questions-write",
+      "rule": "Preguntas modo write",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "questions-one",
+            "type": "questions",
+            "mode": "write",
+            "options": [
+              {
+                "id": "option-one",
+                "label": "Sí"
+              },
+              {
+                "id": "option-two",
+                "label": "No"
+              }
+            ],
+            "columns": [
+              {
+                "id": "question-column",
+                "label": "Respuesta"
+              }
+            ],
+            "items": [
+              {
+                "id": "question-item",
+                "text": "¿Ejemplo?",
+                "cells": [
+                  ""
+                ],
+                "lines": 1
+              }
+            ],
+            "numbered": true
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "questions-one",
+              "type": "questions",
+              "mode": "write",
+              "options": [
+                {
+                  "id": "option-one",
+                  "label": "Sí"
+                },
+                {
+                  "id": "option-two",
+                  "label": "No"
+                }
+              ],
+              "columns": [
+                {
+                  "id": "question-column",
+                  "label": "Respuesta"
+                }
+              ],
+              "items": [
+                {
+                  "id": "question-item",
+                  "text": "¿Ejemplo?",
+                  "cells": [
+                    ""
+                  ],
+                  "lines": 1
+                }
+              ],
+              "numbered": true
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "table-legacy",
+      "rule": "Tabla sin columnWidths",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "table-one",
+            "type": "table",
+            "columns": [
+              "A",
+              "B"
+            ],
+            "rows": [
+              [
+                "1",
+                "2"
+              ]
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "table-one",
+              "type": "table",
+              "columns": [
+                "A",
+                "B"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "2"
+                ]
+              ]
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "table-widths-valid",
+      "rule": "Anchos correspondientes que suman 100",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "table-one",
+            "type": "table",
+            "columns": [
+              "A",
+              "B"
+            ],
+            "rows": [
+              [
+                "1",
+                "2"
+              ]
+            ],
+            "columnWidths": [
+              40,
+              60
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "table-one",
+              "type": "table",
+              "columns": [
+                "A",
+                "B"
+              ],
+              "columnWidths": [
+                40,
+                60
+              ],
+              "rows": [
+                [
+                  "1",
+                  "2"
+                ]
+              ]
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "table-widths-sum",
+      "rule": "Rechazo de suma distinta de 100",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "table-one",
+            "type": "table",
+            "columns": [
+              "A",
+              "B"
+            ],
+            "rows": [
+              [
+                "1",
+                "2"
+              ]
+            ],
+            "columnWidths": [
+              40,
+              50
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "issues": [
+          {
+            "path": [
+              "blocks",
+              0,
+              "columnWidths"
+            ],
+            "code": "custom",
+            "message": "Los anchos deben corresponder a las columnas y sumar 100 %."
+          }
+        ]
+      }
+    },
+    {
+      "id": "table-widths-count",
+      "rule": "Rechazo de cantidad de anchos distinta",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "table-one",
+            "type": "table",
+            "columns": [
+              "A",
+              "B"
+            ],
+            "rows": [
+              [
+                "1",
+                "2"
+              ]
+            ],
+            "columnWidths": [
+              100
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "issues": [
+          {
+            "path": [
+              "blocks",
+              0,
+              "columnWidths"
+            ],
+            "code": "custom",
+            "message": "Los anchos deben corresponder a las columnas y sumar 100 %."
+          }
+        ]
+      }
+    },
+    {
+      "id": "rich-text",
+      "rule": "Marcas estructuradas negrita, cursiva y resaltado",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "text-one",
+            "type": "paragraph",
+            "text": "Texto inventado.",
+            "richText": {
+              "text": [
+                {
+                  "text": "Negrita",
+                  "bold": true
+                },
+                {
+                  "text": "Cursiva",
+                  "italic": true
+                },
+                {
+                  "text": "Resaltado",
+                  "highlight": true
+                }
+              ]
+            }
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado.",
+              "richText": {
+                "text": [
+                  {
+                    "text": "Negrita",
+                    "bold": true
+                  },
+                  {
+                    "text": "Cursiva",
+                    "italic": true
+                  },
+                  {
+                    "text": "Resaltado",
+                    "highlight": true
+                  }
+                ]
+              }
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "nested-three",
+      "rule": "Tres niveles de contenedor admitidos",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "container-2",
+            "type": "columns",
+            "layout": "1-full",
+            "columns": [
+              {
+                "id": "column-2",
+                "blocks": [
+                  {
+                    "id": "container-1",
+                    "type": "columns",
+                    "layout": "1-full",
+                    "columns": [
+                      {
+                        "id": "column-1",
+                        "blocks": [
+                          {
+                            "id": "container-0",
+                            "type": "columns",
+                            "layout": "1-full",
+                            "columns": [
+                              {
+                                "id": "column-0",
+                                "blocks": [
+                                  {
+                                    "id": "text-one",
+                                    "type": "paragraph",
+                                    "text": "Texto inventado."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "container-2",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "column-2",
+                  "blocks": [
+                    {
+                      "id": "container-1",
+                      "layout": "1-full",
+                      "columns": [
+                        {
+                          "id": "column-1",
+                          "blocks": [
+                            {
+                              "id": "container-0",
+                              "layout": "1-full",
+                              "columns": [
+                                {
+                                  "id": "column-0",
+                                  "blocks": [
+                                    {
+                                      "id": "text-one",
+                                      "type": "paragraph",
+                                      "text": "Texto inventado."
+                                    }
+                                  ]
+                                }
+                              ],
+                              "type": "columns"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "columns"
+                    }
+                  ]
+                }
+              ],
+              "type": "columns"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "nested-four",
+      "rule": "Cuarto nivel de contenedor rechazado",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "container-3",
+            "type": "columns",
+            "layout": "1-full",
+            "columns": [
+              {
+                "id": "column-3",
+                "blocks": [
+                  {
+                    "id": "container-2",
+                    "type": "columns",
+                    "layout": "1-full",
+                    "columns": [
+                      {
+                        "id": "column-2",
+                        "blocks": [
+                          {
+                            "id": "container-1",
+                            "type": "columns",
+                            "layout": "1-full",
+                            "columns": [
+                              {
+                                "id": "column-1",
+                                "blocks": [
+                                  {
+                                    "id": "container-0",
+                                    "type": "columns",
+                                    "layout": "1-full",
+                                    "columns": [
+                                      {
+                                        "id": "column-0",
+                                        "blocks": [
+                                          {
+                                            "id": "text-one",
+                                            "type": "paragraph",
+                                            "text": "Texto inventado."
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "issues": [
+          {
+            "path": [
+              "blocks",
+              0,
+              "columns",
+              0,
+              "blocks",
+              0,
+              "columns",
+              0,
+              "blocks",
+              0,
+              "columns",
+              0,
+              "blocks",
+              0
+            ],
+            "code": "custom",
+            "message": "Este bloque no puede anidarse a mayor profundidad."
+          }
+        ]
+      }
+    },
+    {
+      "id": "grid-valid",
+      "rule": "Distribución con cobertura completa",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "grid-one",
+            "type": "grid",
+            "rows": [
+              {
+                "id": "row-one",
+                "layout": "2-equal",
+                "cells": [
+                  {
+                    "id": "cell-one",
+                    "column": 0,
+                    "blocks": [
+                      {
+                        "id": "text-one",
+                        "type": "paragraph",
+                        "text": "Texto inventado."
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cell-two",
+                    "column": 1,
+                    "blocks": []
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "grid-one",
+              "type": "grid",
+              "rows": [
+                {
+                  "id": "row-one",
+                  "layout": "2-equal",
+                  "cells": [
+                    {
+                      "id": "cell-one",
+                      "column": 0,
+                      "blocks": [
+                        {
+                          "id": "text-one",
+                          "type": "paragraph",
+                          "text": "Texto inventado."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "cell-two",
+                      "column": 1,
+                      "blocks": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "grid-overlap",
+      "rule": "Rechazo de celdas superpuestas",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "grid-one",
+            "type": "grid",
+            "rows": [
+              {
+                "id": "row-one",
+                "layout": "2-equal",
+                "cells": [
+                  {
+                    "id": "cell-one",
+                    "column": 0,
+                    "blocks": [
+                      {
+                        "id": "text-one",
+                        "type": "paragraph",
+                        "text": "Texto inventado."
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cell-two",
+                    "column": 0,
+                    "blocks": []
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "issues": [
+          {
+            "path": [
+              "blocks",
+              0,
+              "rows"
+            ],
+            "code": "custom",
+            "message": "Las celdas no pueden superponerse ni salir de la fila."
+          }
+        ]
+      }
+    },
+    {
+      "id": "unknown-block",
+      "rule": "Rechazo de discriminante desconocido",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "unknown-one",
+            "type": "not-implemented"
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "issues": [
+          {
+            "path": [
+              "blocks",
+              0,
+              "type"
+            ],
+            "code": "invalid_union",
+            "message": "Entrada inválida"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trim-default",
+      "rule": "Normalización trim y default de separator",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "text-one",
+            "type": "paragraph",
+            "text": "  Texto normalizado.  "
+          },
+          {
+            "id": "separator-one",
+            "type": "separator"
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto normalizado."
+            },
+            {
+              "id": "separator-one",
+              "type": "separator",
+              "size": "normal"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "legacy-steps",
+      "rule": "Conversión real de cardContainer steps a steps",
+      "function": "pageSchema.safeParse",
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "legacy-one",
+            "type": "cardContainer",
+            "variant": "steps",
+            "title": "Pasos",
+            "columns": 2,
+            "items": [
+              {
+                "id": "step-one",
+                "title": "Primero",
+                "description": "Preparar."
+              },
+              {
+                "id": "step-two",
+                "title": "Después",
+                "description": "Revisar."
+              }
+            ]
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "legacy-one",
+              "type": "steps",
+              "title": "Pasos",
+              "items": [
+                {
+                  "id": "step-one",
+                  "content": [
+                    {
+                      "text": "Primero",
+                      "bold": true
+                    },
+                    {
+                      "text": "\nPreparar."
+                    }
+                  ],
+                  "title": "Primero",
+                  "description": "Preparar."
+                },
+                {
+                  "id": "step-two",
+                  "content": [
+                    {
+                      "text": "Después",
+                      "bold": true
+                    },
+                    {
+                      "text": "\nRevisar."
+                    }
+                  ],
+                  "title": "Después",
+                  "description": "Revisar."
+                }
+              ],
+              "variant": "steps",
+              "columns": 2
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      }
+    },
+    {
+      "id": "book-valid",
+      "rule": "Carga contextual válida y recurso local sintético",
+      "function": "loadBook",
+      "input": null,
+      "context": {
+        "book": {
+          "schemaVersion": 1,
+          "book": {
+            "id": "test-book",
+            "title": "Libro inventado",
+            "subtitle": "Prueba",
+            "grade": "1",
+            "author": "Suite",
+            "language": "es"
+          },
+          "units": [],
+          "pageOrder": [
+            {
+              "id": "page-one",
+              "file": "pages/page-one.json"
+            }
+          ]
+        },
+        "design": {
+          "schemaVersion": 1,
+          "name": "Diseño sintético",
+          "colors": {
+            "navy": "#112233",
+            "blue": "#112233",
+            "cyan": "#112233",
+            "paper": "#112233",
+            "ice": "#112233",
+            "ink": "#112233",
+            "muted": "#112233",
+            "line": "#112233",
+            "workspace": "#112233",
+            "surface": "#112233",
+            "success": "#112233",
+            "danger": "#112233"
+          },
+          "fonts": {
+            "body": "Arial",
+            "heading": "Arial",
+            "ui": "Arial",
+            "mono": "Consolas"
+          },
+          "typeScale": {
+            "bodyPt": 12,
+            "smallPt": 10,
+            "headingPt": 18,
+            "titlePt": 24,
+            "coverPt": 30,
+            "lineHeight": 1.4
+          },
+          "page": {
+            "widthMm": 210,
+            "heightMm": 297,
+            "marginMm": 15,
+            "headerMm": 20,
+            "footerMm": 12
+          },
+          "spacing": {
+            "blockMm": 4,
+            "cardMm": 4
+          },
+          "borders": {
+            "widthPx": 1,
+            "radiusMm": 2
+          },
+          "shadow": {
+            "yPx": 2,
+            "blurPx": 4,
+            "opacity": 0.1
+          }
+        },
+        "pages": [
+          {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              },
+              {
+                "id": "image-one",
+                "type": "image",
+                "src": "assets/images/test.svg",
+                "alt": "Cuadrado sintético",
+                "heightMm": 10,
+                "fit": "contain"
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        ],
+        "resources": {
+          "assets/images/test.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              }
+            ]
+          },
+          "design": {
+            "schemaVersion": 1,
+            "name": "Diseño sintético",
+            "colors": {
+              "navy": "#112233",
+              "blue": "#112233",
+              "cyan": "#112233",
+              "paper": "#112233",
+              "ice": "#112233",
+              "ink": "#112233",
+              "muted": "#112233",
+              "line": "#112233",
+              "workspace": "#112233",
+              "surface": "#112233",
+              "success": "#112233",
+              "danger": "#112233"
+            },
+            "fonts": {
+              "body": "Arial",
+              "heading": "Arial",
+              "ui": "Arial",
+              "mono": "Consolas"
+            },
+            "typeScale": {
+              "bodyPt": 12,
+              "smallPt": 10,
+              "headingPt": 18,
+              "titlePt": 24,
+              "coverPt": 30,
+              "lineHeight": 1.4
+            },
+            "page": {
+              "widthMm": 210,
+              "heightMm": 297,
+              "marginMm": 15,
+              "headerMm": 20,
+              "footerMm": 12
+            },
+            "spacing": {
+              "blockMm": 4,
+              "cardMm": 4
+            },
+            "borders": {
+              "widthPx": 1,
+              "radiusMm": 2
+            },
+            "shadow": {
+              "yPx": 2,
+              "blurPx": 4,
+              "opacity": 0.1
+            }
+          },
+          "pages": [
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "duplicate-block-book",
+      "rule": "IDs de bloques duplicados entre páginas se comprueban en loadBook",
+      "function": "loadBook",
+      "input": null,
+      "context": {
+        "book": {
+          "schemaVersion": 1,
+          "book": {
+            "id": "test-book",
+            "title": "Libro inventado",
+            "subtitle": "Prueba",
+            "grade": "1",
+            "author": "Suite",
+            "language": "es"
+          },
+          "units": [],
+          "pageOrder": [
+            {
+              "id": "page-one",
+              "file": "pages/page-one.json"
+            },
+            {
+              "id": "page-two",
+              "file": "pages/page-two.json"
+            }
+          ]
+        },
+        "design": {
+          "schemaVersion": 1,
+          "name": "Diseño sintético",
+          "colors": {
+            "navy": "#112233",
+            "blue": "#112233",
+            "cyan": "#112233",
+            "paper": "#112233",
+            "ice": "#112233",
+            "ink": "#112233",
+            "muted": "#112233",
+            "line": "#112233",
+            "workspace": "#112233",
+            "surface": "#112233",
+            "success": "#112233",
+            "danger": "#112233"
+          },
+          "fonts": {
+            "body": "Arial",
+            "heading": "Arial",
+            "ui": "Arial",
+            "mono": "Consolas"
+          },
+          "typeScale": {
+            "bodyPt": 12,
+            "smallPt": 10,
+            "headingPt": 18,
+            "titlePt": 24,
+            "coverPt": 30,
+            "lineHeight": 1.4
+          },
+          "page": {
+            "widthMm": 210,
+            "heightMm": 297,
+            "marginMm": 15,
+            "headerMm": 20,
+            "footerMm": 12
+          },
+          "spacing": {
+            "blockMm": 4,
+            "cardMm": 4
+          },
+          "borders": {
+            "widthPx": 1,
+            "radiusMm": 2
+          },
+          "shadow": {
+            "yPx": 2,
+            "blurPx": 4,
+            "opacity": 0.1
+          }
+        },
+        "pages": [
+          {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          },
+          {
+            "id": "page-two",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        ],
+        "resources": {
+          "assets/images/test.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "error": {
+          "kind": "ContentError",
+          "issues": [
+            "content/pages/page-two.json: identificador de bloque duplicado «text-one»."
+          ]
+        }
+      }
+    },
+    {
+      "id": "duplicate-block-save",
+      "rule": "savePage comprueba IDs del nuevo contenido contra otras páginas",
+      "function": "savePage",
+      "context": {
+        "book": {
+          "schemaVersion": 1,
+          "book": {
+            "id": "test-book",
+            "title": "Libro inventado",
+            "subtitle": "Prueba",
+            "grade": "1",
+            "author": "Suite",
+            "language": "es"
+          },
+          "units": [],
+          "pageOrder": [
+            {
+              "id": "page-one",
+              "file": "pages/page-one.json"
+            },
+            {
+              "id": "page-two",
+              "file": "pages/page-two.json"
+            }
+          ]
+        },
+        "design": {
+          "schemaVersion": 1,
+          "name": "Diseño sintético",
+          "colors": {
+            "navy": "#112233",
+            "blue": "#112233",
+            "cyan": "#112233",
+            "paper": "#112233",
+            "ice": "#112233",
+            "ink": "#112233",
+            "muted": "#112233",
+            "line": "#112233",
+            "workspace": "#112233",
+            "surface": "#112233",
+            "success": "#112233",
+            "danger": "#112233"
+          },
+          "fonts": {
+            "body": "Arial",
+            "heading": "Arial",
+            "ui": "Arial",
+            "mono": "Consolas"
+          },
+          "typeScale": {
+            "bodyPt": 12,
+            "smallPt": 10,
+            "headingPt": 18,
+            "titlePt": 24,
+            "coverPt": 30,
+            "lineHeight": 1.4
+          },
+          "page": {
+            "widthMm": 210,
+            "heightMm": 297,
+            "marginMm": 15,
+            "headerMm": 20,
+            "footerMm": 12
+          },
+          "spacing": {
+            "blockMm": 4,
+            "cardMm": 4
+          },
+          "borders": {
+            "widthPx": 1,
+            "radiusMm": 2
+          },
+          "shadow": {
+            "yPx": 2,
+            "blurPx": 4,
+            "opacity": 0.1
+          }
+        },
+        "pages": [
+          {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          },
+          {
+            "id": "page-two",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "other-text",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        ],
+        "resources": {
+          "assets/images/test.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+        }
+      },
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "other-text",
+            "type": "paragraph",
+            "text": "Texto inventado."
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "error": {
+          "kind": "SaveError",
+          "message": "Identificador de bloque duplicado: other-text."
+        },
+        "persisted": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado."
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        },
+        "backups": []
+      }
+    },
+    {
+      "id": "editable-text",
+      "rule": "Texto de paragraph editable con persistencia y respaldo aislados",
+      "function": "savePage",
+      "context": {
+        "book": {
+          "schemaVersion": 1,
+          "book": {
+            "id": "test-book",
+            "title": "Libro inventado",
+            "subtitle": "Prueba",
+            "grade": "1",
+            "author": "Suite",
+            "language": "es"
+          },
+          "units": [],
+          "pageOrder": [
+            {
+              "id": "page-one",
+              "file": "pages/page-one.json"
+            }
+          ]
+        },
+        "design": {
+          "schemaVersion": 1,
+          "name": "Diseño sintético",
+          "colors": {
+            "navy": "#112233",
+            "blue": "#112233",
+            "cyan": "#112233",
+            "paper": "#112233",
+            "ice": "#112233",
+            "ink": "#112233",
+            "muted": "#112233",
+            "line": "#112233",
+            "workspace": "#112233",
+            "surface": "#112233",
+            "success": "#112233",
+            "danger": "#112233"
+          },
+          "fonts": {
+            "body": "Arial",
+            "heading": "Arial",
+            "ui": "Arial",
+            "mono": "Consolas"
+          },
+          "typeScale": {
+            "bodyPt": 12,
+            "smallPt": 10,
+            "headingPt": 18,
+            "titlePt": 24,
+            "coverPt": 30,
+            "lineHeight": 1.4
+          },
+          "page": {
+            "widthMm": 210,
+            "heightMm": 297,
+            "marginMm": 15,
+            "headerMm": 20,
+            "footerMm": 12
+          },
+          "spacing": {
+            "blockMm": 4,
+            "cardMm": 4
+          },
+          "borders": {
+            "widthPx": 1,
+            "radiusMm": 2
+          },
+          "shadow": {
+            "yPx": 2,
+            "blurPx": 4,
+            "opacity": 0.1
+          }
+        },
+        "pages": [
+          {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              },
+              {
+                "id": "image-one",
+                "type": "image",
+                "src": "assets/images/test.svg",
+                "alt": "Cuadrado sintético",
+                "heightMm": 10,
+                "fit": "contain"
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        ],
+        "resources": {
+          "assets/images/test.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+        }
+      },
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "text-one",
+            "type": "paragraph",
+            "text": "Texto cambiado."
+          },
+          {
+            "id": "image-one",
+            "type": "image",
+            "src": "assets/images/test.svg",
+            "alt": "Cuadrado sintético",
+            "heightMm": 10,
+            "fit": "contain"
+          }
+        ],
+        "metadata": {
+          "status": "draft",
+          "description": "Página sintética."
+        }
+      },
+      "observed": {
+        "accepted": true,
+        "normalized": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto cambiado."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        },
+        "persisted": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto cambiado."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        },
+        "backups": [
+          {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              },
+              {
+                "id": "image-one",
+                "type": "image",
+                "src": "assets/images/test.svg",
+                "alt": "Cuadrado sintético",
+                "heightMm": 10,
+                "fit": "contain"
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "protected-metadata",
+      "rule": "metadata válida por esquema pero protegida por conciliación",
+      "function": "savePage",
+      "context": {
+        "book": {
+          "schemaVersion": 1,
+          "book": {
+            "id": "test-book",
+            "title": "Libro inventado",
+            "subtitle": "Prueba",
+            "grade": "1",
+            "author": "Suite",
+            "language": "es"
+          },
+          "units": [],
+          "pageOrder": [
+            {
+              "id": "page-one",
+              "file": "pages/page-one.json"
+            }
+          ]
+        },
+        "design": {
+          "schemaVersion": 1,
+          "name": "Diseño sintético",
+          "colors": {
+            "navy": "#112233",
+            "blue": "#112233",
+            "cyan": "#112233",
+            "paper": "#112233",
+            "ice": "#112233",
+            "ink": "#112233",
+            "muted": "#112233",
+            "line": "#112233",
+            "workspace": "#112233",
+            "surface": "#112233",
+            "success": "#112233",
+            "danger": "#112233"
+          },
+          "fonts": {
+            "body": "Arial",
+            "heading": "Arial",
+            "ui": "Arial",
+            "mono": "Consolas"
+          },
+          "typeScale": {
+            "bodyPt": 12,
+            "smallPt": 10,
+            "headingPt": 18,
+            "titlePt": 24,
+            "coverPt": 30,
+            "lineHeight": 1.4
+          },
+          "page": {
+            "widthMm": 210,
+            "heightMm": 297,
+            "marginMm": 15,
+            "headerMm": 20,
+            "footerMm": 12
+          },
+          "spacing": {
+            "blockMm": 4,
+            "cardMm": 4
+          },
+          "borders": {
+            "widthPx": 1,
+            "radiusMm": 2
+          },
+          "shadow": {
+            "yPx": 2,
+            "blurPx": 4,
+            "opacity": 0.1
+          }
+        },
+        "pages": [
+          {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Texto inventado."
+              },
+              {
+                "id": "image-one",
+                "type": "image",
+                "src": "assets/images/test.svg",
+                "alt": "Cuadrado sintético",
+                "heightMm": 10,
+                "fit": "contain"
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        ],
+        "resources": {
+          "assets/images/test.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+        }
+      },
+      "input": {
+        "id": "page-one",
+        "template": "blank",
+        "title": "Prueba",
+        "blocks": [
+          {
+            "id": "text-one",
+            "type": "paragraph",
+            "text": "Texto inventado."
+          },
+          {
+            "id": "image-one",
+            "type": "image",
+            "src": "assets/images/test.svg",
+            "alt": "Cuadrado sintético",
+            "heightMm": 10,
+            "fit": "contain"
+          }
+        ],
+        "metadata": {
+          "status": "ready",
+          "description": "Cambio protegido."
+        }
+      },
+      "observed": {
+        "accepted": false,
+        "error": {
+          "kind": "SaveError",
+          "message": "Solo se pueden modificar los campos editables de página y bloques. Conserva los demás campos."
+        },
+        "persisted": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        },
+        "backups": []
+      }
+    }
+  ]
+}

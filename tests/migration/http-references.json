@@ -1,0 +1,1907 @@
+{
+  "formatVersion": 1,
+  "records": [
+    {
+      "name": "book/read",
+      "request": {
+        "method": "GET",
+        "route": "/api/book",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              },
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              }
+            ]
+          },
+          "design": {
+            "schemaVersion": 1,
+            "name": "Diseño sintético",
+            "colors": {
+              "navy": "#112233",
+              "blue": "#112233",
+              "cyan": "#112233",
+              "paper": "#112233",
+              "ice": "#112233",
+              "ink": "#112233",
+              "muted": "#112233",
+              "line": "#112233",
+              "workspace": "#112233",
+              "surface": "#112233",
+              "success": "#112233",
+              "danger": "#112233"
+            },
+            "fonts": {
+              "body": "Arial",
+              "heading": "Arial",
+              "ui": "Arial",
+              "mono": "Consolas"
+            },
+            "typeScale": {
+              "bodyPt": 12,
+              "smallPt": 10,
+              "headingPt": 18,
+              "titlePt": 24,
+              "coverPt": 30,
+              "lineHeight": 1.4
+            },
+            "page": {
+              "widthMm": 210,
+              "heightMm": 297,
+              "marginMm": 15,
+              "headerMm": 20,
+              "footerMm": 12
+            },
+            "spacing": {
+              "blockMm": 4,
+              "cardMm": 4
+            },
+            "borders": {
+              "widthPx": 1,
+              "radiusMm": 2
+            },
+            "shadow": {
+              "yPx": 2,
+              "blurPx": 4,
+              "opacity": 0.1
+            }
+          },
+          "pages": [
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "save/valid",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Editado por HTTP."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "page": {
+            "id": "page-one",
+            "template": "blank",
+            "title": "Prueba",
+            "blocks": [
+              {
+                "id": "text-one",
+                "type": "paragraph",
+                "text": "Editado por HTTP."
+              },
+              {
+                "id": "image-one",
+                "type": "image",
+                "src": "assets/images/test.svg",
+                "alt": "Cuadrado sintético",
+                "heightMm": 10,
+                "fit": "contain"
+              }
+            ],
+            "metadata": {
+              "status": "draft",
+              "description": "Página sintética."
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "save/reread",
+      "request": {
+        "method": "GET",
+        "route": "/api/book",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              },
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              }
+            ]
+          },
+          "design": {
+            "schemaVersion": 1,
+            "name": "Diseño sintético",
+            "colors": {
+              "navy": "#112233",
+              "blue": "#112233",
+              "cyan": "#112233",
+              "paper": "#112233",
+              "ice": "#112233",
+              "ink": "#112233",
+              "muted": "#112233",
+              "line": "#112233",
+              "workspace": "#112233",
+              "surface": "#112233",
+              "success": "#112233",
+              "danger": "#112233"
+            },
+            "fonts": {
+              "body": "Arial",
+              "heading": "Arial",
+              "ui": "Arial",
+              "mono": "Consolas"
+            },
+            "typeScale": {
+              "bodyPt": 12,
+              "smallPt": 10,
+              "headingPt": 18,
+              "titlePt": 24,
+              "coverPt": 30,
+              "lineHeight": 1.4
+            },
+            "page": {
+              "widthMm": 210,
+              "heightMm": 297,
+              "marginMm": 15,
+              "headerMm": 20,
+              "footerMm": 12
+            },
+            "spacing": {
+              "blockMm": 4,
+              "cardMm": 4
+            },
+            "borders": {
+              "widthPx": 1,
+              "radiusMm": 2
+            },
+            "shadow": {
+              "yPx": 2,
+              "blurPx": 4,
+              "opacity": 0.1
+            }
+          },
+          "pages": [
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Editado por HTTP."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "save/protected",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Editado por HTTP."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "ready",
+            "description": "Página sintética."
+          }
+        }
+      },
+      "response": {
+        "status": 422,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "Solo se pueden modificar los campos editables de página y bloques. Conserva los demás campos."
+        }
+      }
+    },
+    {
+      "name": "save/invalid",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "page-one",
+          "template": "unknown",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Editado por HTTP."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      },
+      "response": {
+        "status": 422,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "template: Plantilla desconocida. Usa cover, lesson o blank."
+        }
+      }
+    },
+    {
+      "name": "pages/create",
+      "request": {
+        "method": "POST",
+        "route": "/api/pages",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "template": "cover"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              },
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              },
+              {
+                "id": "page-001-nueva-portada",
+                "file": "pages/page-001-nueva-portada.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-001-nueva-portada",
+              "template": "cover",
+              "title": "Título de la unidad",
+              "subtitle": "Escribe aquí una breve descripción del contenido.",
+              "blocks": [
+                {
+                  "id": "page-001-nueva-portada-imagen-principal",
+                  "type": "image",
+                  "src": "assets/images/preset-image.svg",
+                  "alt": "Imagen principal de la portada",
+                  "heightMm": 92,
+                  "fit": "contain",
+                  "widthPercent": 100
+                },
+                {
+                  "id": "page-001-nueva-portada-contenido-destacado",
+                  "layout": "2-60-40",
+                  "columns": [
+                    {
+                      "id": "page-001-nueva-portada-columna-objetivo",
+                      "blocks": [
+                        {
+                          "id": "page-001-nueva-portada-objetivo",
+                          "type": "infoCard",
+                          "label": "OBJETIVO",
+                          "title": "Lo que aprenderás",
+                          "content": "Describe aquí el aprendizaje principal de la unidad.",
+                          "icon": "target"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "page-001-nueva-portada-columna-recurso",
+                      "blocks": [
+                        {
+                          "id": "page-001-nueva-portada-imagen-complementaria",
+                          "type": "image",
+                          "src": "assets/images/preset-image.svg",
+                          "alt": "Recurso gráfico complementario",
+                          "heightMm": 42,
+                          "fit": "contain",
+                          "widthPercent": 100
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "framedColumns",
+                  "title": "Contenido destacado",
+                  "icon": "target",
+                  "background": "white",
+                  "headerStyle": "band"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página creada desde el editor."
+              }
+            }
+          ],
+          "selectedId": "page-001-nueva-portada"
+        }
+      }
+    },
+    {
+      "name": "pages/duplicate",
+      "request": {
+        "method": "POST",
+        "route": "/api/pages/page-one/duplicate",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              },
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              },
+              {
+                "id": "page-002-copia-de-prueba",
+                "file": "pages/page-002-copia-de-prueba.json"
+              },
+              {
+                "id": "page-001-nueva-portada",
+                "file": "pages/page-001-nueva-portada.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-002-copia-de-prueba",
+              "template": "blank",
+              "title": "Copia de Prueba",
+              "blocks": [
+                {
+                  "id": "page-002-copia-de-prueba-bloque-1",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "page-002-copia-de-prueba-bloque-2",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-001-nueva-portada",
+              "template": "cover",
+              "title": "Título de la unidad",
+              "subtitle": "Escribe aquí una breve descripción del contenido.",
+              "blocks": [
+                {
+                  "id": "page-001-nueva-portada-imagen-principal",
+                  "type": "image",
+                  "src": "assets/images/preset-image.svg",
+                  "alt": "Imagen principal de la portada",
+                  "heightMm": 92,
+                  "fit": "contain",
+                  "widthPercent": 100
+                },
+                {
+                  "id": "page-001-nueva-portada-contenido-destacado",
+                  "layout": "2-60-40",
+                  "columns": [
+                    {
+                      "id": "page-001-nueva-portada-columna-objetivo",
+                      "blocks": [
+                        {
+                          "id": "page-001-nueva-portada-objetivo",
+                          "type": "infoCard",
+                          "label": "OBJETIVO",
+                          "title": "Lo que aprenderás",
+                          "content": "Describe aquí el aprendizaje principal de la unidad.",
+                          "icon": "target"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "page-001-nueva-portada-columna-recurso",
+                      "blocks": [
+                        {
+                          "id": "page-001-nueva-portada-imagen-complementaria",
+                          "type": "image",
+                          "src": "assets/images/preset-image.svg",
+                          "alt": "Recurso gráfico complementario",
+                          "heightMm": 42,
+                          "fit": "contain",
+                          "widthPercent": 100
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "framedColumns",
+                  "title": "Contenido destacado",
+                  "icon": "target",
+                  "background": "white",
+                  "headerStyle": "band"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página creada desde el editor."
+              }
+            }
+          ],
+          "selectedId": "page-002-copia-de-prueba"
+        }
+      }
+    },
+    {
+      "name": "pages/delete-page-001-nueva-portada",
+      "request": {
+        "method": "DELETE",
+        "route": "/api/pages/page-001-nueva-portada",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              },
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              },
+              {
+                "id": "page-002-copia-de-prueba",
+                "file": "pages/page-002-copia-de-prueba.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-002-copia-de-prueba",
+              "template": "blank",
+              "title": "Copia de Prueba",
+              "blocks": [
+                {
+                  "id": "page-002-copia-de-prueba-bloque-1",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "page-002-copia-de-prueba-bloque-2",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ],
+          "selectedId": "page-002-copia-de-prueba"
+        }
+      }
+    },
+    {
+      "name": "pages/delete-page-002-copia-de-prueba",
+      "request": {
+        "method": "DELETE",
+        "route": "/api/pages/page-002-copia-de-prueba",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              },
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ],
+          "selectedId": "page-one"
+        }
+      }
+    },
+    {
+      "name": "pages/delete-page-two",
+      "request": {
+        "method": "DELETE",
+        "route": "/api/pages/page-two",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ],
+          "selectedId": "page-one"
+        }
+      }
+    },
+    {
+      "name": "pages/last-page",
+      "request": {
+        "method": "DELETE",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {}
+      },
+      "response": {
+        "status": 409,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "El libro necesita al menos una página. Crea otra antes de eliminar esta."
+        }
+      }
+    },
+    {
+      "name": "pages/reread",
+      "request": {
+        "method": "GET",
+        "route": "/api/book",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              }
+            ]
+          },
+          "design": {
+            "schemaVersion": 1,
+            "name": "Diseño sintético",
+            "colors": {
+              "navy": "#112233",
+              "blue": "#112233",
+              "cyan": "#112233",
+              "paper": "#112233",
+              "ice": "#112233",
+              "ink": "#112233",
+              "muted": "#112233",
+              "line": "#112233",
+              "workspace": "#112233",
+              "surface": "#112233",
+              "success": "#112233",
+              "danger": "#112233"
+            },
+            "fonts": {
+              "body": "Arial",
+              "heading": "Arial",
+              "ui": "Arial",
+              "mono": "Consolas"
+            },
+            "typeScale": {
+              "bodyPt": 12,
+              "smallPt": 10,
+              "headingPt": 18,
+              "titlePt": 24,
+              "coverPt": 30,
+              "lineHeight": 1.4
+            },
+            "page": {
+              "widthMm": 210,
+              "heightMm": 297,
+              "marginMm": 15,
+              "headerMm": 20,
+              "footerMm": 12
+            },
+            "spacing": {
+              "blockMm": 4,
+              "cardMm": 4
+            },
+            "borders": {
+              "widthPx": 1,
+              "radiusMm": 2
+            },
+            "shadow": {
+              "yPx": 2,
+              "blurPx": 4,
+              "opacity": 0.1
+            }
+          },
+          "pages": [
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "book-settings/order",
+      "request": {
+        "method": "PUT",
+        "route": "/api/book/page-order",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "pageOrder": [
+            "page-one",
+            "page-two"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              },
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "book-settings/numbering",
+      "request": {
+        "method": "PUT",
+        "route": "/api/book/numbering",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "pageNumbering": "alternate",
+          "firstContentPageSide": "left"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "pageNumbering": "alternate",
+            "firstContentPageSide": "left",
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              },
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              }
+            ]
+          },
+          "pages": [
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "book-settings/bad-order",
+      "request": {
+        "method": "PUT",
+        "route": "/api/book/page-order",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "pageOrder": [
+            "page-one",
+            "page-one"
+          ]
+        }
+      },
+      "response": {
+        "status": 422,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "El orden debe contener todas las páginas actuales, una sola vez y sin ids desconocidos."
+        }
+      }
+    },
+    {
+      "name": "book-settings/bad-numbering",
+      "request": {
+        "method": "PUT",
+        "route": "/api/book/numbering",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "pageNumbering": "invalid",
+          "firstContentPageSide": "left"
+        }
+      },
+      "response": {
+        "status": 422,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "pageNumbering: Opción inválida: se esperaba una de \"alternate\"|\"left\"|\"right\""
+        }
+      }
+    },
+    {
+      "name": "book-settings/reread",
+      "request": {
+        "method": "GET",
+        "route": "/api/book",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "book": {
+            "schemaVersion": 1,
+            "pageNumbering": "alternate",
+            "firstContentPageSide": "left",
+            "book": {
+              "id": "test-book",
+              "title": "Libro inventado",
+              "subtitle": "Prueba",
+              "grade": "1",
+              "author": "Suite",
+              "language": "es"
+            },
+            "units": [],
+            "pageOrder": [
+              {
+                "id": "page-one",
+                "file": "pages/page-one.json"
+              },
+              {
+                "id": "page-two",
+                "file": "pages/page-two.json"
+              }
+            ]
+          },
+          "design": {
+            "schemaVersion": 1,
+            "name": "Diseño sintético",
+            "colors": {
+              "navy": "#112233",
+              "blue": "#112233",
+              "cyan": "#112233",
+              "paper": "#112233",
+              "ice": "#112233",
+              "ink": "#112233",
+              "muted": "#112233",
+              "line": "#112233",
+              "workspace": "#112233",
+              "surface": "#112233",
+              "success": "#112233",
+              "danger": "#112233"
+            },
+            "fonts": {
+              "body": "Arial",
+              "heading": "Arial",
+              "ui": "Arial",
+              "mono": "Consolas"
+            },
+            "typeScale": {
+              "bodyPt": 12,
+              "smallPt": 10,
+              "headingPt": 18,
+              "titlePt": 24,
+              "coverPt": 30,
+              "lineHeight": 1.4
+            },
+            "page": {
+              "widthMm": 210,
+              "heightMm": 297,
+              "marginMm": 15,
+              "headerMm": 20,
+              "footerMm": 12
+            },
+            "spacing": {
+              "blockMm": 4,
+              "cardMm": 4
+            },
+            "borders": {
+              "widthPx": 1,
+              "radiusMm": 2
+            },
+            "shadow": {
+              "yPx": 2,
+              "blurPx": 4,
+              "opacity": 0.1
+            }
+          },
+          "pages": [
+            {
+              "id": "page-one",
+              "template": "blank",
+              "title": "Prueba",
+              "blocks": [
+                {
+                  "id": "text-one",
+                  "type": "paragraph",
+                  "text": "Texto inventado."
+                },
+                {
+                  "id": "image-one",
+                  "type": "image",
+                  "src": "assets/images/test.svg",
+                  "alt": "Cuadrado sintético",
+                  "heightMm": 10,
+                  "fit": "contain"
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            },
+            {
+              "id": "page-two",
+              "template": "blank",
+              "title": "Segunda sintética",
+              "blocks": [
+                {
+                  "id": "text-two",
+                  "type": "paragraph",
+                  "text": "Dos."
+                }
+              ],
+              "metadata": {
+                "status": "draft",
+                "description": "Página sintética."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "upload/binary",
+      "request": {
+        "method": "POST",
+        "route": "/api/images",
+        "headers": {
+          "Content-Type": "image/png",
+          "X-File-Name": "p%C3%ADxel%20de%20prueba.png"
+        },
+        "body": {
+          "hex": "89504e470d0a1a0a0000000d4948445200000001000000010804000000b51c0c020000000b4944415478da63fcff1f0003030200ef9a5f570000000049454e44ae426082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "src": "assets/images/imagen-<uuid-1>.png"
+        }
+      }
+    },
+    {
+      "name": "upload/deduplicate",
+      "request": {
+        "method": "POST",
+        "route": "/api/images",
+        "headers": {
+          "Content-Type": "image/png",
+          "X-File-Name": "p%C3%ADxel%20de%20prueba.png"
+        },
+        "body": {
+          "hex": "89504e470d0a1a0a0000000d4948445200000001000000010804000000b51c0c020000000b4944415478da63fcff1f0003030200ef9a5f570000000049454e44ae426082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "src": "assets/images/imagen-<uuid-1>.png"
+        }
+      }
+    },
+    {
+      "name": "upload/mismatch",
+      "request": {
+        "method": "POST",
+        "route": "/api/images",
+        "headers": {
+          "Content-Type": "image/jpeg",
+          "X-File-Name": "p%C3%ADxel%20de%20prueba.png"
+        },
+        "body": {
+          "hex": "89504e470d0a1a0a0000000d4948445200000001000000010804000000b51c0c020000000b4944415478da63fcff1f0003030200ef9a5f570000000049454e44ae426082"
+        }
+      },
+      "response": {
+        "status": 415,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "El archivo, su extensión y su tipo deben coincidir: PNG, JPG/JPEG o WebP."
+        }
+      }
+    },
+    {
+      "name": "image-cleanup/analyze",
+      "request": {
+        "method": "POST",
+        "route": "/api/images/analyze",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "references": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "total": 4,
+          "used": 2,
+          "unused": [
+            {
+              "src": "assets/images/draft.svg",
+              "size": 107,
+              "hash": "19c7ff672c6ce1d3507e1679a4796e898050dc1bb63591f1436c69e5d8575c1f"
+            },
+            {
+              "src": "assets/images/orphan.svg",
+              "size": 108,
+              "hash": "4dcffdf011c67db36704d91543fe58b599483f5c4c84dc1f5bad4bae1ad448ed"
+            }
+          ],
+          "recoverableBytes": 215
+        }
+      }
+    },
+    {
+      "name": "image-cleanup/draft",
+      "request": {
+        "method": "POST",
+        "route": "/api/images/analyze",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "references": [
+            "assets/images/draft.svg"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "total": 4,
+          "used": 3,
+          "unused": [
+            {
+              "src": "assets/images/orphan.svg",
+              "size": 108,
+              "hash": "4dcffdf011c67db36704d91543fe58b599483f5c4c84dc1f5bad4bae1ad448ed"
+            }
+          ],
+          "recoverableBytes": 108
+        }
+      }
+    },
+    {
+      "name": "image-cleanup/delete-unused",
+      "request": {
+        "method": "POST",
+        "route": "/api/images/delete-unused",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "selected": [
+            {
+              "src": "assets/images/draft.svg",
+              "size": 107,
+              "hash": "19c7ff672c6ce1d3507e1679a4796e898050dc1bb63591f1436c69e5d8575c1f"
+            },
+            {
+              "src": "assets/images/orphan.svg",
+              "size": 108,
+              "hash": "4dcffdf011c67db36704d91543fe58b599483f5c4c84dc1f5bad4bae1ad448ed"
+            },
+            {
+              "src": "assets/images/test.svg",
+              "size": 95,
+              "hash": "3a444526ae39603865c10d612532ca39a8fb164106261d518d00f9100a278d26"
+            }
+          ],
+          "references": [
+            "assets/images/draft.svg"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "deleted": [
+            "assets/images/orphan.svg"
+          ],
+          "skipped": [
+            "assets/images/draft.svg",
+            "assets/images/test.svg"
+          ],
+          "total": 3,
+          "used": 3,
+          "unused": [],
+          "recoverableBytes": 0
+        }
+      }
+    },
+    {
+      "name": "resources/get-/assets/images/test.svg",
+      "request": {
+        "method": "GET",
+        "route": "/assets/images/test.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "body": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+      }
+    },
+    {
+      "name": "resources/head-/assets/images/test.svg",
+      "request": {
+        "method": "HEAD",
+        "route": "/assets/images/test.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "body": ""
+      }
+    },
+    {
+      "name": "resources/get-/diagrams/svg/test.svg",
+      "request": {
+        "method": "GET",
+        "route": "/diagrams/svg/test.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "body": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1\" height=\"1\"><rect width=\"1\" height=\"1\"/></svg>"
+      }
+    },
+    {
+      "name": "resources/head-/diagrams/svg/test.svg",
+      "request": {
+        "method": "HEAD",
+        "route": "/diagrams/svg/test.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "body": ""
+      }
+    },
+    {
+      "name": "resources/reject-/assets/%2e%2e%2foutside.svg",
+      "request": {
+        "method": "GET",
+        "route": "/assets/%2e%2e%2foutside.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 404,
+        "contentType": "text/html; charset=utf-8",
+        "body": "Recurso no encontrado."
+      }
+    },
+    {
+      "name": "resources/reject-/diagrams/%2e%2e%2foutside.svg",
+      "request": {
+        "method": "GET",
+        "route": "/diagrams/%2e%2e%2foutside.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 404,
+        "contentType": "text/html; charset=utf-8",
+        "body": "Recurso no encontrado."
+      }
+    },
+    {
+      "name": "resources/reject-/assets/images/missing.svg",
+      "request": {
+        "method": "GET",
+        "route": "/assets/images/missing.svg",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 404,
+        "contentType": "text/html; charset=utf-8",
+        "body": "Recurso local no encontrado."
+      }
+    },
+    {
+      "name": "errors/malformed",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "{"
+      },
+      "response": {
+        "status": 400,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "Contenido inválido; revisa el archivo o el JSON enviado."
+        }
+      }
+    },
+    {
+      "name": "errors/unknown-route",
+      "request": {
+        "method": "GET",
+        "route": "/api/not-existing",
+        "headers": {},
+        "body": null
+      },
+      "response": {
+        "status": 404,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "Ruta de API no disponible en esta etapa."
+        }
+      }
+    },
+    {
+      "name": "errors/unknown-page",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/missing",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "missing",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      },
+      "response": {
+        "status": 404,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "La página no existe en el libro."
+        }
+      }
+    },
+    {
+      "name": "errors/validation",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "x",
+              "type": "unknown"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      },
+      "response": {
+        "status": 422,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "blocks.0.type: Tipo de bloque o valor no admitido."
+        }
+      }
+    },
+    {
+      "name": "errors/media-type",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "body": "{}"
+      },
+      "response": {
+        "status": 415,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "El contenido debe enviarse como JSON."
+        }
+      }
+    },
+    {
+      "name": "errors/origin",
+      "request": {
+        "method": "PUT",
+        "route": "/api/pages/page-one",
+        "headers": {
+          "Content-Type": "application/json",
+          "Origin": "https://other.invalid"
+        },
+        "body": {
+          "id": "page-one",
+          "template": "blank",
+          "title": "Prueba",
+          "blocks": [
+            {
+              "id": "text-one",
+              "type": "paragraph",
+              "text": "Texto inventado."
+            },
+            {
+              "id": "image-one",
+              "type": "image",
+              "src": "assets/images/test.svg",
+              "alt": "Cuadrado sintético",
+              "heightMm": 10,
+              "fit": "contain"
+            }
+          ],
+          "metadata": {
+            "status": "draft",
+            "description": "Página sintética."
+          }
+        }
+      },
+      "response": {
+        "status": 403,
+        "contentType": "application/json; charset=utf-8",
+        "body": {
+          "message": "Guarda desde la pestaña del editor local."
+        }
+      }
+    }
+  ]
+}

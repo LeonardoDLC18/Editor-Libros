@@ -1,5 +1,25 @@
 # Estado del proyecto
 
+## Migración PHP — etapa 1B: contratos HTTP — 15 de noviembre de 2026
+
+- Extraídas las rutas sin cambios de reglas/respuestas a `server/app.ts`, con `createApp(root = projectRoot)`; `server/index.ts` conserva arranque, loopback, puerto y raíz por defecto. Sin cambios en frontend, esquemas, dependencias ni libro real.
+- Añadidos escenarios HTTP, generador explícito y referencias independientes en `tests/migration/`: 36 intercambios en ocho grupos, con verificación de respuestas, disco, respaldo, orden/IDs, recursos, borradores, deduplicación y rechazos. Casos y referencias 1A intactos, sin regeneración.
+- Comando ejecutado: `node --import tsx --test tests/migration/http.test.ts tests/migration/validation.test.ts`: **32/32 correctas**, 0 fallidas/omitidas (10 HTTP según node:test, incluidos grupo padre/comparación, más 22 de 1A). Generación HTTP completada explícitamente con `node --import tsx tests/migration/generate-http.ts --update`.
+- Comprobaciones adicionales: `node node_modules/typescript/bin/tsc --noEmit`, correcta; archivos HTTP nuevos también comprobados con tsc y `--strict`, correctos. Una invocación adicional sin strict produjo TS2339 en server/savePage.ts:77; al usar strict como tsconfig.json pasó sin cambiar código. No se ejecutaron validate ni suites generales cuyos helpers leen/copien archivos reales; las comprobaciones de esta etapa usaron solo contenido inventado.
+- Cada grupo abrió su servidor propio en 127.0.0.1 con puerto disponible y raíz exclusiva en os.tmpdir(); guardas antes de peticiones destructivas/limpieza, cierre y eliminación en finally. No se llamó al servidor diario ni al hosting, ni se leyeron credenciales o el libro real.
+- Primer intento de generación: recurso sintético devolvió `404 !== 200` por estar bajo .tmp (sendFile bloquea carpetas ocultas). Se corrigió solo la ubicación de temporales. Ejecuciones finales fuera del sandbox de tsx, sin cambios de comportamiento para ocultar errores; sin discrepancias observadas en los contratos cubiertos.
+- Pendientes: 413/500, 405 y otras variantes no cubiertas; ninguna promesa de cobertura total de API. Próxima acción: revisar/conservar referencias HTTP y ejecutar el comando combinado ante cambios; no iniciar PHP ni otra etapa sin solicitud.
+
+## Migración PHP — etapa 1A: referencias Node — 15 de noviembre de 2026
+
+- Añadidos 21 casos sintéticos en `tests/migration/`: página válida, título vacío, ambos modos de preguntas, tablas antiguas/anchos válidos e inválidos, marcas de texto, profundidad 3/4, grid válido/solapado, IDs duplicados en libro/guardado, tipo desconocido, trim/defaults, steps legado y campos editables/protegidos.
+- Generación explícita ejecutada: `node --import tsx tests/migration/generate.ts --update`; produjo `references.json` con entradas/contextos y resultados observados de funciones reales, sin endpoints ni mocks del validador.
+- Verificación ejecutada: `node --import tsx --test tests/migration/validation.test.ts`: **22/22 correctas** (21 casos y control de lista/formato). La verificación no sobrescribe referencias; compara resultados normalizados, errores y persistencia/respaldo sintéticos.
+- El intento inicial restringido falló antes de ejecutar casos: `SystemError [ERR_SYSTEM_ERROR]: uv_os_get_passwd returned ENOMEM (not enough memory)` en tsx. Generación y verificación completadas fuera del aislamiento; no se ejecutó ninguna otra suite ni scripts del proyecto.
+- No se modificó ni leyó el contenido del libro real: diseño, páginas y SVG se inventaron; loadBook/savePage recibieron siempre una raíz temporal propia, limpiada al terminar. Sin cambios en src/, server/, content/, assets/ o dependencias. No se detectaron discrepancias en estos casos; no constituye una revisión completa del editor.
+- Pendientes: contratos HTTP y equivalencia PHP, resto de reglas/bloques, archivos hostiles y concurrencia; fuera de 1A. Ningún caso inicial quedó pendiente ni se declaró cubierto con mocks.
+- Siguiente acción exacta: revisar y conservar estas referencias; ejecutar el comando de verificación ante cambios futuros. No iniciar otra etapa sin solicitud.
+
 ## Men? contextual de p?ginas ? 15 de noviembre de 2026
 
 - Clic derecho sobre una p?gina ofrece Duplicar y Eliminar con las operaciones y confirmaci?n existentes, usando el id de la p?gina pulsada. El men? se ajusta al viewport y se cierra al elegir, hacer clic fuera, pulsar Escape, desplazar la lista o iniciar un arrastre.
