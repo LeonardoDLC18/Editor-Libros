@@ -173,3 +173,12 @@ svg { flex-shrink: 0; }
 .block-drop-marker.after { bottom: -4px; }
 
 .column-blocks.drag-empty { min-height: 20px; outline: 1px dashed var(--color-cyan); outline-offset: -1px; }
+
+.selection-path { padding: 4px 16px; font-size: 12px; }
+.selection-path button { border: 0; background: transparent; color: var(--color-blue); cursor: pointer; }
+.column-drag-handle { position: absolute; top: -12px; right: 2px; z-index: 6; opacity: 0; border: 0; color: var(--color-blue); cursor: grab; }
+.column-blocks:hover > .column-drag-handle, .column-blocks.is-selected > .column-drag-handle, .column-drag-handle:focus-visible { opacity: 1; }
+.block-drop-marker.left, .block-drop-marker.right { top: 0; bottom: 0; height: auto; width: 25%; background: color-mix(in srgb, var(--color-cyan) 22%, transparent); border: 1px solid var(--color-cyan); }
+.block-drop-marker.left { right: auto; }
+.block-drop-marker.right { left: auto; }
+@media print { .selection-path, .column-drag-handle, .block-drop-marker { display: none !important; } }

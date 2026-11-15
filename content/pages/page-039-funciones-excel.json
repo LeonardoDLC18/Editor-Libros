@@ -40,11 +40,11 @@
                 {
                   "id": "image-0af93d58-4a68-4fd7-ba16-ca5bab919fca",
                   "type": "image",
-                  "src": "assets/images/imagen-a7782197-b8f8-45bd-b2fa-333aef0a68b7.png",
+                  "src": "assets/images/imagen-0402ee40-d649-4398-8e50-57b359f8913d.png",
                   "alt": "Imagen de ejemplo",
                   "heightMm": 18,
                   "fit": "cover",
-                  "widthPercent": 100
+                  "widthPercent": 93
                 }
               ]
             }
@@ -358,7 +358,7 @@
     },
     {
       "id": "frame-fd42fd6d-7fad-40ea-9835-2316e952391c",
-      "layout": "2-60-40",
+      "layout": "2-equal",
       "columns": [
         {
           "id": "col-984a859f-6aa5-465d-86c6-73d6782ee043",
@@ -370,7 +370,7 @@
               "rows": [
                 {
                   "id": "row-117d7010-cab6-4932-81a8-bbc2e8cbf5e5",
-                  "layout": "2-equal",
+                  "layout": "1-full",
                   "cells": [
                     {
                       "id": "cell-752b219f-30b8-4d2a-b83a-ef20345d9870",
@@ -413,21 +413,14 @@
                               ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "cell-fd88745c-6c75-43c9-a8c8-91eb4a19a6ca",
-                      "column": 1,
-                      "rowSpan": 1,
-                      "blocks": [
+                        },
                         {
                           "id": "image-9a424ee2-6ab6-43eb-a4d2-884255a35a48",
                           "type": "image",
                           "src": "assets/images/imagen-fa5d2799-7374-4802-bf55-03660750e574.png",
                           "alt": "Captura de practica guiada en Excel",
-                          "heightMm": 47,
-                          "fit": "cover",
+                          "heightMm": 54,
+                          "fit": "contain",
                           "widthPercent": 100
                         }
                       ]
@@ -442,6 +435,26 @@
           "id": "col-6e325386-40e6-41be-bd13-8651dfab3432",
           "blocks": [
             {
+              "id": "separator-01e64c5f-7748-453f-8239-775a2318f0fc",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-781eac7e-d990-450d-b925-c6603842de3a",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-c7f7be5b-4bf0-46dc-89c1-1d1f0c9066b3",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-6f84faf8-a42c-4746-9dec-fca1c89ec396",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
               "id": "framed-columns-798672a8-9b1a-446e-b0e6-c32fd7044783",
               "layout": "1-full",
               "columns": [
@@ -452,17 +465,25 @@
                       "id": "table-208bef5d-1d6a-4f2f-9571-56efd83a8419",
                       "type": "table",
                       "columns": [
-                        "Columna 1",
-                        "Columna 2"
+                        "Celda/objetivo",
+                        "Función"
                       ],
                       "rows": [
                         [
-                          "",
-                          ""
+                          "D2: Agua total",
+                          "=SUMA(C2:C6)"
                         ],
                         [
-                          "",
-                          ""
+                          "D3: Humedad promedio",
+                          "=PROMEDIO(B2:B6)"
+                        ],
+                        [
+                          "D4: Humedad maxima",
+                          "=MAX(B2:B6)"
+                        ],
+                        [
+                          "D5: Humedad minima",
+                          "=MIN(B2:B6)"
                         ]
                       ]
                     }

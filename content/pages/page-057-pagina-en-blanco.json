@@ -3,7 +3,74 @@
   "template": "blank",
   "title": "",
   "subtitle": "",
-  "blocks": [],
+  "blocks": [
+    {
+      "id": "item-5d892921-09d9-42aa-932f-1355808b122b",
+      "layout": "2-equal",
+      "columns": [
+        {
+          "id": "item-21286fa9-be8b-44ee-b389-f57aa2915c3c",
+          "blocks": [
+            {
+              "id": "item-3e0980a7-45d7-40bb-b388-2debac82b3d3",
+              "type": "paragraph",
+              "text": "La función SI permite tomar una decisión según una condición. Devuelve un resultado si la condición es verdadera y otro si es falsa."
+            },
+            {
+              "id": "item-b4e45af8-8f47-4c8a-8fa8-e7cf897d3be0",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-c8b2d7f1-b20f-4935-93ad-3615d3e378d3",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "item-2cd3e619-dde8-4a7f-8ba6-07b5905ca6f2",
+                  "blocks": [
+                    {
+                      "id": "item-90e40a38-bc2f-4f42-893e-dc1188106360",
+                      "type": "image",
+                      "src": "assets/images/imagen-3971748a-00c8-4ecb-9257-02d30c3c2f1c.png",
+                      "alt": "ejemplo",
+                      "heightMm": 26,
+                      "fit": "contain",
+                      "widthPercent": 100
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "¿Qué puedes agregar?",
+              "icon": "page",
+              "background": "white",
+              "showBorder": false
+            }
+          ]
+        },
+        {
+          "id": "item-861bf526-89e8-479a-880e-17e3e479340b",
+          "blocks": [
+            {
+              "id": "item-03699e4a-37a6-42cb-b81f-64501ac06ac7",
+              "type": "image",
+              "src": "assets/images/imagen-f8008df2-a30f-4823-9c1b-ecd23e15de0a.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 66,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "La función condicional SI",
+      "showIcon": false,
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "tab"
+    }
+  ],
   "metadata": {
     "status": "draft",
     "description": "Página creada desde el editor."

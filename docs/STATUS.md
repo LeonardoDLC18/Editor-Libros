@@ -1,5 +1,14 @@
 # Estado del proyecto
 
+## Drag & Drop, fase 3 ? 14 de noviembre de 2026
+
+- Zonas laterales crean columns de dos columnas o ampl?an la fila existente hasta cuatro; arriba/abajo mantienen moveBlock. Tirador overlay para ordenar columnas/celdas completas dentro de su fila, con proporciones de fila conservadas. Ruta de selecci?n clickeable en el editor; encabezados y bordes conservan la selecci?n directa existente.
+- Cambios limitados a Editor, BlockDrag/BlockRenderer/Grid, nuevos ColumnHandle/SelectionPath y utils/structuralDrag, y estilos de controles. Sin cambios de esquema, dependencias, guardado ni contenido del libro.
+- Verificaci?n: build correcto fuera del sandbox (Vite encontr? acceso denegado dentro), validate correcto (12 p?ginas, 129 bloques), suite existente 34/34. Comprobaciones en memoria en `.tmp/structural-check.ts`: composici?n lateral, orden e ids, rechazo de quinta columna y ciclos, cambio aislado de fila grid.
+- L?mite conservador: no se transforman ni reordenan celdas de grids con rowSpan mayor que uno; se rechaza el drop. Columnas completas se reordenan dentro de su propia fila. La entrada Fila de la ruta lleva a su primera celda, que es el destino seleccionable existente.
+- Siguiente acci?n exacta: comprobar A?J en navegador, incluidos tiradores, ruta, encabezado, scroll, zoom y guardar/F5. Estas interacciones y la persistencia del nuevo flujo no se verificaron en esta sesi?n.
+
+
 ## Drag & Drop, fase 2 ? 14 de noviembre de 2026
 
 - Movimiento entre listas de bloques de la misma p?gina, con destinos vac?os, conservaci?n de ids y contenido, y rechazo de ciclos y profundidad excesiva. Usa el historial y guardado existentes; sin cambios de esquema ni dependencias.

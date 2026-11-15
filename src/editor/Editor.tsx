@@ -1,3 +1,5 @@
+import { reorderColumn, sideDrop } from '../utils/structuralDrag';
+import { SelectionPath } from './SelectionPath';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Block, BookData, Page, PageOperationResult } from '../types/schema';
 import { Icon } from '../components/Icon';
@@ -70,9 +72,23 @@ export function Editor({ data }: { data: BookData }) {
   }, [ref, scale]);
   const index = Math.max(0, editing.book.pageOrder.findIndex((entry) => entry.id === pageId));
   const page = editing.page;
-  const [dragMarker, setDragMarker] = useState<{ id: string; after: boolean }>();
+  const [dragMarker, setDragMarker] = useState<{ id: string; after: boolean; side?: boolean }>();
   const [dragging, setDragging] = useState(false);
+  const structuralMove = (id: string, after: boolean, column: boolean, commit: boolean) => {
+    const source = dragSource.current;
+    const operation = column ? reorderColumn : sideDrop;
+    const valid = !!source && operation(page.blocks, source, id, after) !== page.blocks;
+    if (commit) {
+      if (source) editing.change(current => { const blocks = operation(current.blocks, source, id, after); return blocks === current.blocks ? current : { ...current, blocks }; });
+      dragSource.current = undefined; setDragging(false); setDragMarker(undefined);
+    } else setDragMarker(valid ? { id, after, side: true } : undefined);
+    return valid;
+  };
   const drag = {
+    sideOver: (id: string, after: boolean) => structuralMove(id, after, false, false),
+    sideDrop: (id: string, after: boolean) => { structuralMove(id, after, false, true); },
+    columnOver: (id: string, after: boolean) => structuralMove(id, after, true, false),
+    columnDrop: (id: string, after: boolean) => { structuralMove(id, after, true, true); },
     active: dragging,
     marker: dragMarker,
     start: (id: string) => { dragSource.current = id; setDragging(true); setBlockId(id); },
@@ -197,6 +213,7 @@ export function Editor({ data }: { data: BookData }) {
         <div className="canvas-toolbar"><div className="canvas-context"><Icon name={preview ? 'eye' : 'page'} /><span>{preview ? 'Vista previa' : 'Lienzo'} <span className="toolbar-slash">/</span> <strong>{page.title}</strong></span></div>
           <div className="zoom-control"><label htmlFor="zoom">Zoom</label><select id="zoom" value={zoom} onChange={(event) => setZoom(event.target.value)}><option value="fit">Ajustar · {Math.round(fit * 100)} %</option>{Array.from({ length: 21 }, (_, i) => 50 + i * 5).map(percent => <option key={percent} value={String(percent / 100)}>{percent} %</option>)}</select></div>
         </div>
+        {!preview && <SelectionPath blocks={page.blocks} selectedId={blockId} onSelect={setBlockId} />}
         {editing.error && <div className="notice save-error" role="alert"><Icon name="info" /><span>{editing.error}</span></div>}
         {overflow && <div className="notice" role="status"><Icon name="info" /><span>El contenido excede una página A4. Abrevia o divide el contenido antes de imprimir; todo el texto permanece visible.</span></div>}
         <div className="canvas" ref={ref} onClick={preview || uploading ? undefined : () => setBlockId(undefined)}>

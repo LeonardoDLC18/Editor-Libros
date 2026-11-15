@@ -11,7 +11,8 @@ import { Steps } from './Steps';
 import { FormattedText } from './FormattedText';
 import { Grid } from './Grid';
 import { isGrid } from '../utils/grid';
-import { BlockDragContext } from './BlockDrag';
+import { ColumnHandle } from './ColumnHandle';
+import { BlockDragContext, dropSide } from './BlockDrag';
 
 export const blockLabels: Record<Block['type'], string> = {
   card: 'Tarjeta',
@@ -56,9 +57,12 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
         onClick={onSelect ? event => { event.stopPropagation(); onSelect(column.id); } : undefined}
         tabIndex={onSelect ? 0 : undefined} role={onSelect ? 'group' : undefined} aria-label={onSelect ? `Seleccionar columna ${index + 1}` : undefined}
         onKeyDown={onSelect ? event => { if (event.target === event.currentTarget && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); event.stopPropagation(); onSelect(column.id); } } : undefined}
+        onDragOverCapture={drag ? event => { const rect = event.currentTarget.getBoundingClientRect(); if (drag.columnOver(column.id, event.clientX >= rect.left + rect.width / 2)) { event.stopPropagation(); event.preventDefault(); } } : undefined}
+        onDropCapture={drag ? event => { const rect = event.currentTarget.getBoundingClientRect(); const after = event.clientX >= rect.left + rect.width / 2; if (drag.columnOver(column.id, after)) { event.stopPropagation(); event.preventDefault(); drag.columnDrop(column.id, after); } } : undefined}
         onDragOver={drag ? event => { event.stopPropagation(); if (drag.overSlot(column.id)) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; } } : undefined}
         onDrop={drag ? event => { event.stopPropagation(); event.preventDefault(); drag.dropSlot(column.id); } : undefined}
         key={column.id} data-column-id={column.id}>
+        <ColumnHandle id={column.id} />
         {column.blocks.map(child => <BlockRenderer key={child.id} block={child} inColumn selectedId={selectedId} onSelect={onSelect} onEditCell={onEditCell} />)}
       </div>)}
     </div>;
@@ -86,14 +90,16 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
     onDragOver={drag ? event => {
       event.stopPropagation();
       const rect = event.currentTarget.getBoundingClientRect();
-      if (drag.over(block.id, event.clientY >= rect.top + rect.height / 2)) {
+      const side = dropSide(rect, event.clientX);
+      if (side === undefined ? drag.over(block.id, event.clientY >= rect.top + rect.height / 2) : drag.sideOver(block.id, side)) {
         event.preventDefault(); event.dataTransfer.dropEffect = 'move';
       }
     } : undefined}
     onDrop={drag ? event => {
       event.stopPropagation(); event.preventDefault();
       const rect = event.currentTarget.getBoundingClientRect();
-      drag.drop(block.id, event.clientY >= rect.top + rect.height / 2);
+      const side = dropSide(rect, event.clientX);
+      if (side === undefined) drag.drop(block.id, event.clientY >= rect.top + rect.height / 2); else drag.sideDrop(block.id, side);
     } : undefined}
     style={block.type === 'separator' ? { height: { small: 6, normal: 10, large: 16 }[block.size] } : undefined}
     role={onSelect ? block.type === 'table' || isColumns(block) || isGrid(block) ? 'group' : 'button' : undefined}
@@ -106,9 +112,9 @@ export function BlockRenderer({ block, selectedId, onSelect, onEditCell, inColum
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onSelect(block.id); }
     } : undefined}
   >{drag && onSelect && <><button type="button" className="block-drag-handle" draggable aria-label={`Arrastrar ${blockLabels[block.type].toLowerCase()}`} title="Arrastrar para reordenar"
-    onClick={event => event.stopPropagation()}
+    onClick={event => { event.stopPropagation(); onSelect(block.id); }}
     onDragStart={event => { event.stopPropagation(); event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', block.id); drag.start(block.id); }}
     onDragEnd={event => { event.stopPropagation(); drag.end(); }}>⋮⋮</button>
-    {drag.marker?.id === block.id && <span className={`block-drop-marker ${drag.marker.after ? 'after' : 'before'}`} aria-hidden="true" />}</>}
+    {drag.marker?.id === block.id && <span className={`block-drop-marker ${drag.marker.side ? drag.marker.after ? 'right' : 'left' : drag.marker.after ? 'after' : 'before'}`} aria-hidden="true" />}</>}
     {content}{onSelect && narrow && <div className="column-width-warning" role="status">Este bloque puede resultar demasiado ancho para esta columna.</div>}</div>;
 }
