@@ -1,5 +1,19 @@
 # Estado del proyecto
 
+## Men? contextual de p?ginas ? 15 de noviembre de 2026
+
+- Clic derecho sobre una p?gina ofrece Duplicar y Eliminar con las operaciones y confirmaci?n existentes, usando el id de la p?gina pulsada. El men? se ajusta al viewport y se cierra al elegir, hacer clic fuera, pulsar Escape, desplazar la lista o iniciar un arrastre.
+- Verificaci?n: `npm.cmd run build` y `npm.cmd run validate` correctos (11 p?ginas, 158 bloques). `npm.cmd test` fall? en el entorno restringido por `uv_os_get_passwd` (ENOMEM). Interacciones y persistencia no verificadas en navegador en esta sesi?n.
+- Siguiente acci?n exacta: comprobar el men? sobre una p?gina distinta de la seleccionada, su cierre y posici?n, arrastre, creaci?n y guardado con Ctrl+S en el navegador.
+
+
+## Orden de páginas por arrastre — 15 de noviembre de 2026
+
+- Arrastre en el navegador con indicador de inserción y desplazamiento automático; selección y borradores conservados por id. El orden queda pendiente hasta el guardado global y usa el historial existente.
+- Verificación: validate correcto (11 páginas, 158 bloques); suite 41/41 fuera del sandbox tras error uv_os_get_passwd. Interacciones de arrastre y persistencia no verificadas en navegador en esta sesión.
+- Siguiente acción exacta: probar arrastre, desplazamiento, cancelación, borradores, numeración y guardado con recarga en el navegador.
+
+
 ## Ancho manual de columnas de tabla — 14 de noviembre de 2026
 
 - Separadores de edición ajustan columnas adyacentes en porcentajes mediante `colgroup`; las tablas antiguas conservan distribución uniforme. El guardado y la validación comparten `columnWidths` opcional; agregar o eliminar columnas ajusta las proporciones.

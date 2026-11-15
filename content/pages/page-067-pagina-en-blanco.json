@@ -3,7 +3,245 @@
   "template": "blank",
   "title": "",
   "subtitle": "",
-  "blocks": [],
+  "blocks": [
+    {
+      "id": "item-9f68f70c-d8c2-4817-80c9-dc641f075836",
+      "layout": "2-40-60",
+      "columns": [
+        {
+          "id": "item-5211ce65-5113-4629-91be-a5ad1334dc3d",
+          "blocks": [
+            {
+              "id": "item-968fada7-4403-414f-b050-f94bfea441aa",
+              "type": "separator",
+              "size": "small"
+            },
+            {
+              "id": "item-3bb90438-1dce-450a-b3df-cd224d67eec2",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "item-54a049a8-eaf9-4153-8261-d15e1fdebc3c",
+                  "blocks": [
+                    {
+                      "id": "item-9a318433-b147-45e9-9035-c56e81891858",
+                      "type": "paragraph",
+                      "text": "Utiliza los datos de las plantas para crear un gráfico de columnas en Excel."
+                    },
+                    {
+                      "id": "item-ef28daf8-ccb2-402e-90a8-f55a10650336",
+                      "type": "image",
+                      "src": "assets/images/imagen-19a4f292-3017-45f1-bfb0-428d3c9f9a0c.png",
+                      "alt": "imagen",
+                      "heightMm": 26,
+                      "fit": "cover",
+                      "widthPercent": 100
+                    },
+                    {
+                      "id": "item-acfbca06-1cf2-48f4-a28e-c147b4797a5a",
+                      "type": "separator",
+                      "size": "normal"
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Situación:",
+              "icon": "chart",
+              "showIcon": false,
+              "showBorder": false,
+              "headerStyle": "band"
+            },
+            {
+              "id": "item-00f956de-a9eb-4d38-be7f-d8927df93cbd",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-e04b4ef8-be16-4a68-96f5-328b825c1956",
+                  "content": [
+                    {
+                      "text": "Crear la tabla:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Abre Excel e ingresa los datos desde la celda A1."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-50fe4528-6ae1-425c-95ae-aaadf88caf91",
+                  "content": [
+                    {
+                      "text": "Seleccionar la información:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Selecciona el rango "
+                    },
+                    {
+                      "text": "A1:B6",
+                      "highlight": true
+                    },
+                    {
+                      "text": ", incluyendo encabezados y datos."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-1568c2cf-14f7-4ea4-959b-19d56f3245c4",
+                  "content": [
+                    {
+                      "text": "Insertar el gráfico: ",
+                      "bold": true
+                    },
+                    {
+                      "text": "Haz clic en Insertar. En el grupo "
+                    },
+                    {
+                      "text": "Gráficos",
+                      "highlight": true
+                    },
+                    {
+                      "text": ", elige Gráfico de columnas y selecciona Columna agrupada."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-4e13cdd1-b026-4282-91f6-f2740d384274",
+                  "content": [
+                    {
+                      "text": "Personalizar el gráfico:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Cambia el título por “"
+                    },
+                    {
+                      "text": "Humedad de las plantas",
+                      "highlight": true
+                    },
+                    {
+                      "text": "”. Activa las etiquetas de datos para mostrar los valores sobre las columnas."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-34ecaa7d-ccda-4e2e-bd16-6f45c0896be7",
+                  "content": [
+                    {
+                      "text": "Interpretar los resultados:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Observa el gráfico y responde las preguntas"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-e671b4ec-4fcc-4afa-a1df-08d93aee4dbe",
+          "blocks": [
+            {
+              "id": "item-cdbdb105-5355-42ed-ace7-1e0d72778ec3",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "item-7c16022b-e72e-4e36-b342-e127e82f1edc",
+                  "blocks": [
+                    {
+                      "id": "item-3b8c7ca4-7fef-40f3-a0e4-2f2553c9d727",
+                      "type": "paragraph",
+                      "text": "Representar y comparar la humedad de las plantas mediante un gráfico de columnas en Excel."
+                    },
+                    {
+                      "id": "item-12ab3f67-19c1-420c-bfb0-cc1d43cdf5ca",
+                      "type": "separator",
+                      "size": "normal"
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Objetivo",
+              "icon": "target",
+              "background": "white",
+              "headerStyle": "tab"
+            },
+            {
+              "id": "item-336f2415-b9d5-45d6-9797-a91b93afcba6",
+              "type": "image",
+              "src": "assets/images/imagen-1d89de06-d3f9-4faf-ab50-e0399859e9fe.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 74,
+              "fit": "cover",
+              "widthPercent": 100
+            },
+            {
+              "id": "image-fda03b23-07c4-4105-a01f-ca31d1e58c4d",
+              "type": "image",
+              "src": "assets/images/imagen-3366e187-c3c6-4a47-b29c-127032b44ed4.png",
+              "alt": "imagen",
+              "heightMm": 55,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada 2 - Graficamos la humedad del huerto",
+      "icon": "page",
+      "background": "white",
+      "headerStyle": "tab"
+    },
+    {
+      "id": "item-7ecfd2f7-1c75-4225-8697-667d4cebacda",
+      "type": "questions",
+      "mode": "write",
+      "title": "Observa y responde",
+      "options": [
+        {
+          "id": "item-9d26ba19-7264-4738-a647-36d8339b2f79",
+          "label": "Verdadero"
+        },
+        {
+          "id": "item-3b25034b-3bcd-4e9a-a027-3c235d8c587e",
+          "label": "Falso"
+        }
+      ],
+      "columns": [],
+      "items": [
+        {
+          "id": "item-386782ab-c5c6-42d6-9f7e-aa1bd03e21ec",
+          "text": "¿Qué planta presenta la mayor humedad?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "item-f39e7151-b2e2-4f17-b4db-17c84dc0f13e",
+          "text": "¿Cuál es el promedio de humedad de las plantas?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "item-4209f3f3-d35d-4345-934a-6b4482713932",
+          "text": "¿Qué ventaja ofrece el gráfico frente a la tabla?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "question-dc26ae04-e468-40c8-a002-f6411245461f",
+          "text": "Si todas las plantas necesitan al menos un 50 % de humedad para crecer bien, ¿qué plantas están en riesgo según el gráfico y cuánto le falta a cada una para llegar al mínimo?",
+          "cells": [],
+          "lines": 1
+        }
+      ],
+      "numbered": true
+    }
+  ],
   "metadata": {
     "status": "draft",
     "description": "Página creada desde el editor."

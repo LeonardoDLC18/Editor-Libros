@@ -90,6 +90,21 @@
               "size": "normal"
             },
             {
+              "id": "item-dbd0540f-3db2-4ae5-8871-35f619d66352",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-07a8a969-8edc-49b4-9abb-dbf05c9fcecc",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-932f1ba8-6dcc-446c-8e28-51e5c5a9aec6",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
               "id": "item-6225665c-8f76-445e-b578-9f00bea567c0",
               "type": "image",
               "src": "assets/images/imagen-f110cc0f-1a4b-4294-a758-770e3a7c989a.png",
@@ -122,6 +137,11 @@
           "blocks": [
             {
               "id": "separator-4b52ceef-2837-4f42-8713-27c6ce79c91a",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-abe403bf-e6d4-452a-82a9-8d457219942a",
               "type": "separator",
               "size": "normal"
             },
@@ -297,6 +317,21 @@
           "blocks": [
             {
               "id": "item-84c7e292-7ce8-4b7e-8e3a-0cbfbced3746",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-faf56822-5147-408e-8961-ce3152e706aa",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-5ec80311-1dae-49b5-a201-9a60c4cea5d6",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-407ac520-ec62-4b88-bafb-74841d2a48da",
               "type": "separator",
               "size": "normal"
             },

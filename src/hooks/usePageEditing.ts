@@ -15,6 +15,7 @@ const limit = 30;
 
 export function usePageEditing(initial: BookData, pageId: string, uploading = false) {
   const [book, setBook] = useState(initial.book);
+  const [savedOrder, setSavedOrder] = useState(() => initial.book.pageOrder.map(entry => entry.id));
   const [drafts, setDrafts] = useState<Record<string, Draft>>(() => Object.fromEntries(initial.pages.map(page => [page.id, draftFor(page)])));
   const [saving, setSaving] = useState<string>();
   const [structural, setStructural] = useState(false);
@@ -25,7 +26,8 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
   const current = drafts[pageId] || drafts[book.pageOrder[0].id];
   const pages = book.pageOrder.map(({ id }) => drafts[id].page);
   const dirtyIds = pages.filter(({ id }) => !same(drafts[id].page, drafts[id].saved)).map(({ id }) => id);
-  const dirty = dirtyIds.length > 0;
+  const orderDirty = JSON.stringify(book.pageOrder.map(entry => entry.id)) !== JSON.stringify(savedOrder);
+  const dirty = dirtyIds.length > 0 || orderDirty;
   const change = (update: (page: Page) => Page) => {
     if (structureFlight.current) return;
     setDrafts((all) => {
@@ -82,10 +84,15 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
     } finally { if (!globalSave) setSaving(undefined); }
   };
   const save = async () => {
-    if (inFlight.current || uploading || dirtyIds.length === 0) return;
+    if (inFlight.current || uploading || !dirty) return;
     inFlight.current = true;
     setSaving('all');
     try {
+      if (orderDirty) {
+        const ids = book.pageOrder.map(entry => entry.id);
+        try { await api.reorderPages(ids); setSavedOrder(ids); setStructureError(''); }
+        catch (error) { setStructureError(error instanceof Error ? error.message : 'No se pudo guardar el orden.'); }
+      }
       for (const id of dirtyIds) {
         try { await persist(id, true); } catch { /* Keep failed drafts for retry. */ }
       }
@@ -101,7 +108,16 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
       setDrafts(all => Object.fromEntries(result.pages.map(page => [page.id,
         all[page.id] || draftFor(page),
       ])));
-      setBook(result.book);
+      const serverOrder = result.book.pageOrder;
+      const localOrder = book.pageOrder.filter(entry => serverOrder.some(saved => saved.id === entry.id));
+      for (const [index, entry] of serverOrder.entries()) {
+        if (localOrder.some(current => current.id === entry.id)) continue;
+        const previous = serverOrder.slice(0, index).reverse().find(saved => localOrder.some(current => current.id === saved.id));
+        const position = previous ? localOrder.findIndex(current => current.id === previous.id) + 1 : 0;
+        localOrder.splice(position, 0, entry);
+      }
+      setBook({ ...result.book, pageOrder: localOrder });
+      setSavedOrder(serverOrder.map(entry => entry.id));
       if (resetsOrder) setOrderHistory({ past: [], future: [] });
       return result;
     } catch (error) {
@@ -111,13 +127,13 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
       inFlight.current = false; structureFlight.current = false; setStructural(false);
     }
   };
-  const order = async (ids: string[], direction?: 'past' | 'future') => {
+  const order = (ids: string[], direction?: 'past' | 'future') => {
+    if (inFlight.current || uploading) return;
     const previous = book.pageOrder.map(entry => entry.id);
-    const result = await structure(() => {
-      setBook({ ...book, pageOrder: ids.map(id => book.pageOrder.find(entry => entry.id === id)!) });
-      return api.reorderPages(ids);
-    }, false);
-    if (result) setOrderHistory(history => direction ? {
+    if (ids.length !== previous.length || new Set(ids).size !== previous.length || ids.some(id => !previous.includes(id)) || ids.every((id, i) => id === previous[i])) return;
+    setBook({ ...book, pageOrder: ids.map(id => book.pageOrder.find(entry => entry.id === id)!) });
+    setStructureError('');
+    setOrderHistory(history => direction ? {
       ...history,
       [direction]: history[direction].slice(0, -1),
       [direction === 'past' ? 'future' : 'past']: [...history[direction === 'past' ? 'future' : 'past'], previous].slice(-limit),
@@ -139,11 +155,11 @@ export function usePageEditing(initial: BookData, pageId: string, uploading = fa
     canUndo: !structural && !uploading && current.past.length > 0, canRedo: !structural && !uploading && current.future.length > 0,
     change, save, undo: () => travel('past'), redo: () => travel('future'),
     create: (template: Page['template']) => structure(() => api.createPage(template)),
-    duplicate: () => structure(async () => {
-      if (dirtyIds.includes(pageId)) await persist(pageId);
-      return api.duplicatePage(pageId);
+    duplicate: (id = pageId) => structure(async () => {
+      if (dirtyIds.includes(id)) await persist(id);
+      return api.duplicatePage(id);
     }),
-    remove: () => structure(() => api.deletePage(pageId)), move,
+    remove: (id = pageId) => structure(() => api.deletePage(id)), move, reorder: order,
     setNumbering: (numbering: BookNumbering) => structure(() => api.saveBookNumbering(numbering), false),
     canUndoOrder: !busy && orderHistory.past.length > 0,
     canRedoOrder: !busy && orderHistory.future.length > 0,

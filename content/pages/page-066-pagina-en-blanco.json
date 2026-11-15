@@ -5,6 +5,32 @@
   "subtitle": "",
   "blocks": [
     {
+      "id": "framed-columns-c95e1c73-07f6-40cc-bef0-2e282486acfe",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "col-598961bc-37a1-496b-9259-6714c0d5ac2b",
+          "blocks": [
+            {
+              "id": "image-c873efeb-6645-4f28-8696-1dc65f026b57",
+              "type": "image",
+              "src": "assets/images/imagen-9ff75d68-601d-448f-b7f6-662c0a5ad77b.png",
+              "alt": "imagen",
+              "heightMm": 75,
+              "fit": "contain",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Cambiar el título de un gráfico",
+      "icon": "chart",
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
       "id": "item-02ff99e8-7590-4a65-b88e-a44dabf69823",
       "layout": "2-equal",
       "columns": [
@@ -51,7 +77,7 @@
                 }
               ],
               "type": "framedColumns",
-              "title": "Situación: Reciclamos en nuestra escuela",
+              "title": "Situación:",
               "icon": "chart",
               "showIcon": false,
               "showBorder": false,
@@ -189,7 +215,7 @@
                 }
               ],
               "type": "framedColumns",
-              "title": "Objetico",
+              "title": "Objetivo",
               "icon": "target",
               "background": "white",
               "headerStyle": "tab"
@@ -292,60 +318,10 @@
         }
       ],
       "type": "framedColumns",
-      "title": "Práctica guiada",
+      "title": "Práctica guiada -  Reciclamos en nuestra escuela",
       "icon": "page",
       "background": "white",
       "headerStyle": "tab"
-    },
-    {
-      "id": "questions-77e8b070-871c-42f0-bec9-8181af51e620",
-      "type": "questions",
-      "mode": "write",
-      "title": "Observa y responde",
-      "options": [
-        {
-          "id": "option-28e81bb9-33be-4db7-a47a-eb7f3c1de053",
-          "label": "Verdadero"
-        },
-        {
-          "id": "option-bd54db0f-1ac8-4acb-a956-89a472067212",
-          "label": "Falso"
-        }
-      ],
-      "columns": [],
-      "items": [
-        {
-          "id": "question-2a575fa6-ff11-4b6c-9449-1d250f64872d",
-          "text": "¿Qué día se recolectaron más botellas? Escribe la función exacta que utilizaste.",
-          "cells": [],
-          "lines": 1
-        },
-        {
-          "id": "question-49069a04-5e68-4c42-bc0f-51393a97b9f7",
-          "text": "¿Cuál de los tres gráficos te permite identificar más fácilmente el día con más botellas recolectadas?",
-          "cells": [],
-          "lines": 1
-        },
-        {
-          "id": "question-a43a0b24-8732-465e-9af1-3374aec16716",
-          "text": "¿Qué día se recolectaron menos botellas?  Escribe la función exacta que utilizaste.",
-          "cells": [],
-          "lines": 1
-        },
-        {
-          "id": "question-207c17b8-c17b-487d-9a3e-5127ee8311db",
-          "text": "¿Por qué es importante representar los datos mediante gráficos?",
-          "cells": [],
-          "lines": 1
-        },
-        {
-          "id": "question-f867d2e0-b62e-45ba-b133-2d1406216d92",
-          "text": "¿Cuál de los tres gráficos muestra mejor el porcentaje de botellas recolectadas por día?",
-          "cells": [],
-          "lines": 1
-        }
-      ],
-      "numbered": true
     }
   ],
   "metadata": {

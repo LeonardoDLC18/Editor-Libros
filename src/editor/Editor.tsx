@@ -186,8 +186,10 @@ export function Editor({ data }: { data: BookData }) {
   const createPage = async (template: Page['template']) => {
     const result = await editing.create(template); selectResult(result); return !!result;
   };
-  const removePage = async () => {
-    const pending = editing.dirtyIds.includes(pageId) ? ' Los cambios sin guardar de esta página se descartarán; el respaldo contiene su última versión guardada.' : '';
+  const removePage = async (id = pageId) => {
+    const target = editing.pages.find(item => item.id === id);
+    if (!target) return;
+    const pending = editing.dirtyIds.includes(id) ? ' Los cambios sin guardar de esta página se descartarán; el respaldo contiene su última versión guardada.' : '';
     if (window.confirm(`¿Seguro que deseas eliminar «${page.title}»? Esta acción puede recuperarse desde el respaldo.${pending}`)) selectResult(await editing.remove());
   };
   const editCell = (id: string, row: number, column: number, value: string) => editing.change(current => ({
@@ -212,8 +214,8 @@ export function Editor({ data }: { data: BookData }) {
     </header>
     <div className="workspace">
       {!preview && <PageList data={liveData} selectedId={page.id} dirtyIds={editing.dirtyIds} onSelect={selectPage}
-        busy={editing.busy} onCreate={createPage} onDuplicate={async () => selectResult(await editing.duplicate())} onDelete={removePage}
-        onMove={editing.move} canUndoOrder={editing.canUndoOrder} canRedoOrder={editing.canRedoOrder} onUndoOrder={editing.undoOrder} onRedoOrder={editing.redoOrder} />}
+        busy={editing.busy} onCreate={createPage} onDuplicate={async id => selectResult(await editing.duplicate(id))} onDelete={removePage}
+        onMove={editing.move} onReorder={editing.reorder} canUndoOrder={editing.canUndoOrder} canRedoOrder={editing.canRedoOrder} onUndoOrder={editing.undoOrder} onRedoOrder={editing.redoOrder} />}
       <main className="work-area" aria-label={preview ? 'Vista previa del libro' : 'Lienzo del editor'}>
         <div className="canvas-toolbar"><div className="canvas-context"><Icon name={preview ? 'eye' : 'page'} /><span>{preview ? 'Vista previa' : 'Lienzo'} <span className="toolbar-slash">/</span> <strong>{page.title}</strong></span></div>
           <div className="zoom-control"><label htmlFor="zoom">Zoom</label><select id="zoom" value={zoom} onChange={(event) => setZoom(event.target.value)}><option value="fit">Ajustar · {Math.round(fit * 100)} %</option>{Array.from({ length: 21 }, (_, i) => 50 + i * 5).map(percent => <option key={percent} value={String(percent / 100)}>{percent} %</option>)}</select></div>
