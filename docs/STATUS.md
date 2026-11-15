@@ -1,5 +1,17 @@
 # Estado del proyecto
 
+## Edición inline de textos — 14 de noviembre de 2026
+
+- Infraestructura reutilizable `renderer/InlineText.tsx`, conectada a `usePageEditing.change` y `utils/blocks.updateBlock`, como Propiedades. Las celdas conservan el callback `editCell`. Actualización inmediata del borrador y del panel, dirty y guardado global existentes; sin autosave nuevo.
+- Integrada en títulos/subtítulos/texto secundario de página, headings, párrafos, tarjetas, rótulos, títulos de contenedores y marcos con filas, pasos, preguntas y etiquetas/celdas informativas, tablas, código y captions editables. Funciona dentro de columns/grids/presets. Pasos y tarjetas informativas reutilizan `editStepText` para conservar segmentos y marcas; no se almacena HTML.
+- Un clic enfoca el campo y selecciona su bloque/tarjeta; bordes y tiradores mantienen su selección. Enter confirma campos de una línea e inserta salto en los multilínea. Escape confirma y sale (no restaura el valor anterior); salir de foco confirma. Pegar admite solo texto. El foco sin cambios no marca dirty. Arrastrar texto no mueve bloques; los tiradores mantienen el drag existente.
+- Encabezado/pie, numeración, controles y texto administrativo siguen sin edición inline. Theme/eyebrow y captions de imágenes heredadas de Pasos permanecen de solo lectura porque el panel/guardado actual no permite editarlos. Vista previa e impresión renderizan texto sin controles inline.
+- Archivos: nuevo InlineText; ajustes en Editor, BlockRenderer, PageHeading, CardContainer, Steps, Questions, TableBlock y LocalImage; reglas puntuales en editor.css. Sin cambios de esquema, JSON del libro, dependencias, diseño global, servidor, sistema de atajos ni operaciones de drag.
+- Verificación final: `npm.cmd run build` correcto; `npm.cmd run validate` correcto (13 páginas, 139 bloques); `npm.cmd test` 34/34. Los intentos restringidos fallaron por `uv_os_get_passwd` y acceso de esbuild; los tres comandos finalizaron correctamente fuera del sandbox. `git diff --check` correcto.
+- Chrome con copia temporal del libro y servidor real en 5176: edición/selección, multilínea, tarjetas, resaltado de Pasos, preguntas, celda, marco con grid y texto anidado; sincronización con Propiedades en ambos sentidos; Ctrl+C/X/V, pegado literal, Delete sin eliminar bloque, Enter/Escape, salida de foco, Ctrl+S y recarga persistente. También título/subtítulo de página, captions editables y exclusión de captions heredados, selección de padre y reordenamiento real con mouse desde el tirador. Cero excepciones JavaScript. PDF generado sin contenteditable en las páginas de impresión. Sin impresión física ni recorrido exhaustivo de todas las combinaciones de contenedores.
+- Evidencias y auxiliares en `.tmp/inline-*.mjs`, `.tmp/inline-*-results.json`, `.tmp/inline-results.json` y `.tmp/inline-print.pdf`; libro de prueba en `.tmp/inline-book/`. El libro original no recibió escrituras de prueba.
+- Siguiente acción exacta: guardar cualquier borrador abierto, recargar **http://127.0.0.1:5173** y hacer clic sobre un texto del contenido A4 para editarlo; guardar con Ctrl+S. Las siguientes etapas siguen fuera de alcance.
+
 ## Drag & Drop, fase 3 ? 14 de noviembre de 2026
 
 - Zonas laterales crean columns de dos columnas o ampl?an la fila existente hasta cuatro; arriba/abajo mantienen moveBlock. Tirador overlay para ordenar columnas/celdas completas dentro de su fila, con proporciones de fila conservadas. Ruta de selecci?n clickeable en el editor; encabezados y bordes conservan la selecci?n directa existente.

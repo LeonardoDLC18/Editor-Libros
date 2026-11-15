@@ -10,6 +10,7 @@ import { designTokens } from '../utils/designTokens';
 import { PageList } from './PageList';
 import { Properties } from './Properties';
 import { allBlocks, blockLocation, childSlots, moveBlock, updateBlock } from '../utils/blocks';
+import { InlineEditingContext } from '../renderer/InlineText';
 import { BlockDragContext } from '../renderer/BlockDrag';
 
 export function Editor({ data }: { data: BookData }) {
@@ -218,7 +219,7 @@ export function Editor({ data }: { data: BookData }) {
         {overflow && <div className="notice" role="status"><Icon name="info" /><span>El contenido excede una página A4. Abrevia o divide el contenido antes de imprimir; todo el texto permanece visible.</span></div>}
         <div className="canvas" ref={ref} onClick={preview || uploading ? undefined : () => setBlockId(undefined)}>
           <div className="page-stage" style={{ '--page-scale': scale } as CSSProperties}>
-            <div className="page-transform"><BlockDragContext.Provider value={preview || uploading || editing.structural ? undefined : drag}><PageRenderer page={page} book={editing.book} selectedBlock={preview ? undefined : blockId} onSelectBlock={preview || uploading ? undefined : setBlockId} onEditCell={preview || editing.busy ? undefined : editCell} onOverflow={setOverflow} /></BlockDragContext.Provider></div>
+            <div className="page-transform"><BlockDragContext.Provider value={preview || uploading || editing.structural ? undefined : drag}><InlineEditingContext.Provider value={preview || uploading || editing.structural ? undefined : { change: editing.change, select: setBlockId }}><PageRenderer page={page} book={editing.book} selectedBlock={preview ? undefined : blockId} onSelectBlock={preview || uploading ? undefined : setBlockId} onEditCell={preview || editing.busy ? undefined : editCell} onOverflow={setOverflow} /></InlineEditingContext.Provider></BlockDragContext.Provider></div>
           </div>
         </div>
         <div className="canvas-bottom"><span>{preview ? 'Vista de lectura' : 'Selecciona un bloque para editarlo'}</span><div className="page-navigation">

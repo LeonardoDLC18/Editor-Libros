@@ -182,3 +182,8 @@ svg { flex-shrink: 0; }
 .block-drop-marker.left { right: auto; }
 .block-drop-marker.right { left: auto; }
 @media print { .selection-path, .column-drag-handle, .block-drop-marker { display: none !important; } }
+.inline-text { cursor: text; white-space: pre-wrap; overflow-wrap: anywhere; outline: none; }
+.inline-text:empty { display: inline-block; min-width: 1ch; min-height: 1em; }
+@media print {
+  .inline-text { outline: none !important; border: 0 !important; background: transparent !important; caret-color: transparent; }
+}
