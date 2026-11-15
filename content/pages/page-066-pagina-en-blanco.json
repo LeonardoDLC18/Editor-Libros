@@ -1,0 +1,355 @@
+{
+  "id": "page-066-pagina-en-blanco",
+  "template": "blank",
+  "title": "",
+  "subtitle": "",
+  "blocks": [
+    {
+      "id": "item-02ff99e8-7590-4a65-b88e-a44dabf69823",
+      "layout": "2-equal",
+      "columns": [
+        {
+          "id": "item-a0f8b83c-36b7-4d9e-9c97-9300b2551314",
+          "blocks": [
+            {
+              "id": "item-fb74bf87-f9fc-49a0-b701-0d4598803119",
+              "type": "separator",
+              "size": "small"
+            },
+            {
+              "id": "item-af45aa9d-9304-4b87-80d3-6015c914171a",
+              "layout": "2-60-40",
+              "columns": [
+                {
+                  "id": "item-5b41bb2a-ddbd-4c8b-9191-43e7371edc88",
+                  "blocks": [
+                    {
+                      "id": "item-fb05bb99-c812-43fd-b12c-795d6cc12073",
+                      "type": "paragraph",
+                      "text": "Durante una semana, los estudiantes recolectaron botellas de plástico para cuidar el medioambiente. Utiliza Excel para representar los resultados."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-42e28b7c-77e7-4180-8cdb-5dc74f81ec17",
+                  "blocks": [
+                    {
+                      "id": "separator-139c45ab-b218-4986-a047-17a77f8def20",
+                      "type": "separator",
+                      "size": "normal"
+                    },
+                    {
+                      "id": "item-d3d9f178-a005-4af3-9679-4282bd535fca",
+                      "type": "image",
+                      "src": "assets/images/imagen-81f2a7a4-2533-49cb-87c6-1f244953c774.png",
+                      "alt": "imagen",
+                      "heightMm": 26,
+                      "fit": "cover",
+                      "widthPercent": 100
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Situación: Reciclamos en nuestra escuela",
+              "icon": "chart",
+              "showIcon": false,
+              "showBorder": false,
+              "headerStyle": "band"
+            },
+            {
+              "id": "item-e40df219-8d7a-4788-b5f1-48178978f710",
+              "type": "steps",
+              "items": [
+                {
+                  "id": "item-ba73c7fd-07db-4e1b-ae3c-fb5df92b7f9c",
+                  "content": [
+                    {
+                      "text": "Crear la tabla:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Abre Excel e ingresa los datos en las columnas "
+                    },
+                    {
+                      "text": "A y B",
+                      "bold": true
+                    },
+                    {
+                      "text": "."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-27d21cfa-e05e-44d1-8a27-ca6600a33c0a",
+                  "content": [
+                    {
+                      "text": "Seleccionar los datos:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Selecciona el rango "
+                    },
+                    {
+                      "text": "A1:B6",
+                      "highlight": true
+                    },
+                    {
+                      "text": ", incluyendo los encabezados."
+                    }
+                  ]
+                },
+                {
+                  "id": "item-3615a961-4eb8-42d3-8224-87803d0ae070",
+                  "content": [
+                    {
+                      "text": "Insertar un gráfico de barras:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Haz clic en "
+                    },
+                    {
+                      "text": "Insertar → Gráficos y selecciona un gráfico de barras o columnas.",
+                      "highlight": true
+                    },
+                    {
+                      "text": " Coloca el título “Botellas recolectadas”."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-330be50a-4645-4eca-814d-4aee0510ef9f",
+                  "content": [
+                    {
+                      "text": "Crear otros gráficos:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Con los mismos datos, inserta un gráfico de líneas y uno circular."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-df2cf7ea-0b29-49ae-938d-0aeb147d7bc5",
+                  "content": [
+                    {
+                      "text": "Personalizar: ",
+                      "bold": true
+                    },
+                    {
+                      "text": "Cambia los colores, agrega títulos y verifica que los datos estén correctamente representados."
+                    }
+                  ]
+                },
+                {
+                  "id": "step-cfaea57a-d564-4768-b519-fac8867de021",
+                  "content": [
+                    {
+                      "text": "Guardar el archivo:",
+                      "bold": true
+                    },
+                    {
+                      "text": " Guarda tu trabajo con el nombre “"
+                    },
+                    {
+                      "text": "Reciclaje_Semanal.xlsx",
+                      "highlight": true
+                    },
+                    {
+                      "text": "”."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "item-9935ca56-1ebc-4697-9af8-1d302bacc108",
+          "blocks": [
+            {
+              "id": "item-e3d0c4a7-ef8d-463a-9691-767d12d32013",
+              "layout": "1-full",
+              "columns": [
+                {
+                  "id": "item-f3b72fe8-c706-4032-a577-2f6014a80a8e",
+                  "blocks": [
+                    {
+                      "id": "item-41581255-59d6-462a-a843-ed9d63b9947a",
+                      "type": "paragraph",
+                      "text": "Crear gráficos de barras, líneas y circular para representar e interpretar información."
+                    },
+                    {
+                      "id": "item-b0f145a7-b016-4da6-8f83-f55f2d6724f1",
+                      "type": "separator",
+                      "size": "normal"
+                    }
+                  ]
+                }
+              ],
+              "type": "framedColumns",
+              "title": "Objetico",
+              "icon": "target",
+              "background": "white",
+              "headerStyle": "tab"
+            },
+            {
+              "id": "item-3722bc26-e571-4df6-917f-f1aa8a08cb5e",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-b9b83141-c147-46f8-8e6f-672e96928ee7",
+              "type": "image",
+              "src": "assets/images/imagen-b838d8a9-e175-4f4c-a246-e973e16ca1fa.png",
+              "alt": "Espacio para una imagen: reemplázala desde Propiedades",
+              "heightMm": 67,
+              "fit": "cover"
+            },
+            {
+              "id": "separator-2f0f38ed-2ba7-4174-8832-67eba128354c",
+              "type": "separator",
+              "size": "normal"
+            },
+            {
+              "id": "item-2c1010c0-8f66-447d-8b23-c37200e67436",
+              "layout": "1-full",
+              "columns": [],
+              "type": "framedColumns",
+              "title": "Reto adicional",
+              "showIcon": false,
+              "background": "white",
+              "showBorder": true,
+              "headerStyle": "band",
+              "rows": [
+                {
+                  "id": "row-294f46e7-839c-4def-8b8e-dc2e88edec5c",
+                  "layout": "1-full",
+                  "cells": [
+                    {
+                      "id": "item-59656a06-375f-4892-8510-0b862b3ed036",
+                      "column": 0,
+                      "blocks": [
+                        {
+                          "id": "item-aa814f4a-5945-4b25-b048-b496e6e62a1b",
+                          "type": "paragraph",
+                          "text": "Calcula el total de botellas recolectadas durante la semana.",
+                          "richText": {
+                            "text": [
+                              {
+                                "text": "Calcula el "
+                              },
+                              {
+                                "text": "total",
+                                "highlight": true
+                              },
+                              {
+                                "text": " de botellas recolectadas durante la semana."
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "row-631a291e-9a21-4108-b349-c6e5d5488f05",
+                  "layout": "1-full",
+                  "cells": [
+                    {
+                      "id": "cell-b4e1f465-66e6-4862-9355-26cb752b87ba",
+                      "column": 0,
+                      "blocks": [
+                        {
+                          "id": "item-0e49d976-9fe3-4068-b7b8-f639a8ef15de",
+                          "type": "paragraph",
+                          "text": "Calcula el promedio de botellas recolectadas durante la semana.",
+                          "richText": {
+                            "text": [
+                              {
+                                "text": "Calcula el "
+                              },
+                              {
+                                "text": "promedio",
+                                "highlight": true
+                              },
+                              {
+                                "text": " de botellas recolectadas durante la semana."
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "gap": "small"
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Práctica guiada",
+      "icon": "page",
+      "background": "white",
+      "headerStyle": "tab"
+    },
+    {
+      "id": "questions-77e8b070-871c-42f0-bec9-8181af51e620",
+      "type": "questions",
+      "mode": "write",
+      "title": "Observa y responde",
+      "options": [
+        {
+          "id": "option-28e81bb9-33be-4db7-a47a-eb7f3c1de053",
+          "label": "Verdadero"
+        },
+        {
+          "id": "option-bd54db0f-1ac8-4acb-a956-89a472067212",
+          "label": "Falso"
+        }
+      ],
+      "columns": [],
+      "items": [
+        {
+          "id": "question-2a575fa6-ff11-4b6c-9449-1d250f64872d",
+          "text": "¿Qué día se recolectaron más botellas? Escribe la función exacta que utilizaste.",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "question-49069a04-5e68-4c42-bc0f-51393a97b9f7",
+          "text": "¿Cuál de los tres gráficos te permite identificar más fácilmente el día con más botellas recolectadas?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "question-a43a0b24-8732-465e-9af1-3374aec16716",
+          "text": "¿Qué día se recolectaron menos botellas?  Escribe la función exacta que utilizaste.",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "question-207c17b8-c17b-487d-9a3e-5127ee8311db",
+          "text": "¿Por qué es importante representar los datos mediante gráficos?",
+          "cells": [],
+          "lines": 1
+        },
+        {
+          "id": "question-f867d2e0-b62e-45ba-b133-2d1406216d92",
+          "text": "¿Cuál de los tres gráficos muestra mejor el porcentaje de botellas recolectadas por día?",
+          "cells": [],
+          "lines": 1
+        }
+      ],
+      "numbered": true
+    }
+  ],
+  "metadata": {
+    "status": "draft",
+    "description": "Página creada desde el editor."
+  }
+}

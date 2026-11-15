@@ -363,7 +363,7 @@
       "type": "framedColumns",
       "title": "¿Cómo se aplica en Excel?",
       "background": "white",
-      "showBorder": false,
+      "showBorder": true,
       "headerStyle": "band"
     },
     {
@@ -503,16 +503,18 @@
               "type": "framedColumns",
               "title": "Funciones a utilizar",
               "icon": "chart",
-              "showBorder": false
+              "showBorder": false,
+              "headerStyle": "band"
             }
           ]
         }
       ],
       "type": "framedColumns",
       "title": "Práctica guiada",
+      "icon": "page",
       "background": "white",
-      "showBorder": false,
-      "headerStyle": "band"
+      "showBorder": true,
+      "headerStyle": "tab"
     }
   ],
   "metadata": {

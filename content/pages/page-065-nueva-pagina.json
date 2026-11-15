@@ -25,9 +25,28 @@
               "rowSpan": 1,
               "blocks": [
                 {
+                  "id": "separator-83fd6bc0-3130-4bfa-9134-88d99203566c",
+                  "type": "separator",
+                  "size": "normal"
+                },
+                {
                   "id": "item-063c062a-80ef-4f42-8ddd-fe6b559a04f0",
                   "type": "paragraph",
                   "text": "Son representaciones visuales de los datos de una tabla. Permiten comparar cantidades, identificar tendencias y comprender la información de manera rápida.."
+                },
+                {
+                  "id": "item-c3544577-5b5f-4bfe-826e-6be757d38ecb",
+                  "type": "infoCard",
+                  "title": "Recuerda:",
+                  "content": "En Excel, los gráficos están vinculados a los datos de una tabla. Si modificas un valor, el gráfico se actualiza automáticamente, facilitando el análisis de la información.",
+                  "layout": "inline",
+                  "icon": "lightbulb",
+                  "contentSpans": [
+                    {
+                      "text": "En Excel, los gráficos están vinculados a los datos de una tabla. Si modificas un valor, el gráfico se actualiza automáticamente, facilitando el análisis de la información.",
+                      "bold": true
+                    }
+                  ]
                 }
               ]
             },
@@ -37,19 +56,71 @@
               "rowSpan": 1,
               "blocks": [
                 {
-                  "id": "item-ef2a9639-3854-4937-ae7d-f94a6cf5e2d9",
+                  "id": "image-ea179f06-c867-4d84-83dd-37ad4326f532",
                   "type": "image",
-                  "src": "assets/images/imagen-0402ee40-d649-4398-8e50-57b359f8913d.png",
-                  "alt": "Imagen de ejemplo",
-                  "heightMm": 18,
-                  "fit": "cover",
-                  "widthPercent": 93
+                  "src": "assets/images/imagen-01f2cf94-3eb1-4523-99a0-3999ffa57513.png",
+                  "alt": "imagen",
+                  "heightMm": 55,
+                  "fit": "contain",
+                  "widthPercent": 100
                 }
               ]
             }
           ]
         }
       ]
+    },
+    {
+      "id": "framed-columns-262a7325-875a-4db0-86ab-583414ce732c",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "col-add8bf5e-dc28-4b72-89f3-7782df12fe0c",
+          "blocks": [
+            {
+              "id": "image-6aa08b18-3f5b-4b30-a0eb-cdc4ee28502d",
+              "type": "image",
+              "src": "assets/images/imagen-c0a539b9-45ab-428b-ae81-9645f67853e2.png",
+              "alt": "imagen",
+              "heightMm": 55,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "Tipos de gráficos",
+      "icon": "chart",
+      "showIcon": false,
+      "background": "white",
+      "showBorder": false,
+      "headerStyle": "band"
+    },
+    {
+      "id": "framed-columns-a73ba23a-f362-4a72-92e9-75d554a57ef9",
+      "layout": "1-full",
+      "columns": [
+        {
+          "id": "col-49761ec2-0eae-498e-be94-a3a694388486",
+          "blocks": [
+            {
+              "id": "image-7b04f3be-c575-416c-a548-293a25b8242c",
+              "type": "image",
+              "src": "assets/images/imagen-8cdd8ced-bf8c-4b43-8920-906213d2e3f7.png",
+              "alt": "imagen",
+              "heightMm": 91,
+              "fit": "cover",
+              "widthPercent": 100
+            }
+          ]
+        }
+      ],
+      "type": "framedColumns",
+      "title": "¿Cómo insertar un gráfico en Excel?",
+      "icon": "chart",
+      "background": "white",
+      "showBorder": false
     }
   ],
   "metadata": {
