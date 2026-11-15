@@ -11,6 +11,7 @@ import { writeTestBook } from './testBook';
 import { formatStep, editStepText, stepText } from '../src/utils/steps';
 import { fieldSpans, withFieldSpans } from '../src/utils/richText';
 import { cloneBlock } from '../src/utils/blocks';
+import { analyzeImages, deleteUnusedImages } from '../server/imageAssets';
 
 test('Formato inline divide, combina, quita y fusiona marcas sin perder texto', () => {
   const plain = [{ text: 'Microsoft Excel permite calcular' }];
@@ -72,13 +73,83 @@ async function fixture(run: (root: string) => Promise<void>) {
   }
 }
 
-test('Subir imágenes crea nombres únicos y bytes persistentes dentro de assets/images', () => fixture(async root => {
+test('A/B: Subidas simultáneas y bytes de pegado idénticos reutilizan una sola imagen', () => fixture(async root => {
+  const before = await readdir(path.join(root, 'assets/images'));
   const results = await Promise.all([uploadImage('../../imagen.PNG', 'image/png', png, root), uploadImage('imagen.PNG', 'image/png', png, root)]);
-  assert.notEqual(results[0].src, results[1].src);
+  assert.equal(results[0].src, results[1].src);
+  assert.equal((await uploadImage('imagen.png', 'image/png', png, root)).src, results[0].src);
+  assert.equal((await readdir(path.join(root, 'assets/images'))).length, before.length + 1);
   for (const { src } of results) {
     assert.match(src, /^assets\/images\/imagen-[a-f0-9-]+\.png$/);
     assert.deepEqual(await readFile(path.join(root, src)), png);
   }
+}));
+
+test('A: Deduplicar conserva el nombre de una imagen previa, incluso en subcarpetas', () => fixture(async root => {
+  await mkdir(path.join(root, 'assets/images/curso'));
+  await writeFile(path.join(root, 'assets/images/curso/excel.png'), png);
+  assert.equal((await uploadImage('otra.png', 'image/png', png, root)).src, 'assets/images/curso/excel.png');
+}));
+
+test('C–G: Bloques compartidos y anidados conservan el asset hasta retirar su última referencia', () => fixture(async root => {
+  const { src } = await uploadImage('x.png', 'image/png', png, root);
+  const data = await loadBook(root), first = data.pages[0], second = data.pages[1];
+  const image: Block = { id: 'shared-image', type: 'image', src, alt: 'Compartida', heightMm: 30, fit: 'contain' };
+  const copy = cloneBlock(image);
+  assert.equal(copy.type === 'image' && copy.src, src);
+  await savePage(first.id, { ...first, blocks: [image, copy] }, root);
+  const nested: Block = { id: 'shared-frame', type: 'framedColumns', title: 'Marco', layout: '1-full', columns: [], rows: [{ id: 'shared-row', layout: '1-full', cells: [{ id: 'shared-cell', column: 0, blocks: [{ id: 'shared-text-image', type: 'textImage', text: 'Texto', layout: 'image-left', imageWidth: 40, fit: 'contain', image: { src, alt: 'Anidada' } }] }] }] };
+  await savePage(second.id, { ...second, blocks: [nested] }, root);
+  assert.equal((await analyzeImages({}, root)).unused.some(item => item.src === src), false);
+  await savePage(first.id, { ...first, blocks: [] }, root);
+  assert.equal((await analyzeImages({}, root)).unused.some(item => item.src === src), false);
+  await savePage(second.id, { ...second, blocks: [] }, root);
+  const unused = (await analyzeImages({}, root)).unused;
+  assert.ok(unused.some(item => item.src === src)); // Historical backups do not protect the image.
+  const result = await deleteUnusedImages({ selected: unused.filter(item => item.src === src) }, root);
+  assert.deepEqual(result.deleted, [src]);
+  await assert.rejects(readFile(path.join(root, src)), { code: 'ENOENT' });
+}));
+
+test('G: Limpieza revalida referencias, recursos globales, borradores y bytes revisados', () => fixture(async root => {
+  const { src } = await uploadImage('x.png', 'image/png', png, root);
+  const reviewed = (await analyzeImages({}, root)).unused.find(item => item.src === src)!;
+  const page = (await loadBook(root)).pages[1];
+  await savePage(page.id, { ...page, blocks: [{ id: 'new-use', type: 'image', src, alt: 'Uso posterior', fit: 'contain', heightMm: 30 }] }, root);
+  assert.deepEqual((await deleteUnusedImages({ selected: [reviewed] }, root)).skipped, [src]);
+  await savePage(page.id, { ...page, blocks: [] }, root);
+  assert.deepEqual((await deleteUnusedImages({ selected: [reviewed], references: [src] }, root)).skipped, [src]);
+  assert.equal((await analyzeImages({ references: [src] }, root)).unused.some(item => item.src === src), false);
+  await writeFile(path.join(root, src), Buffer.concat([png, Buffer.from('nuevo archivo')]));
+  assert.deepEqual((await deleteUnusedImages({ selected: [reviewed] }, root)).skipped, [src]);
+  const preset = { src: 'assets/images/preset-image.svg', hash: '0'.repeat(64) };
+  assert.deepEqual((await deleteUnusedImages({ selected: [preset] }, root)).skipped, [preset.src]);
+  const designPath = path.join(root, 'content/design.json');
+  const design = JSON.parse(await readFile(designPath, 'utf8'));
+  await writeFile(designPath, JSON.stringify({ ...design, globalImage: src }));
+  await assert.rejects(analyzeImages({}, root)); // Unknown design fields fail closed as well.
+}));
+
+test('G/H: Rutas externas, traversal, directorios y enlaces nunca se eliminan; JSON ilegible bloquea la limpieza', () => fixture(async root => {
+  const { src } = await uploadImage('x.png', 'image/png', png, root);
+  const reviewed = (await analyzeImages({}, root)).unused.find(item => item.src === src)!;
+  const outside = path.join(root, 'assets/outside.png');
+  await writeFile(outside, png);
+  await mkdir(path.join(root, 'assets/images/directory.png'));
+  for (const invalid of ['assets/outside.png', '../outside.png', 'assets/images/../outside.png', 'assets/images/../../content/book.json', outside, 'assets\\images\\x.png']) {
+    await assert.rejects(deleteUnusedImages({ selected: [{ ...reviewed, src: invalid }] }, root));
+  }
+  assert.deepEqual(await readFile(outside), png);
+  assert.deepEqual((await deleteUnusedImages({ selected: [{ ...reviewed, src: 'assets/images/directory.png' }] }, root)).deleted, []);
+  const target = path.join(root, 'assets/other-images');
+  await mkdir(target); await writeFile(path.join(target, 'linked.png'), png);
+  await symlink(target, path.join(root, 'assets/images/linked'), 'junction');
+  assert.equal((await analyzeImages({}, root)).unused.some(item => item.src.includes('/linked/')), false);
+  assert.deepEqual((await deleteUnusedImages({ selected: [{ ...reviewed, src: 'assets/images/linked/linked.png' }] }, root)).deleted, []);
+  assert.deepEqual(await readFile(path.join(target, 'linked.png')), png);
+  await writeFile(path.join(root, 'content/pages/broken.json'), '{');
+  await assert.rejects(deleteUnusedImages({ selected: [reviewed] }, root));
+  assert.deepEqual(await readFile(path.join(root, src)), png);
 }));
 
 test('Subida rechaza extensión, MIME, firma, vacío y tamaño sin crear archivos', () => fixture(async root => {

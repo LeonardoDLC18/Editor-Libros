@@ -1,8 +1,9 @@
-import { mkdir, realpath, writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { projectRoot } from './content';
 import { contentOperation, SaveError } from './storage';
+import { imageDirectory, imageHash, managedImages } from './imageAssets';
 
 export const maxImageBytes = 10 * 1024 * 1024;
 
@@ -23,16 +24,11 @@ export function uploadImage(name: string, mime: string, bytes: unknown, root = p
       || (extension === 'jpg' || extension === 'jpeg') && mime === 'image/jpeg' && jpeg
       || extension === 'webp' && mime === 'image/webp' && webp;
     if (!valid) throw new SaveError(415, 'El archivo, su extensión y su tipo deben coincidir: PNG, JPG/JPEG o WebP.');
-    const base = await realpath(root);
-    const directory = async (relative: string) => {
-      const expected = path.join(base, relative);
-      await mkdir(expected, { recursive: true });
-      const actual = await realpath(expected);
-      if (actual !== expected) throw new SaveError(422, 'assets/images debe estar dentro del proyecto, sin enlaces a otras carpetas.');
-      return actual;
-    };
-    await directory('assets');
-    const images = await directory('assets/images');
+    const images = await imageDirectory(root, true);
+    const hash = imageHash(bytes);
+    for (const existing of await managedImages(root)) {
+      if (existing.size === bytes.length && imageHash(await readFile(existing.file)) === hash) return { src: existing.src };
+    }
     const filename = `imagen-${randomUUID()}.${extension === 'jpeg' ? 'jpg' : extension}`;
     await writeFile(path.join(images, filename), bytes, { flag: 'wx' });
     return { src: `assets/images/${filename}` };

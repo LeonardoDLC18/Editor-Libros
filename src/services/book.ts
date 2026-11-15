@@ -34,6 +34,12 @@ export const deletePage = (id: string): Promise<PageOperationResult> => writeReq
 export const reorderPages = (pageOrder: string[]): Promise<PageOperationResult> => writeRequest('/api/book/page-order', 'PUT', { pageOrder });
 export const saveBookNumbering = (numbering: BookNumbering): Promise<PageOperationResult> => writeRequest('/api/book/numbering', 'PUT', numbering);
 
+export interface UnusedImage { src: string; size: number; hash: string }
+export interface ImageInventory { total: number; used: number; unused: UnusedImage[]; recoverableBytes: number }
+export const analyzeImages = (references: string[]): Promise<ImageInventory> => writeRequest('/api/images/analyze', 'POST', { references });
+export const deleteUnusedImages = (selected: UnusedImage[], references: string[]): Promise<ImageInventory & { deleted: string[]; skipped: string[] }> =>
+  writeRequest('/api/images/delete-unused', 'POST', { selected, references });
+
 export async function uploadImage(file: File): Promise<string> {
   if (file.size > 10 * 1024 * 1024) throw new Error('La imagen supera el límite de 10 MB.');
   if (!/\.(png|jpe?g|webp)$/i.test(file.name) || !['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {

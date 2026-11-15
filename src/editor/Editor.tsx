@@ -12,6 +12,8 @@ import { Properties } from './Properties';
 import { allBlocks, blockLocation, childSlots, moveBlock, updateBlock } from '../utils/blocks';
 import { InlineEditingContext } from '../renderer/InlineText';
 import { BlockDragContext } from '../renderer/BlockDrag';
+import { ImageManager } from './ImageManager';
+import { imageSources } from '../utils/blocks';
 
 export function Editor({ data }: { data: BookData }) {
   const [pageId, setPageId] = useState(data.pages[0].id);
@@ -20,6 +22,7 @@ export function Editor({ data }: { data: BookData }) {
   const [preview, setPreview] = useState(false);
   const [zoom, setZoom] = useState('1');
   const [uploading, setUploading] = useState(false);
+  const [managingImages, setManagingImages] = useState(false);
   const [overflow, setOverflow] = useState(false);
   const editing = usePageEditing(data, pageId, uploading);
   useEffect(() => {
@@ -202,6 +205,7 @@ export function Editor({ data }: { data: BookData }) {
         <button className="button history-button" aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!editing.canUndo} onClick={editing.undo}><Icon name="undo" /></button>
         <button className="button history-button" aria-label="Rehacer" title="Rehacer (Ctrl+Y / Ctrl+Mayús+Z)" disabled={!editing.canRedo} onClick={editing.redo}><Icon name="redo" /></button>
         <button className="button save-button" disabled={!editing.canSave} title="Guardar todos los cambios" onClick={editing.save}><Icon name="save" />{editing.saving ? 'Guardando...' : 'Guardar'}</button>
+        {!preview && <button className="button" disabled={editing.busy} onClick={() => setManagingImages(true)}>Administrar imágenes</button>}
         <button className={`button${preview ? ' selected' : ''}`} aria-pressed={preview} onClick={() => setPreview(!preview)}><Icon name={preview ? 'close' : 'eye'} />{preview ? 'Volver al editor' : 'Vista previa'}</button>
         <button className="button primary" onClick={() => window.print()} title="Imprimir el libro completo o guardar como PDF"><Icon name="print" />Imprimir</button>
       </div>
@@ -232,5 +236,6 @@ export function Editor({ data }: { data: BookData }) {
     </div>
     <footer className="editor-status"><span><Icon name="check" size={14} />{editing.status}{editing.dirtyIds.length > 0 ? ` · ${editing.dirtyIds.length} página(s) pendiente(s)` : ''}</span><span>Columnas, mixtos y tarjetas<span className="status-divider">|</span>A4 vertical</span></footer>
     <div className="print-book">{editing.pages.map(item => <PageRenderer key={item.id} page={item} book={editing.book} />)}</div>
+    {managingImages && <ImageManager references={[...editing.pages.flatMap(item => imageSources(item.blocks)), ...(clipboard ? imageSources([clipboard]) : [])]} onClose={() => setManagingImages(false)} />}
   </div>;
 }

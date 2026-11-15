@@ -1,0 +1,13 @@
+.image-manager { width: min(560px, calc(100vw - 48px)); max-height: 80vh; overflow: auto; border: 1px solid var(--color-line); border-radius: 8px; padding: 24px; color: var(--color-ink); background: var(--color-paper); }
+.image-manager::backdrop { background: rgb(0 0 0 / 35%); }
+.image-manager h2 { margin-top: 0; }
+.image-manager p { font-size: 14px; }
+.image-manager dl { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.image-manager dd { margin: 0; }
+.image-manager-list { list-style: none; padding: 0; max-height: 35vh; overflow: auto; }
+.image-manager-list label { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+.image-manager-list img { width: 56px; height: 44px; object-fit: contain; }
+.image-manager-list span { overflow-wrap: anywhere; min-width: 0; }
+.image-manager-list small { display: block; }
+.image-manager-actions { display: flex; justify-content: flex-end; margin-top: 16px; }
+@media print { .image-manager { display: none !important; } }

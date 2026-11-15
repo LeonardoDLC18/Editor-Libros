@@ -1,5 +1,15 @@
 # Estado del proyecto
 
+## Gestión segura de imágenes — 14 de noviembre de 2026
+
+- Deduplicación por tamaño/SHA-256 en el endpoint común de subida, pegado y reemplazo: reutiliza la ruta existente, incluidas imágenes anteriores en subcarpetas. Copiar/duplicar sigue compartiendo rutas; reemplazar nunca borra el archivo previo.
+- «Administrar imágenes»: inventario, espacio recuperable, revisión con miniaturas/nombre/tamaño, selección individual o total y confirmación explícita. El servidor vuelve a leer referencias antes de cada borrado; protege recursos actuales, borradores de esta pestaña, bloque copiado y el marcador de prediseñados. Rechaza traversal y excluye enlaces, directorios y archivos ajenos a assets/images. JSON inválido/ilegible bloquea la limpieza; respaldos históricos excluidos.
+- Archivos: nuevo server/imageAssets.ts; cambios puntuales en uploadImage/index del servidor, services/book y Editor; nuevos ImageManager.tsx/imageManager.css; pruebas en blocks.test.ts y documentación DATA_MODEL/STATUS. Sin cambios de esquema, bloques, diseños de página, dependencias o contenido del libro; se conserva la modificación ajena preexistente de page-061-pagina-en-blanco.json.
+- Verificación: build y validate correctos (13 páginas, 139 bloques); suite 40/40. Test/validate requirieron ejecución fuera del sandbox por el fallo conocido uv_os_get_passwd de Node. Chrome con libro temporal: inventario/miniatura, cancelar confirmación, eliminar seleccionada, conservar asset usado y pegar dos veces los mismos bytes con una sola copia física; referencias sin guardar protegidas y cero excepciones JavaScript. Pegado comprobado mediante ClipboardEvent con imagen, sin verificar portapapeles nativo del sistema. Evidencias: .tmp/image-browser.mjs, .tmp/image-browser-results.json y libro indicado en .tmp/image-root.txt.
+- Límite: la cola coordina una instancia; no observa borradores de otras pestañas ni hace transacciones con modificaciones externas. Limpiar puede dejar sin recurso imágenes presentes solamente en respaldos/deshacer, que no son referencias activas. No hay limpieza silenciosa.
+- Procesos temporales de servidor/Chrome cerrados. El servidor de prueba registró solicitudes tardías de miniaturas ya eliminadas como NotFound; no hubo excepciones JavaScript. El servidor habitual no se reinició para no interrumpir una sesión abierta.
+- Siguiente acción exacta: reiniciar el servidor habitual para cargar los endpoints nuevos, recargar http://127.0.0.1:5173 y abrir «Administrar imágenes». Revisar/seleccionar antes de confirmar; no iniciar otras etapas.
+
 ## Formato inline global — 14 de noviembre de 2026
 
 - Implementado B/I/Resaltar en la infraestructura inline existente, reutilizando `formatStep`, `editStepText`, `StepSpan`, `FormattedText` y el estilo `step-highlight`. Barra compacta en portal fixed, situada según el Range en coordenadas del viewport; conserva selección/foco, refleja marcas activas y permite combinarlas/quitarlas. Sin dependencias, fuentes, tamaños ni otros formatos nuevos.

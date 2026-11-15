@@ -7,6 +7,7 @@ import { savePage, SaveError } from './savePage';
 import { createPage, deletePage, duplicatePage, reorderPages, saveBookNumbering } from './managePages';
 import { contentOperation } from './storage';
 import { uploadImage, maxImageBytes } from './uploadImage';
+import { analyzeImages, deleteUnusedImages } from './imageAssets';
 
 const dev = process.argv.includes('--dev');
 const port = Number(process.env.PORT || 5173);
@@ -68,6 +69,8 @@ app.post('/api/images', express.raw({ type: () => true, limit: maxImageBytes, in
   return uploadImage(name, req.get('content-type') || '', req.body);
 }));
 app.put('/api/pages/:id', mutation(async req => ({ page: await savePage(pageId(req), req.body) })));
+app.post('/api/images/analyze', mutation(req => analyzeImages(req.body)));
+app.post('/api/images/delete-unused', mutation(req => deleteUnusedImages(req.body)));
 app.post('/api/pages', mutation(req => createPage(req.body)));
 app.post('/api/pages/:id/duplicate', mutation(req => duplicatePage(pageId(req))));
 app.delete('/api/pages/:id', mutation(req => deletePage(pageId(req))));
